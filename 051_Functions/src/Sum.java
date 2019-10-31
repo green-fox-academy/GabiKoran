@@ -13,11 +13,11 @@ public class Sum {
     public static int sum(int in) {
         int summ = 0;
         if (in >= 0) {
-            for (int i = 0; i < in; i++) {
+            for (int i = 0; i <= in; i++) {
                 summ += i;
             }
         } else {
-            for (int i = 0; i > in ; i--) {
+            for (int i = 0; i >= in ; i--) {
                 summ += i;
             }
         }
