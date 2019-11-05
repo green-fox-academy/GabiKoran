@@ -44,7 +44,7 @@ public class ShoppingList2 {
 //        How much does Alice pay?
         double sumAlice = 0;
         for (Map.Entry<String, Integer> elementA : alicesList.entrySet()) {
-           // sumAlice += priceList.get(elementA.getKey()) * elementA.getValue(); // itt még vm gigszi van!!!!!
+           sumAlice += priceList.get(elementA.getKey()) * elementA.getValue(); // itt még vm gigszi van!!!!!
         }
         System.out.println(sumAlice + "\n");
 
