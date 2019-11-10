@@ -8,17 +8,19 @@ public class afTriangle {
         int triangelHeight = (int)(Math.sin(1) * WIDTH);
         System.out.println(triangelHeight);
         int spaceHeight = 20;
-//        graphics.drawLine(0, spaceHeight + triangelHeight, WIDTH / 2, spaceHeight);
-//        graphics.drawLine(WIDTH / 2, spaceHeight, WIDTH, spaceHeight + triangelHeight);
-//        graphics.drawLine(0, spaceHeight + triangelHeight, WIDTH, spaceHeight + triangelHeight );
+
         for (int i = 0; i < 21; i++) {
             graphics.drawLine(i * WIDTH / 21, triangelHeight + spaceHeight, (WIDTH / 2 + i * WIDTH/ 2 / 21), (int)(Math.sin(1) * i * WIDTH / 21) + spaceHeight);
+            graphics.drawLine(WIDTH / 2 - (i * WIDTH / 2 /21), (int)(Math.sin(1) * WIDTH / 21 * i) + spaceHeight, WIDTH - i * WIDTH / 21, triangelHeight + spaceHeight);
+            graphics.drawLine((WIDTH / 2 + (i + 1) * WIDTH/ 2 / 21), (int)(Math.sin(1) * (i + 1) * WIDTH / 21) + spaceHeight, WIDTH / 2 - ((i + 1) * WIDTH / 2 /21), (int)(Math.sin(1) * WIDTH / 21 * (i + 1)) + spaceHeight);
+
         }
+//        }
     }
 
     // Don't touch the code below
-    static int WIDTH = 420;
-    static int HEIGHT = 420;
+    static int WIDTH = 840;
+    static int HEIGHT = 840;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
