@@ -11,9 +11,13 @@ public class agSuperHexagon {
         int startingPointX = 300;
         int startingPointY = 50;
         // 4 hexagont rajzol csak középről sréhen lefelé:
-            for (int i = 0; i < 4; i++) {
-                startingPointX += (sideHexagon + widthHalfHexagon);
-                startingPointY += heightHalfHexagon;
+            for (int i = 0; i < 7; i++) {
+                if (i < 4) {
+                    startingPointX += (sideHexagon + widthHalfHexagon);
+                    startingPointY += heightHalfHexagon;
+                } else if (i >= 4) {
+                    startingPointY += 2 * heightHalfHexagon;
+                }
                 int Ax[] = {startingPointX, startingPointX + sideHexagon, startingPointX + sideHexagon + widthHalfHexagon, startingPointX + sideHexagon, startingPointX, startingPointX - widthHalfHexagon};
                 int Ay[] = {startingPointY, startingPointY, startingPointY + heightHalfHexagon, startingPointY + 2 * heightHalfHexagon, startingPointY + 2 * heightHalfHexagon, startingPointY + heightHalfHexagon};
                 int npoints = 6;
