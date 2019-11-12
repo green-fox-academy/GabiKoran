@@ -3,7 +3,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class afTriangle {
+public class _06Triangle {
     public static void mainDraw(Graphics graphics) {
         int triangelHeight = (int)(Math.sin(1) * WIDTH);
         System.out.println(triangelHeight);

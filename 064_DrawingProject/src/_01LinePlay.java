@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class aaLinePlay {
+public class _01LinePlay {
     public static void mainDraw(Graphics graphics) {
        graphics.setColor(new Color(199, 133, 255));
         for (int i = 0; i < 14; i++) {

@@ -3,7 +3,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class agSuperHexagon {
+public class _07SuperHexagon {
     public static void mainDraw(Graphics graphics) {
         int sideHexagon = 60;
         int heightHalfHexagon = (int)(Math.sin(1) * sideHexagon);

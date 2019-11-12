@@ -4,7 +4,7 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class aeEnvelopeStar {
+public class _05EnvelopeStar {
     public static void mainDraw(Graphics graphics) {
         graphics.setColor(Color.green);
         for (int i = 0; i < (WIDTH / 20); i++) {
