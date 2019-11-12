@@ -9,21 +9,21 @@ public class _07SuperHexagon {
         int heightHalfHexagon = (int)(Math.sin(1) * sideHexagon);
         int widthHalfHexagon = sideHexagon / 2;
         int startingPointX = 300;
-        int startingPointY = 50;
-        // 4 hexagont rajzol csak középről sréhen lefelé:
-            for (int i = 0; i < 18; i++) {
-                if (i < 4) {
+        int startingPointY = 20;
+        for (int j = 0; j < 3; j++) {
+            for (int i = 0; i < (3 - j) * 6; i++) {
+                if (i < (4 - j)) {
                     startingPointX += (sideHexagon + widthHalfHexagon);
                     startingPointY += heightHalfHexagon;
-                } else if (i < 7) {
+                } else if (i < (7 - 2 * j)) {
                     startingPointY += 2 * heightHalfHexagon;
-                } else if (i < 10) {
+                } else if (i < (10 - 3 * j)) {
                     startingPointX -= (sideHexagon + widthHalfHexagon);
                     startingPointY += heightHalfHexagon;
-                } else if (i < 13) {
+                } else if (i < (13 - 4 * j)) {
                     startingPointX -= (sideHexagon + widthHalfHexagon);
                     startingPointY -= heightHalfHexagon;
-                } else if (i < 16) {
+                } else if (i < (16 - 5 * j)) {
                     startingPointY -= 2 * heightHalfHexagon;
                 } else {
                     startingPointX += (sideHexagon + widthHalfHexagon);
@@ -34,6 +34,7 @@ public class _07SuperHexagon {
                 int npoints = 6;
                 graphics.drawPolygon(Ax, Ay, 6);
             }
+        }
     }
 
     // Don't touch the code below
