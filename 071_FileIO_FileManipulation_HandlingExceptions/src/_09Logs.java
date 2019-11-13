@@ -12,7 +12,8 @@ public class _09Logs {
         // Write a function that returns the GET / POST request ratio.
         Path filePath = Paths.get("assets/log.txt");
         List<String> logs = new ArrayList<>();
-
+        int flag = 0;
+        int count = 0;
         try {
             logs = Files.readAllLines(filePath);
         } catch (Exception ex) {
@@ -20,10 +21,33 @@ public class _09Logs {
         }
         String[] IPAdresses = new String[logs.size()];
         for (int i = 0; i < logs.size(); i++) {
+            IPAdresses[i] = "";
             for (int j = 27; j < 38; j++) {
-                System.out.print(logs.get(i).charAt(j));
+                System.out.print(logs.get(i).charAt(j));    // kinyomtatja
+                IPAdresses[i] += logs.get(i).charAt(j);     // ugyanazt beleteszi ez IPAdresses tömbbe
             }
-            System.out.println();
+            System.out.println();                           // nyomtatáshoz sortörés
         }
+        for (int i = 0; i < IPAdresses.length; i++) {
+            System.out.println(IPAdresses[i]);
+        }
+//        for (int i = 0; i < IPAdresses.length; i++) {
+//            System.out.println(IPAdresses[i].charAt(4));
+//        }
+//        for (int i = 0; i < IPAdresses.length; i++) {
+//            for (int j = 0; j < IPAdresses.length; j++) {
+//                if (i != j) {
+//                    if (IPAdresses[i] != IPAdresses[j]) {
+//                        flag = 1;
+//                    } else {
+//                        flag = 0;
+//                        break;
+//                    }
+//                }
+//            } if (flag == 1) {
+//                count ++;
+//                System.out.println(IPAdresses[i]);
+//            }
+//        }
     }
 }
