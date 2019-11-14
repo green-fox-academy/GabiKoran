@@ -11,24 +11,32 @@ public class _09Logs {
         // Write a function that returns the GET / POST request ratio.
         Path filePath = Paths.get("assets/log.txt");
         List<String> logs = new ArrayList<>();
-
         try {
             logs = Files.readAllLines(filePath);
         } catch (Exception ex) {
             System.out.println("valami gigszi van, de legalább nem errorozik");
         }
+
+        System.out.println(Arrays.toString(uniqueIPs(logs))); // csak check
+        requestRatioGetsPosts(logs);    // csak check
+    }
+
+    public static String[] uniqueIPs (List<String> logs) {
         ArrayList<String> IPAdresses = new ArrayList<>();
         for (int i = 0; i < logs.size(); i++) {
             String[] lineParts = logs.get(i).split(" ");
-                IPAdresses.add(lineParts[8]);
+            IPAdresses.add(lineParts[8]);
         }
         Set<String> uniqueIPs = new HashSet<String>(IPAdresses);
         int numberOfIPs = uniqueIPs.size();
-        System.out.println(numberOfIPs);
+        //System.out.println(numberOfIPs);
         String[] uniqueIPAdresses = new String[numberOfIPs];
         System.arraycopy(uniqueIPs.toArray(), 0, uniqueIPAdresses, 0, numberOfIPs);
-        System.out.println(Arrays.toString(uniqueIPAdresses));
+        //System.out.println(Arrays.toString(uniqueIPAdresses)); // csak ellenőrzésnek, ez nem kell a functionbe
+        return uniqueIPAdresses;
+    }
 
+    public static void requestRatioGetsPosts (List<String> logs) {
         ArrayList<String> coloumnGetsPosts = new ArrayList<>();
         for (int i = 0; i < logs.size(); i++) {
             String[] lineParts = logs.get(i).split(" ");
@@ -37,7 +45,7 @@ public class _09Logs {
         int sumGets = 0;
         int sumPosts = 0;
         for (int i = 0; i < coloumnGetsPosts.size(); i++) {
-            System.out.println(coloumnGetsPosts.get(i));
+            //System.out.println(coloumnGetsPosts.get(i));
             if (coloumnGetsPosts.get(i).equals("GET")) {
                 sumGets ++;
             } else if (coloumnGetsPosts.get(i).equals("POST")) {
