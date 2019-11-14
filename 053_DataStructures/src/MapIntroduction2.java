@@ -11,17 +11,11 @@ public class MapIntroduction2 {
 
         //System.out.println(catalogue);
 //        Print all the key-value pairs in the following format
-        for (Map.Entry<String, String> element : catalogue.entrySet()) {
-            System.out.printf("%s (ISBN: %s)\n", element.getValue(), element.getKey());
-        }
-        System.out.println();
+        printHashMap(catalogue);
 
         // Remove the key-value pair with key 978-1-60309-444-3
         catalogue.remove("978-1-60309-444-3");
-        for (Map.Entry<String, String> element : catalogue.entrySet()) {
-            System.out.printf("%s (ISBN: %s)\n", element.getValue(), element.getKey());
-        }
-        System.out.println();
+        printHashMap(catalogue);
 
         // Remove the key-value pair with value The Lab
         String searchedKey = "";
@@ -31,10 +25,7 @@ public class MapIntroduction2 {
             }
         }
         catalogue.remove(searchedKey);
-        for (Map.Entry<String, String> element : catalogue.entrySet()) {
-            System.out.printf("%s (ISBN: %s)\n", element.getValue(), element.getKey());
-        }
-        System.out.println();
+        printHashMap(catalogue);
 
         // Add the following key-value pairs to the map
         catalogue.put("978-1-60309-450-4",	"They Called Us Enemy");
@@ -51,6 +42,13 @@ public class MapIntroduction2 {
 
         // Print the value associated with key 978-1-60309-453-5
         System.out.println("A 978-1-60309-453-5 katalógusszámú könyv: " + catalogue.get("978-1-60309-453-5"));
+    }
+
+    public static void printHashMap (HashMap<String, String> nameOfIt) {
+        for (Map.Entry<String, String> element : nameOfIt.entrySet()) {
+            System.out.printf("%s (ISBN: %s)\n", element.getValue(), element.getKey());
+        }
+        System.out.println();
     }
 
 }

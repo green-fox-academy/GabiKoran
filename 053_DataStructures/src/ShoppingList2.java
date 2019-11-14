@@ -30,7 +30,7 @@ public class ShoppingList2 {
         HashMap<String, Integer> alicesList = new HashMap<>();
         alicesList.put("Rice", 1);
         alicesList.put("Eggs", 5);
-        alicesList.put("Chicken Breast", 2);
+        alicesList.put("Chicken Breasts", 2);
         alicesList.put("Apples", 1);
         alicesList.put("Tomato", 10);
 
@@ -43,9 +43,8 @@ public class ShoppingList2 {
 
 //        How much does Alice pay?
         double sumAlice = 0;
-        for (Map.Entry<String, Integer> elementA : alicesList.entrySet()) {
-           sumAlice += priceList.get(elementA.getKey()) * elementA.getValue(); // itt még vm gigszi van!!!!!
-        }
+        for (Map.Entry<String, Integer> elementA : alicesList.entrySet())
+            sumAlice += priceList.get(elementA.getKey()) * elementA.getValue();
         System.out.println(sumAlice + "\n");
 
 //        Who buys more Rice?

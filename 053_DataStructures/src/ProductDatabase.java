@@ -12,7 +12,8 @@ public class ProductDatabase {
         priceMap.put("Apples", 150);
         priceMap.put("Bread", 50);
         priceMap.put("Chicken", 550);
-        //priceMap.put("checkfor125", 125);
+//        priceMap.put("checkfor125", 125);
+//        priceMap.put("checkfor125_1", 125);
 
 //        Create an application which solves the following problems.
 //
@@ -48,21 +49,27 @@ public class ProductDatabase {
         System.out.println("Products amount below 300: " + productsBelow300 + "\n");
 
 //        Is there anything we can buy for exactly 125?
-        System.out.print("Is there anything we can buy for exactly 125? ");
+        System.out.println("Is there anything we can buy for exactly 125? ");
+        boolean isThereProductFor125 = false;
+        ArrayList<String> productsFor125 = new ArrayList<>();
         for (Map.Entry<String, Integer> element : priceMap.entrySet()) {
             // int price = 0;
             // String productFor125 = "";
-            boolean isThereProductFor125;
             if (element.getValue() == 125) {
-                // System.out.println(element.getKey()); // lehetne szépíteni (mi van, ha tööb termék is van)
                 isThereProductFor125 = true;
-                if (isThereProductFor125 == true) { // így meg többször kiírja, ha többször van
-                    System.out.println("Yes\n");
-                }
-            } else {
-                isThereProductFor125 = false;
+                productsFor125.add(element.getKey());
             }
         }
+        if (isThereProductFor125 == true) {
+            System.out.println("Yes: ");
+            for (int i = 0; i < productsFor125.size(); i++) {
+                System.out.println(productsFor125.get(i));
+            }
+            System.out.println();
+        } else {
+            System.out.println("No\n");
+        }
+
 
 //        What is the cheapest product?
         int cheapestPrice = Collections.min(priceMap.values());
