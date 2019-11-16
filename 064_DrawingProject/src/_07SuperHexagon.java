@@ -5,35 +5,48 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class _07SuperHexagon {
     public static void mainDraw(Graphics graphics) {
-        int sideHexagon = 60;
-        int heightHalfHexagon = (int)(Math.sin(1) * sideHexagon);
-        int widthPeakOverhang = sideHexagon / 2;
+        int side = 60;
+        int halfHeight = (int)(Math.sin(1) * side);
+        int halfSide = side / 2;
+
         for (int j = 0; j < 3; j++) {
             int startingPointX = 300;
             int startingPointY = 10;
-            startingPointY += (heightHalfHexagon * 2 * j);
+            startingPointY += (halfHeight * 2 * j);
             for (int i = 0; i < (3 - j) * 6; i++) {
                 if (i < (4 - j)) {
-                    startingPointX += (sideHexagon + widthPeakOverhang);
-                    startingPointY += heightHalfHexagon;
+                    startingPointX += (side + halfSide);
+                    startingPointY += halfHeight;
                 } else if (i < (7 - 2 * j)) {
-                    startingPointY += 2 * heightHalfHexagon;
+                    startingPointY += 2 * halfHeight;
                 } else if (i < (10 - 3 * j)) {
-                    startingPointX -= (sideHexagon + widthPeakOverhang);
-                    startingPointY += heightHalfHexagon;
+                    startingPointX -= (side + halfSide);
+                    startingPointY += halfHeight;
                 } else if (i < (13 - 4 * j)) {
-                    startingPointX -= (sideHexagon + widthPeakOverhang);
-                    startingPointY -= heightHalfHexagon;
+                    startingPointX -= (side + halfSide);
+                    startingPointY -= halfHeight;
                 } else if (i < (16 - 5 * j)) {
-                    startingPointY -= 2 * heightHalfHexagon;
+                    startingPointY -= 2 * halfHeight;
                 } else {
-                    startingPointX += (sideHexagon + widthPeakOverhang);
-                    startingPointY -= heightHalfHexagon;
+                    startingPointX += (side + halfSide);
+                    startingPointY -= halfHeight;
                 }
-                int Ax[] = {startingPointX, startingPointX + sideHexagon, startingPointX + sideHexagon + widthPeakOverhang, startingPointX + sideHexagon, startingPointX, startingPointX - widthPeakOverhang};
-                int Ay[] = {startingPointY, startingPointY, startingPointY + heightHalfHexagon, startingPointY + 2 * heightHalfHexagon, startingPointY + 2 * heightHalfHexagon, startingPointY + heightHalfHexagon};
-                int npoints = 6;
-                graphics.drawPolygon(Ax, Ay, 6);
+                int x1 = startingPointX;
+                int x2 = x1 + side;
+                int x3 = x2 + halfSide;
+                int x4 = x2;
+                int x5 = x1;
+                int x6 = x5 - halfSide;
+                int y1 = startingPointY;
+                int y2 = y1;
+                int y3 = y2 + halfHeight;
+                int y4 = y3 + halfHeight;
+                int y5 = y4;
+                int y6 = y3;
+                int xPoints[] = {x1, x2, x3, x4, x5, x6};
+                int yPoints[] = {y1, y2, y3, y4, y5, y6};
+                int nPoints = 6;
+                graphics.drawPolygon(xPoints, yPoints, nPoints);
             }
         }
     }
