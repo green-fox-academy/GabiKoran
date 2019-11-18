@@ -1,23 +1,25 @@
-public class xHuman {
+package xP00_matReview;
+
+public class Human {
     String name;
     int age;
     Integer height;
     boolean isAlive;
 
-    public xHuman() {
+    public Human() {
         this.name = "JohnDoe";
         this.age = 30;
         this.height = 170;
         this.isAlive = true;
     }
 
-    public xHuman(String name, int age, Integer height) {
+    public Human(String name, int age, Integer height) {
         this.name = name;
         this.age = age;
         this.height = height;
     }
 
-    public void fight (xHuman xhuman) {
+    public void fight (Human xhuman) {
         if (this.height > xhuman.height) {
             System.out.println(this.name + " win");
             xhuman.isAlive = false;
