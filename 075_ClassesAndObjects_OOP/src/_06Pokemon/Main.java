@@ -17,7 +17,7 @@ public class Main {
 
         // Which pokemon should Ash use?
         String ashShouldUseThisPokemon = "";
-        for (int i = 0; i < 4 ; i++) {      // foreach-csel is! jó lenne megcsinálni
+        for (int i = 0; i < 4 ; i++) {      // todo: foreach-csel is! jó lenne megcsinálni
              if (pokemonOfAsh.get(i).isEffectiveAgainst(wildPokemon) == true) {
                  ashShouldUseThisPokemon = pokemonOfAsh.get(i).name;
              }
