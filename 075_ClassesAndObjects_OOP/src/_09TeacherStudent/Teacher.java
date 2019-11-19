@@ -1,4 +1,4 @@
-package TeacherStudent;
+package _09TeacherStudent;
 
 public class Teacher {
 //    teach(student) -> calls the students learn method

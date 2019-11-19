@@ -1,4 +1,4 @@
-package TeacherStudent;
+package _09TeacherStudent;
 
 public class Main {
     public static void main(String[] args) {
