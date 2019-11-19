@@ -6,9 +6,9 @@ public class Sharpie {
 //    Every sharpie is created with a default 100 as inkAmount
 //    We can use() the sharpie objects
 //    which decreases inkAmount
-    String color;
-    float width;
-    float inkAmount;
+    public String color;
+    public float width;
+    public float inkAmount;
 
     public Sharpie() {
         this.inkAmount = 100;
