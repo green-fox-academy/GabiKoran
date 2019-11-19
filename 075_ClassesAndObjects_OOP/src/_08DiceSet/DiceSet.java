@@ -43,6 +43,8 @@ public class DiceSet {
         System.out.println(diceSet.getCurrent());
         System.out.println(diceSet.roll());
 
+
+         // version 1
         while (diceSet.getCurrent(0) != 6 || diceSet.getCurrent(1) != 6 || diceSet.getCurrent(2) != 6 || diceSet.getCurrent(3) != 6 || diceSet.getCurrent(4) != 6 || diceSet.getCurrent(5) != 6) {
         for (int i = 0; i < 6; i++) {
             if (diceSet.getCurrent(i) != 6) {
@@ -51,5 +53,7 @@ public class DiceSet {
         }
         System.out.println(diceSet.getCurrent());
         }
+
+
     }
 }
