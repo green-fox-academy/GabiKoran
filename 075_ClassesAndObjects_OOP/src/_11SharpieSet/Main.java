@@ -4,6 +4,8 @@ import _04Sharpie.Sharpie;
 
 import javax.swing.*;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -48,4 +50,5 @@ public class Main {
     public static void printUsableNumbers(SharpieSet name) {
         System.out.println(name.countUsable() + " sharpies are usable.\n");
     }
+
 }
