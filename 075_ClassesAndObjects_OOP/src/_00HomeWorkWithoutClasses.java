@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class xHomeWork {
+public class _00HomeWorkWithoutClasses {
     public static void main(String[] args) {
 //        // ArrayListek a tulajdonságoknak
 //        // adott fához az adott indexű tulajdonságok tartoznak
