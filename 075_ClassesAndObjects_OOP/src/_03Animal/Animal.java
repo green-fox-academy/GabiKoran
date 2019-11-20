@@ -2,10 +2,11 @@ package _03Animal;
 
 public class Animal {
     //    Every animal has a hunger value, which is a whole number
-    int hunger;
+    public int hunger;
     //    Every animal has a thirst value, which is a whole number
-    int thirst;
+    public int thirst;
     //    when creating a new animal object these values are created with the default 50 value
+
 
     public Animal() {
         this(50, 50); // 2. így is, viszont így vár egy másik Constructort
