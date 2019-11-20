@@ -6,10 +6,10 @@ public class BlogPost {
 //    a title
 //    a text
 //    a publicationDate
-    String authorName;
-    String title;
-    String text;
-    String publicationDate;
+    public String authorName;
+    public String title;
+    public String text;
+    public String publicationDate;
 
     public BlogPost(String authorName, String title, String text, String publicationDate) {
         this.authorName = authorName;
@@ -19,5 +19,10 @@ public class BlogPost {
     }
 
     public BlogPost() {
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }

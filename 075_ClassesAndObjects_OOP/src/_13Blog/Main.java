@@ -19,15 +19,17 @@ public class Main {
         testBlog.add(post4);
         testBlog.add(post5);
 
-        System.out.println(testBlog.nameOfBlog.toString());
+        System.out.println(testBlog);
 
         testBlog.delete(3);
 
-        System.out.println(testBlog.nameOfBlog.toString());
+        System.out.println(testBlog);
 
         BlogPost post6 = new BlogPost("Fanni", "F", "ffffffff", "2019.11.20.");
-        testBlog.update(2, post6);
+        testBlog.update(3, post6);
 
-        System.out.println(testBlog.nameOfBlog.toString());
+        System.out.println(testBlog);
     }
+
+
 }

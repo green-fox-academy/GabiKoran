@@ -30,10 +30,19 @@ public class Blog {
     }
 
     public void update(int i, BlogPost resettingPost) {
-        nameOfBlog.set(0, resettingPost);
+        nameOfBlog.set(i, resettingPost);
     }
 
     public int size() {
         return nameOfBlog.size();
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < nameOfBlog.size(); i++) {
+            result += nameOfBlog.get(i) + " ";
+        }
+        return result;
     }
 }
