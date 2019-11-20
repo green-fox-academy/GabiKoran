@@ -1,6 +1,4 @@
-package _08Dominoes;
-
-import java.util.Arrays;
+package _09Dominoes;
 
 public class Domino {
     private final int left;

@@ -1,11 +1,6 @@
-package _11SharpieSet;
+package _12SharpieSet;
 
 import _04Sharpie.Sharpie;
-
-import javax.swing.*;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {

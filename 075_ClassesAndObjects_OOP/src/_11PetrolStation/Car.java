@@ -1,4 +1,4 @@
-package _10PetrolStation;
+package _11PetrolStation;
 
 public class Car {
 //    gasAmount

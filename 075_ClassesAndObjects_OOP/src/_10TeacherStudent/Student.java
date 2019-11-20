@@ -1,4 +1,4 @@
-package _09TeacherStudent;
+package _10TeacherStudent;
 
 public class Student {
 //    learn() -> prints the student is learning something new
