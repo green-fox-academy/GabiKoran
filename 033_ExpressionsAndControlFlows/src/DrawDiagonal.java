@@ -7,37 +7,22 @@ public class DrawDiagonal {
         System.out.println("Please enter a whole number: ");
         int a = sc.nextInt();
 
-/*
-        if (a == 1) {
+        if (a == 0) {
+            System.out.println();
+        } else if (a == 1) {
             System.out.println("*");
-        } else {
-
+        } else if (a > 1) {
             for (int i = 0; i < a; i++) {
-                System.out.print("*");
-            }
-            System.out.println();
-  */
-            for (int i = 0; i < (a - 2); i++) {
-                System.out.print("*");
-
-
-                for (int j = 0; j < (a - 2); j++) {
-                    for (int k = 0; k <= j; k++) {
+                for (int j = 0; j < a; j++) {
+                    if ((j == 0) || (j == i) || (i == 0) || (i == a - 1) || (j == a - 1)) {
+                        System.out.print("*");
+                    } else {
                         System.out.print(" ");
                     }
-                    System.out.print("*");
-                    for (int l = j; l > 0; l--) {
-                        System.out.print(" ");
-                    }
-                    System.out.print("*");
                 }
-                System.out.println("");
+                System.out.println();
             }
-  /*
-            for (int i = 0; i < a; i++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }*/
         }
+
+    }
 }
