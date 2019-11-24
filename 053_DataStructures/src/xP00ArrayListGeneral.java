@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class XP00ArrayListGeneral {
+public class xP00ArrayListGeneral {
     public static void main(String[] args) {
         ArrayList<String> teszt = new ArrayList<>();
         ArrayList<String> apples = new ArrayList<>();

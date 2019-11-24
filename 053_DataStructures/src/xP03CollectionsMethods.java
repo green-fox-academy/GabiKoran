@@ -7,7 +7,7 @@ public class xP03CollectionsMethods {
         szamok.add(5);
         szamok.add(100);
         szamok.add(2);
-        
+
         System.out.println(Collections.max(szamok));
         System.out.println(Collections.min(szamok));
     }
