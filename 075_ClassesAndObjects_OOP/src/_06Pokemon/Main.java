@@ -17,12 +17,20 @@ public class Main {
 
         // Which pokemon should Ash use?
         String ashShouldUseThisPokemon = "";
-        for (int i = 0; i < 4 ; i++) {      // todo: foreach-csel is! jó lenne megcsinálni
-             if (pokemonOfAsh.get(i).isEffectiveAgainst(wildPokemon) == true) {
-                 ashShouldUseThisPokemon = pokemonOfAsh.get(i).name;
-             }
+        for (int i = 0; i < 4 ; i++) {
+            if (pokemonOfAsh.get(i).isEffectiveAgainst(wildPokemon) == true) {
+                ashShouldUseThisPokemon = pokemonOfAsh.get(i).name;
+            }
         }
-        System.out.print("I choose you, " + ashShouldUseThisPokemon);
+        System.out.print("I choose you, " + ashShouldUseThisPokemon + " (with for i)");
+
+        System.out.println();
+        for (Pokemon pokemon : pokemonOfAsh) {                              // foreach-csel is jó
+            if (pokemon.isEffectiveAgainst(wildPokemon)) {
+                System.out.println(pokemon.name + " (with foreach, too)");
+            }
+        }
+
     }
 
     private static List<Pokemon> initializePokemons() {
