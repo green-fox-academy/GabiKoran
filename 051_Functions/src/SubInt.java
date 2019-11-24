@@ -25,7 +25,6 @@ public class SubInt {
                 print += (i);
             }
         }
-        String print2 = "[" + print + "]";
-        return print2;
+        return "[" + print + "]";
     }
 }
