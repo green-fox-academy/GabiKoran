@@ -1,4 +1,4 @@
-public class Greet {
+public class _02Greet {
     public static void main(String[] args) {
         //  From now on, create the usual class wrapper
         //  and main method on your own.

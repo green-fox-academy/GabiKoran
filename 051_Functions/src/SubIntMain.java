@@ -21,11 +21,11 @@ public class SubIntMain {
             elements[i] = Integer.toString(array[i]);
             // String str1 = Integer.toString(a);
         }
-        for (int i = 0; i < elements.length; i++) {
-            for (int j = 0; j < ; j++) {
-
-            }
-        }
+//        for (int i = 0; i < elements.length; i++) {
+//            for (int j = 0; j < ; j++) {
+//
+//            }
+//        }
         String print2 = "[" + print + "]";
         System.out.println(print2);
 

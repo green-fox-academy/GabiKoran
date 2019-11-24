@@ -1,4 +1,4 @@
-public class Doubling {
+public class _01Doubling {
     public static void main(String[] args) {
         // - Create an integer variable named `baseNum` and assign the value `123` to it
         int baseNum = 123;

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Factorial {
+public class _05Factorial {
     public static void main(String[] args) {
         //  Create the usual class wrapper
         //  and main method on your own.
