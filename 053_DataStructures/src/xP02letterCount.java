@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class xP02letterCount {
     public static void main(String[] args) {
@@ -17,5 +19,18 @@ public class xP02letterCount {
         }
         System.out.println(letterCount);
 
+        for (String letter : letterCount.keySet()) {
+            System.out.print(" " + letter + ",  ");
+        }
+
+        System.out.println();
+        for (Integer number : letterCount.values()) {
+            System.out.print(" " + number + ",  ");
+        }
+
+        System.out.println();
+        for (Map.Entry<String, Integer> letterC : letterCount.entrySet()) {
+            System.out.print(letterC + ", ");
+        }
     }
 }
