@@ -1,4 +1,4 @@
-public class Colors {
+public class _09Colors {
     public static void main(String[] args) {
         // - Create a two dimensional array
         //   which can contain the different shades of specified colors

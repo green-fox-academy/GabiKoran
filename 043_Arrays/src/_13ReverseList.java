@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ReverseList {
+public class _13ReverseList {
     public static void main(String[] args) {
         // - Create an array variable named `aj`
         //   with the following content: `[3, 4, 5, 6, 7]`

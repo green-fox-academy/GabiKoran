@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class AppendA {
+public class _10AppendA {
     public static void main(String[] args) {
 
         // - Create an array variable named `animals`

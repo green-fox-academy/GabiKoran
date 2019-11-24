@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MatrixKond {
+public class _07MatrixKond {
     public static void main(String[] args) {
         int size = 4;
         //int[][] matrix = new int[size][]; //kis tömböket még nem hoztam létre, ezért null-okkkal van feltöltve

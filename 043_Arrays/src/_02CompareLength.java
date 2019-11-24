@@ -1,4 +1,4 @@
-public class CompareLength {
+public class _02CompareLength {
     public static void main(String[] args) {
         // - Create an array variable named `p1`
         //   with the following content: `[1, 2, 3]`

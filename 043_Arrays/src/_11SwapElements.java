@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class SwapElements {
+public class _11SwapElements {
     public static void main(String[] args) {
         // - Create an array variable named `abc`
         //   with the following content: `["first", "second", "third"]`

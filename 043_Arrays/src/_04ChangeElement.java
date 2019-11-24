@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ChangeElement {
+public class _04ChangeElement {
     public static void main(String[] args) {
         // - Create an array variable named `s`
         //   with the following content: `[1, 2, 3, 8, 5, 6]`

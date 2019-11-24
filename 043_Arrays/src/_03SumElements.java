@@ -1,4 +1,4 @@
-public class SumElements {
+public class _03SumElements {
     public static void main(String[] args) {
         // - Create an array variable named `r`
         //   with the following content: `[54, 23, 66, 12]`
