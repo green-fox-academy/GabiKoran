@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShoppingList2 {
+public class _10ShoppingList2 {
     public static void main(String[] args) {
 //        Represent the following products with their prices
         HashMap<String, Double> priceList = new HashMap<>();

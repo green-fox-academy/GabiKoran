@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductDatabase2 {
+public class _09ProductDatabase2 {
     public static void main(String[] args) {
 
 //        Create a map with the following key-value pairs.

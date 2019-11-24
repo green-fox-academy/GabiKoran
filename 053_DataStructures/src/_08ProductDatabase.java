@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ProductDatabase {
+public class _08ProductDatabase {
     public static void main(String[] args) {
 //        We are going to represent our products in a map where the keys are strings representing the product's name and the values are numbers representing the product's price.
 //

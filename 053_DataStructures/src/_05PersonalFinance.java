@@ -2,7 +2,7 @@ import com.sun.deploy.security.BadCertificateDialog;
 
 import java.util.ArrayList;
 
-public class PersonalFinance {
+public class _05PersonalFinance {
     public static void main(String[] args) {
 //        We are going to represent our expenses in a list containing integers.
 //

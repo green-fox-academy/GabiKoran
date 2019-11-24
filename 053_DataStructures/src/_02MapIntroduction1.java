@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapIntroduction1 {
+public class _02MapIntroduction1 {
     public static void main(String[] args) {
 //    Create an empty map where the keys are integers and the values are characters
         HashMap<Integer, Character> practice = new HashMap<>(); // csak nagybetűs lehet

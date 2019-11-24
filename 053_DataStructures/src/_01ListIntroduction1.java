@@ -1,7 +1,7 @@
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class ListIntroduction1 {
+public class _01ListIntroduction1 {
     public static void main(String[] args) {
 //        Create an empty list which will contain names (strings)
         ArrayList<String> name = new ArrayList<String>();

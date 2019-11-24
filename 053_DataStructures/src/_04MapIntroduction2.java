@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapIntroduction2 {
+public class _04MapIntroduction2 {
     public static void main(String[] args) {
         HashMap<String, String> catalogue = new HashMap<>();
         catalogue.put("978-1-60309-452-8", "A Letter to Jo");

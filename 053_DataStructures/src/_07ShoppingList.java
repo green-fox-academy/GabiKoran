@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ShoppingList {
+public class _07ShoppingList {
     public static void main(String[] args) {
 //        We are going to represent a shopping list in a list containing strings.
 
