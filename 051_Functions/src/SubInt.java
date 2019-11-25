@@ -11,6 +11,10 @@ public class SubInt {
         System.out.println();
         int[] array = {1, 11, 34, 52, 61};
 
+        printSubInt(number, array);
+    }
+
+    public static void printSubInt (String number, int[] array ) {
         String print = "";
         String[] elements = new String[array.length];
         for (int i = 0; i < array.length; i++) {
@@ -22,7 +26,7 @@ public class SubInt {
                 print += i + ", ";
             }
         }
-        
+
         if (print.equals("")) {
             System.out.println("[]");
         } else {
