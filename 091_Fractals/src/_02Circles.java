@@ -9,13 +9,17 @@ public class _02Circles {
         int size = 780;
         int spaceX = 10;
         int spaceY = 10;
-        drawCircleFractal(spaceX, spaceY, size, 5, graphics);
+        drawCircleFractal(spaceX, spaceY, size, 3, graphics);
     }
     public static void drawCircleFractal (int spaceX, int spaceY, int size, int levels, Graphics graphics) {
+        if (levels == 0) return;
         drawOnePatternElement(spaceX, spaceY, size, graphics);
         drawOnePatternElement(spaceX + size / 4, spaceY, size/2, graphics);
         drawOnePatternElement(spaceX + size / 4 - (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, graphics);
         drawOnePatternElement(spaceX + size / 4 + (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, graphics);
+        drawCircleFractal(spaceX + size / 4, spaceY, size/2, levels - 1, graphics);
+        drawCircleFractal(spaceX + size / 4 - (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, levels - 1, graphics);
+        drawCircleFractal(spaceX + size / 4 + (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, levels - 1, graphics);
     }
 
     public static void drawOnePatternElement (int spaceX, int spaceY, int size, Graphics graphics) {
