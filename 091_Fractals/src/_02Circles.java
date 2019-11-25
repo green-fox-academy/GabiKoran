@@ -9,9 +9,15 @@ public class _02Circles {
         int size = 780;
         int spaceX = 10;
         int spaceY = 10;
-        drawOnePatternElement(spaceX, spaceY, size, graphics);
+        drawCircleFractal(spaceX, spaceY, size, 5, graphics);
     }
-    
+    public static void drawCircleFractal (int spaceX, int spaceY, int size, int levels, Graphics graphics) {
+        drawOnePatternElement(spaceX, spaceY, size, graphics);
+        drawOnePatternElement(spaceX + size / 4, spaceY, size/2, graphics);
+        drawOnePatternElement(spaceX + size / 4 - (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, graphics);
+        drawOnePatternElement(spaceX + size / 4 + (int)(Math.sin(1)*size/4), spaceY + size/4 + (int)(Math.cos(1)*size/4), size/2, graphics);
+    }
+
     public static void drawOnePatternElement (int spaceX, int spaceY, int size, Graphics graphics) {
         graphics.drawOval(spaceX, spaceY, size, size);
         graphics.drawOval(spaceX + size / 4, spaceY, size /2, size / 2);
