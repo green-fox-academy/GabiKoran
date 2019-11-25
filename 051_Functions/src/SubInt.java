@@ -21,10 +21,15 @@ public class SubInt {
         }
 //        System.out.println(Arrays.toString(elements));
         for (int i = 0; i < elements.length; i++) {
-            if (elements.toString().contains(number)) {
-                print += i;
+            if (elements[i].toString().contains(number)) {
+                print += i + ", ";
             }
         }
-        System.out.println(print);
+        if (print.equals("")) {
+            System.out.println("[]");
+        } else {
+            String print2 = "[" + print.substring(0, print.length() - 2) + "]";
+            System.out.println(print2);
+        }
     }
 }
