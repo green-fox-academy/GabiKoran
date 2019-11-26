@@ -39,7 +39,18 @@ public class Pirate {
         System.out.println("He's dead.");
     }
 
-    public void brawl(Pirate nameOfPirate) {    // harcol egy másik kalózzal, ha a másik életben van
-            // 1/3 az esély, hogy az egyik, vagy a másik, vagy mindketten meghallnak
+    public void brawl(Pirate nameOfPirate) {        // harcol egy másik kalózzal,
+        if (nameOfPirate.isAlive)  {                // ha a másik életben van
+            int random = (int)(Math.random() * 3);
+            System.out.println(random);
+            if (random == 0) {
+                this.isAlive = false;               // 1/3 az esély, hogy az egyik
+            } else if (random == 1) {
+                nameOfPirate.isAlive = false;       // 1/3 az esély, hogy a másik
+            } else {
+                this.isAlive = false;               // 1/3 az esély, hogy mindketten meghallnak
+                nameOfPirate.isAlive = false;
+            }
+        }
     }
 }
