@@ -1,5 +1,7 @@
 package _15Pirates;
 
+import com.sun.media.sound.RIFFInvalidDataException;
+
 import java.util.ArrayList;
 
 public class Ship {
@@ -47,27 +49,48 @@ public class Ship {
     //should return true if the actual ship (this) wins
     //the ship should win if its calculated score is higher
     //calculate score: Number of Alive pirates in the crew - Number of consumed rum by the captain
-    // TODO: 11/26/2019  //The loser crew has a random number of losses (deaths).
-    // TODO: 11/26/2019  //The winner captain and crew has a party, including a random number of rum :)
-//    public boolean battle(Ship anotherShip) {
-//        int aliveCounter = 0;
-//        for (int i = 0; i < this.crewOfShip.size(); i++) {
-//            if (this.crewOfShip.get(i).isAlive) {
-//                aliveCounter ++;
-//            }
-//        }
-//        int scoreThisShip = aliveCounter - this.captain.intoxication;
-//
-//        int aliveCounterOfAnotherShip = 0;
-//        for (int i = 0; i < anotherShip.crewOfShip.size(); i++) {
-//            if (anotherShip.crewOfShip.get(i).isAlive) {
-//                aliveCounterOfAnotherShip ++;
-//            }
-//        }
-//        int scoreAnotherShip = aliveCounterOfAnotherShip - anotherShip.captain.intoxication;
-//
-//        if (scoreThisShip > scoreAnotherShip) {
-//            return true;
-//        }
-//    }
+    //The loser crew has a random number of losses (deaths).
+    //The winner captain and crew has a party, including a random number of rum :)
+    public boolean battle(Ship anotherShip) {
+        // counting this ship's score:
+        int aliveCounter = 0;
+        for (int i = 0; i < this.crewOfShip.size(); i++) {
+            if (this.crewOfShip.get(i).isAlive) {
+                aliveCounter++;
+            }
+        }
+        int scoreThisShip = aliveCounter - this.captain.intoxication;
+        // counting another ship's score:
+        int aliveCounterOfAnotherShip = 0;
+        for (int i = 0; i < anotherShip.crewOfShip.size(); i++) {
+            if (anotherShip.crewOfShip.get(i).isAlive) {
+                aliveCounterOfAnotherShip++;
+            }
+        }
+        int scoreAnotherShip = aliveCounterOfAnotherShip - anotherShip.captain.intoxication;
+        // who wins the battle:
+        if (scoreThisShip > scoreAnotherShip) {
+            for (int i = 0; i < anotherShip.crewOfShip.size(); i++) {       // ha ez a hajó nyert, akkor
+                if ((int) (Math.random() + 1) == 0) {                       // az ellenfél crew-jában random számú kalóz haljon meg
+                    anotherShip.crewOfShip.get(i).isAlive = false;
+                }
+            }
+            for (int i = 0; i < this.crewOfShip.size(); i++) {
+                this.crewOfShip.get(i).intoxication += (int) (Math.random() + 4);
+            }
+            return true;
+        } else if (scoreThisShip < scoreAnotherShip) {
+            for (int i = 0; i < this.crewOfShip.size(); i++) {       // ha ez a hajó nyert, akkor
+                if ((int) (Math.random() + 1) == 0) {                       // az ellenfél crew-jában random számú kalóz haljon meg
+                    this.crewOfShip.get(i).isAlive = false;
+                }
+            }
+            for (int i = 0; i < anotherShip.crewOfShip.size(); i++) {
+                anotherShip.crewOfShip.get(i).intoxication += (int) (Math.random() + 4);
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 }
