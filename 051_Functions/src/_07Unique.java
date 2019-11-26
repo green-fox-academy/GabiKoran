@@ -7,15 +7,15 @@ public class _07Unique {
         //  Returns a list of numbers where every number in the list occurs only once
 
         //  Example
-        unique(new int[]{1, 11, 34, 11, 52, 61, 1, 34});
+        unique(new int[]{1, 11, 11, 11, 11, 34, 11, 52, 61, 1, 34});
         //  should print: `[1, 11, 34, 52, 61]`
         //''''''''''''''' NEM JÓ''''''''''''''''''''
     }
 
-    public static void unique(int[] intArray) {
+    public static void unique(int[] intArray) { // "Eszter-féle" unique
         int n = intArray.length;
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n; ) { // J-T NEM NÖVELJÜK!!!
                 if (intArray[i] == intArray[j]) {
                     for (int k = j; k < n - 1; k++) {
                         intArray[k] = intArray[k + 1];
@@ -33,4 +33,3 @@ public class _07Unique {
         System.out.println(Arrays.toString(newArray));
     }
 }
-
