@@ -32,7 +32,7 @@ public class _06KochLine {
     public static void drawLine (int startX, int startY, int size, int angle, Graphics graphics) {
         graphics.drawLine(startX, startY, startX + (int)(Math.cos(angle)*size), startY + (int)(Math.sin(angle)*size));
     }
-    
+
 
     // Don't touch the code below
     static int WIDTH = 800;
