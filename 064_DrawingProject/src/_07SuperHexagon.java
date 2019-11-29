@@ -45,8 +45,7 @@ public class _07SuperHexagon {
                 int y6 = y3;
                 int xPoints[] = {x1, x2, x3, x4, x5, x6};
                 int yPoints[] = {y1, y2, y3, y4, y5, y6};
-                int nPoints = 6;
-                graphics.drawPolygon(xPoints, yPoints, nPoints);
+                graphics.drawPolygon(xPoints, yPoints, 6);
             }
         }
     }
