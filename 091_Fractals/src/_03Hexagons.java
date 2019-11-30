@@ -11,11 +11,11 @@ public class _03Hexagons {
         int x1 = WIDTH / 2 - halfSide;
         int y1 = HEIGHT / 2 - halfHeight;
         drawHexagon(x1, y1, side, graphics);
-        drawHexagonFractal(x1, y1, side, 3, graphics);
+        drawHexagonFractal(x1, y1, side, 4, graphics);
     }
 
     private static void drawHexagonFractal(int x1, int y1, int side, int n, Graphics graphics) {
-        if (n == 0) {
+        if (n == 1) {
             return;
         }
         int halfHeight = (int) (Math.sin(1) * side);
@@ -25,8 +25,15 @@ public class _03Hexagons {
         drawOneLevelHexagons(x1 + (side * 2 / 3), y1 + halfHeight * 4 / 3, side / 3, graphics);
         drawOneLevelHexagons(x1, y1 + halfHeight * 4 / 3, side / 3, graphics);
         drawOneLevelHexagons(x1 - (side / 3), y1 + halfHeight * 2 / 3, side / 3, graphics);
+
         drawHexagonFractal(x1, y1, side / 3, n -1, graphics);
-        
+        drawHexagonFractal(x1 + side * 2 / 3, y1, side / 3, n -1, graphics);
+        drawHexagonFractal(x1 + side, y1 + halfHeight * 2 / 3, side / 3, n -1, graphics);
+        drawHexagonFractal(x1 + (side * 2 / 3), y1 + halfHeight * 4 / 3, side / 3, n -1, graphics);
+        drawHexagonFractal(x1, y1 + halfHeight * 4 / 3, side / 3, n -1, graphics);
+        drawHexagonFractal(x1 - (side / 3), y1 + halfHeight * 2 / 3, side / 3, n -1, graphics);
+
+
     }
 
     private static void drawOneLevelHexagons(int x1, int y1, int side, Graphics graphics) {
