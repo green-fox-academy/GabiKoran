@@ -6,24 +6,52 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class _04SierpinskyCarpet {
     public static void mainDraw(Graphics graphics) {
-        fillTheCenter(WIDTH, 5, graphics);
+        sierpinskyCarpet(0, 0, WIDTH, 5, graphics);
     }
 
-    private static void fillTheCenter(int width, int level, Graphics graphics) {
+    private static void sierpinskyCarpet (int x, int y, int width, int level, Graphics graphics) {
         if (level == 0) {
             return;
         }
-        graphics.fillRect(width / 3, width / 3, width / 3, width / 3);
-        graphics.fillRect(width / 9, width / 9, width / 9, width / 9);
-        graphics.fillRect(width / 9 * 4, width / 9, width / 9, width / 9);
-        graphics.fillRect(width / 9 * 7, width / 9, width / 9, width / 9);
-        graphics.fillRect(width / 9, width / 9 * 4, width / 9, width / 9);
-        graphics.fillRect(width / 9 * 7, width / 9 * 4, width / 9, width / 9);
-        graphics.fillRect(width / 9, width / 9 * 7, width / 9, width / 9);
-        graphics.fillRect(width / 9 * 4, width / 9 * 7, width / 9, width / 9);
-        graphics.fillRect(width / 9 * 7, width / 9 * 7, width / 9, width / 9);
-        fillTheCenter(width / 3, level - 1, graphics);
+        fillTheCenter(x, y, width, graphics);
+
+        fillTheCenter(x, y, width / 3, graphics);
+        fillTheCenter(x + width / 3, y, width / 3, graphics);
+        fillTheCenter(x + width / 3 * 2, y, width / 3,  graphics);
+
+        fillTheCenter(x, y + width / 3, width / 3, graphics);
+        fillTheCenter(x + width / 3 * 2, y + width / 3, width / 3,  graphics);
+
+        fillTheCenter(x, y + width / 3 * 2, width / 3, graphics);
+        fillTheCenter(x + width / 3, y + width / 3 * 2, width / 3, graphics);
+        fillTheCenter(x + width / 3 * 2, y + width / 3 * 2, width / 3, graphics);
+
+        sierpinskyCarpet(x, y, width / 3, level - 1, graphics);
+        sierpinskyCarpet(x + width / 3, y, width / 3, level - 1, graphics);
+        sierpinskyCarpet(x + width / 3 * 2, y, width / 3, level - 1, graphics);
+
+        sierpinskyCarpet(x, y + width / 3, width / 3, level - 1, graphics);
+        sierpinskyCarpet(x + width / 3 * 2, y + width / 3, width / 3, level - 1, graphics);
+
+        sierpinskyCarpet(x, y + width / 3 * 2, width / 3, level -1, graphics);
+        sierpinskyCarpet(x + width / 3, y + width / 3 * 2, width / 3, level - 1, graphics);
+        sierpinskyCarpet(x + width / 3 * 2, y + width / 3 * 2, width / 3, level - 1, graphics);
     }
+
+    private static void fillTheCenter (int x, int y, int width, Graphics graphics) {
+        graphics.fillRect(width / 3 + x, width / 3 + y, width / 3, width / 3);
+    }
+
+    //graphics.fillRect(width / 3, width / 3, width / 3, width / 3);
+    //
+    //        graphics.fillRect(width / 9, width / 9, width / 9, width / 9);
+    //        graphics.fillRect(width / 9 * 4, width / 9, width / 9, width / 9);
+    //        graphics.fillRect(width / 9 * 7, width / 9, width / 9, width / 9);
+    //        graphics.fillRect(width / 9, width / 9 * 4, width / 9, width / 9);
+    //        graphics.fillRect(width / 9 * 7, width / 9 * 4, width / 9, width / 9);
+    //        graphics.fillRect(width / 9, width / 9 * 7, width / 9, width / 9);
+    //        graphics.fillRect(width / 9 * 4, width / 9 * 7, width / 9, width / 9);
+    //        graphics.fillRect(width / 9 * 7, width / 9 * 7, width / 9, width / 9);
 
     // Don't touch the code below
     static int WIDTH = 729;
