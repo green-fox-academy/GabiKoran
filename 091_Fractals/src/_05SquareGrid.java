@@ -22,15 +22,15 @@ public class _05SquareGrid {
         }
         drawRectangel(0, 0, size, thickness, graphics);
 
-        drawRectangel(0, 0, size / 2, thickness / 2, graphics);
-        drawRectangel(size / 2, 0, size / 2, thickness / 2, graphics);
-        drawRectangel(0, size / 2, size / 2, thickness / 2, graphics);
-        drawRectangel(size / 2, size / 2, size / 2, thickness / 2, graphics);
+        drawRectangel(x + 0, y + 0, size / 2, thickness / 2, graphics);
+        drawRectangel(x + size / 2, y + 0, size / 2, thickness / 2, graphics);
+        drawRectangel(x + 0, y + size / 2, size / 2, thickness / 2, graphics);
+        drawRectangel(x + size / 2, y + size / 2, size / 2, thickness / 2, graphics);
 
-        drawRectangleFractal(0, 0, size / 2, thickness / 2, level - 1, graphics);
-        drawRectangleFractal(size / 2, 0, size / 2, thickness / 2,level - 1, graphics);
-        drawRectangleFractal(0, size / 2, size / 2, thickness / 2,level - 1, graphics);
-        drawRectangleFractal(size / 2, size / 2, size / 2, thickness / 2,level - 1, graphics);
+        drawRectangleFractal(x + 0, y + 0, size / 2, thickness / 2, level - 1, graphics);
+        drawRectangleFractal(x + size / 2, y + 0, size / 2, thickness / 2,level - 1, graphics);
+        drawRectangleFractal(x + 0, y + size / 2, size / 2, thickness / 2,level - 1, graphics);
+        drawRectangleFractal(x + size / 2, y + size / 2, size / 2, thickness / 2,level - 1, graphics);
     }
 
     private static void drawRectangel(int x, int y, int size, float thickness, Graphics graphics) {
