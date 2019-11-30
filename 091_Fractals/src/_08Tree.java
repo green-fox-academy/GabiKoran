@@ -12,11 +12,11 @@ public class _08Tree {
         int x = 400;
         int y = 700;
         double m = 0.9;
-        graphics.setColor(Color.blue);
-        //graphics.setColor(rgb(0, 49, 63));
+        Color bl = new Color(0, 49, 63);
+        graphics.setColor(bl);
         graphics.fillRect(0, 0, WIDTH, HEIGHT);
-        graphics.setColor(Color.yellow);
-        //graphics.setColor(rgb(251, 213, 0));
+        Color ye = new Color(251, 213, 0);
+        graphics.setColor(ye);
         drawTree(x, y, angle, size, 8, m, graphics);
     }
 
