@@ -2,7 +2,7 @@ package GreenFoxInheritanceExercise;
 
 public class Student extends Person {
     private String previousOrganization;
-    int skippedDays;
+    private int skippedDays;
 
     public Student(String name, int age, String gender, String previousOrganization) {
         super(name, age, gender);
@@ -25,10 +25,28 @@ public class Student extends Person {
 
     @Override
     public void getGoal() {
-        System.out.println("Be a junior software developer.");
+        System.out.println("My goal is: Be a junior software developer.");
     }
 
     public int skipDays(int i) {
-        return ++this.skippedDays;
+        int newSkippedDays = this.getSkippedDays() + 1;
+        return this.setSkippedDays(newSkippedDays);
+    }
+
+    public String getPreviousOrganization() {
+        return previousOrganization;
+    }
+
+    public void setPreviousOrganization(String previousOrganization) {
+        this.previousOrganization = previousOrganization;
+    }
+
+    public int getSkippedDays() {
+        return skippedDays;
+    }
+
+    public int setSkippedDays(int skippedDays) {
+        this.skippedDays = skippedDays;
+        return skippedDays;
     }
 }

@@ -15,12 +15,20 @@ public class Mentor extends Person  {
 
     @Override
     public void getGoal() {
-        System.out.println("Educate brilliant junior software developers.");
+        System.out.println("My goal is: Educate brilliant junior software developers.");
     }
 
     @Override
     public void introduce() {
         super.introduce();
         System.out.printf(" %s mentor.\n", this.level);
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

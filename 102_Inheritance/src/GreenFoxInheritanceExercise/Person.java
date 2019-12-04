@@ -23,6 +23,30 @@ public class Person {
     }
 
     public void getGoal() {
-        System.out.println("My goal is: Live for the moment!");
+        System.out.println("\nMy goal is: Live for the moment!");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

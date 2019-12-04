@@ -23,7 +23,7 @@ public class Main {
         Sponsor elon = new Sponsor("Elon Musk", 46, "male", "SpaceX");
         people.add(elon);
 
-        student.skipDays(3);
+        student.setSkippedDays(3);
 
         for (int i = 0; i < 5; i++) {
             elon.hire();
