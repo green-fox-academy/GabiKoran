@@ -3,13 +3,13 @@ package TheGardenApplication;
 public class Plant {
 
     private String name;
-    private int waterAmount;
+    private double waterAmount;
     private boolean isThirsty;
     private int thirstyLevel;
     private int absorbationLevel;
     private String plantType;
 
-    public Plant(String name, int waterAmount) {
+    public Plant(String name, double waterAmount) {
         this.name = name;
         this.waterAmount = waterAmount;
     }
@@ -43,11 +43,11 @@ public class Plant {
         this.name = name;
     }
 
-    public int getWaterAmount() {
+    public double getWaterAmount() {
         return waterAmount;
     }
 
-    public void setWaterAmount(int waterAmount) {
+    public void setWaterAmount(double waterAmount) {
         this.waterAmount = waterAmount;
     }
 

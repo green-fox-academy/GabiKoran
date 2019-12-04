@@ -35,7 +35,7 @@ public class Garden {
         System.out.println();
     }
 
-    public void watering(int wateringAmount) {
+    public void watering(double wateringAmount) {
         List<Plant> thirstyPlants = new ArrayList<>();
         for (int i = 0; i < this.gardensPlants.size(); i++) {
             if (gardensPlants.get(i).isThirsty()) {
@@ -43,10 +43,10 @@ public class Garden {
             }
         }
         for (int i = 0; i < thirstyPlants.size(); i++) {
-            int newWaterAmount = thirstyPlants.get(i).getWaterAmount() + (wateringAmount / thirstyPlants.size());
+            double newWaterAmount = thirstyPlants.get(i).getWaterAmount() + (wateringAmount / thirstyPlants.size());
             thirstyPlants.get(i).setWaterAmount(newWaterAmount);
         }
-        System.out.printf("Watering with %d\n", wateringAmount);
+        System.out.printf("Watering with %d\n", (int)(wateringAmount));
     }
 
     public String getName() {

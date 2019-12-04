@@ -13,5 +13,7 @@ public class Main {
         myLittleGarden.info();
         myLittleGarden.watering(10);
         myLittleGarden.info();
+        myLittleGarden.watering(10);
+        myLittleGarden.info();
     }
 }
