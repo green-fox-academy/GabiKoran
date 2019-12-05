@@ -3,7 +3,7 @@ package GreenFoxInheritanceExercise;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         ArrayList<Person> people = new ArrayList<>();
 
         Person mark = new Person("Mark", 46, "male");
@@ -44,5 +44,12 @@ public class Main {
         awesome.addMentor(mentor);
         awesome.addMentor(gandhi);
         awesome.info();
+
+        Person johnTheClone = new Student();
+        johnTheClone = (Student) john.clone();
+        System.out.println(john.getName());
+        System.out.println(john);
+        System.out.println(johnTheClone.getName());
+        System.out.println(johnTheClone);
     }
 }

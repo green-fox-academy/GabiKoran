@@ -1,6 +1,6 @@
 package GreenFoxInheritanceExercise;
 
-public class Person {
+public class Person implements Cloneable{
 
     private String name;
     private int age;
@@ -48,5 +48,10 @@ public class Person {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {    // meghívjuk
+        return super.clone();
     }
 }
