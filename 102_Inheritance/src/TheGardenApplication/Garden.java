@@ -43,7 +43,7 @@ public class Garden {
             }
         }
         for (int i = 0; i < thirstyPlants.size(); i++) {
-            double newWaterAmount = thirstyPlants.get(i).getWaterAmount() + (wateringAmount / thirstyPlants.size());
+            double newWaterAmount = thirstyPlants.get(i).getWaterAmount() + (wateringAmount / thirstyPlants.size() * thirstyPlants.get(i).getAbsorbationLevel() / 100);
             thirstyPlants.get(i).setWaterAmount(newWaterAmount);
         }
         System.out.printf("Watering with %d\n", (int)(wateringAmount));
