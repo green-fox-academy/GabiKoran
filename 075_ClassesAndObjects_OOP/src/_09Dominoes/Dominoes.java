@@ -1,7 +1,8 @@
 package _09Dominoes;
 
 import java.util.ArrayList;
-        import java.util.List;
+import java.util.Collections;
+import java.util.List;
 
 public class Dominoes {
     public static void main(String[] args) {
@@ -9,6 +10,11 @@ public class Dominoes {
         // You have the list of Dominoes
         // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
         // eg: [2, 4], [4, 3], [3, 5] ...
+
+        System.out.println(dominoes);
+        Collections.sort(dominoes);
+        System.out.println(dominoes);
+
 
         List<Domino> orderedDominoes = new ArrayList<>();
         orderedDominoes.add(dominoes.get(0));
@@ -25,7 +31,8 @@ public class Dominoes {
             }
         }
 
-        System.out.println(orderedDominoes);
+        //System.out.println(orderedDominoes);
+
     }
 
     static List<Domino> initializeDominoes() {
