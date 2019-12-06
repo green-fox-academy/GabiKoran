@@ -37,6 +37,7 @@ public class Dominoes {
 
     static List<Domino> initializeDominoes() {
         List<Domino> dominoes = new ArrayList<>();
+        dominoes.add(new Domino(7, 2));
         dominoes.add(new Domino(5, 2));
         dominoes.add(new Domino(4, 6));
         dominoes.add(new Domino(1, 5));
