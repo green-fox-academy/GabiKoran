@@ -11,11 +11,12 @@ public class Dominoes {
         // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
         // eg: [2, 4], [4, 3], [3, 5] ...
 
+        // "practice Abstracts & Interfaces at week-10":
         System.out.println(dominoes);
         Collections.sort(dominoes);
         System.out.println(dominoes);
 
-
+        // original exercise in OOP at week-07:
         List<Domino> orderedDominoes = new ArrayList<>();
         orderedDominoes.add(dominoes.get(0));
         int snakeEnd = dominoes.get(0).getRightSide();
@@ -30,8 +31,7 @@ public class Dominoes {
                 }
             }
         }
-
-        //System.out.println(orderedDominoes);
+        System.out.println(orderedDominoes);
 
     }
 
