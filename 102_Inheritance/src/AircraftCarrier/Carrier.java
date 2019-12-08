@@ -5,10 +5,6 @@ import java.util.List;
 
 public class Carrier {
 
-    //The carrier should be able to store aircrafts
-    //Each carrier should have a store of ammo represented as number
-    //The initial ammo should be given by a parameter in its constructor
-    //The carrier also has a health point given in its constructor as well
     private String name;
     private List<Aircraft> carrierName;
     private int ammoStorage;
@@ -24,18 +20,90 @@ public class Carrier {
     public void add(Aircraft aircraft) {
         this.carrierName.add(aircraft);
     }
+    
+    public int getNeededAmmo() {
+        int neededAmmo = 0;
+        for (int i = 0; i < this.carrierName.size(); i++) {
+            neededAmmo += (this.carrierName.get(i).getMaxAmmo() - this.carrierName.get(i).getAmmunition());
+        }  
+        return neededAmmo;
+    }
 
-    //fill
-    //It should fill all the aircraft with ammo and subtract the needed ammo from the ammo storage
-    //If there is not enough ammo then it should start to fill the aircrafts with priority first
-    //If there is no ammo when this method is called, it should throw an exception
-//    public void fill() {
-//
-//    }
+    public void fill() {
+        if (this.ammoStorage == 0) {
+            System.out.println("Exception, but not catched: \"The carrier's ammo storage is zero.\"");
+        } else if (this.getNeededAmmo() <= this.ammoStorage) {
+            for (int i = 0; i < this.carrierName.size(); i++) {
+                this.ammoStorage -= (this.carrierName.get(i).getMaxAmmo() - this.carrierName.get(i).getAmmunition());
+                this.carrierName.get(i).setAmmunition(this.carrierName.get(i).getMaxAmmo());        
+            } 
+        } else {
+            List<Aircraft> firstPriorityAircrafts = new ArrayList<Aircraft>();
+            List<Aircraft> secondPriorityAircrafts = new ArrayList<Aircraft>();
+            for (int i = 0; i < this.carrierName.size(); i++) {
+                if (this.carrierName.get(i).isPriority()) {
+                    firstPriorityAircrafts.add(this.carrierName.get(i));
+                } else {
+                    secondPriorityAircrafts.add(this.carrierName.get(i));
+                }
+            }
+            for (int i = 0; i < firstPriorityAircrafts.size(); i++) {
+                if ((firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition()) < this.ammoStorage) {
+                    this.ammoStorage -= (firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition());
+                    firstPriorityAircrafts.get(i).setAmmunition(firstPriorityAircrafts.get(i).getMaxAmmo());
+                } else {
+                    firstPriorityAircrafts.get(i).setAmmunition(this.ammoStorage);
+                    this.ammoStorage = 0;
+                }
+            }
+            if (this.ammoStorage > 0) {
+                for (int i = 0; i < secondPriorityAircrafts.size(); i++) {
+                    if ((secondPriorityAircrafts.get(i).getMaxAmmo() - secondPriorityAircrafts.get(i).getAmmunition()) < this.ammoStorage) {
+                        this.ammoStorage -= (secondPriorityAircrafts.get(i).getMaxAmmo() - secondPriorityAircrafts.get(i).getAmmunition());
+                        secondPriorityAircrafts.get(i).setAmmunition(secondPriorityAircrafts.get(i).getMaxAmmo());
+                    } else {
+                        secondPriorityAircrafts.get(i).setAmmunition(this.ammoStorage);
+                        this.ammoStorage = 0;
+                    }
+                }
+            }
+        }
+    }
 
+    public void fight(Carrier anotherCarrier) {
+        int totalDamage = 0;
+        for (int i = 0; i < this.carrierName.size(); i++) {
+            totalDamage += this.carrierName.get(i).fight();
+        }
+        if (anotherCarrier.getHealthPoints() > totalDamage) {
+            anotherCarrier.setHealthPoints(anotherCarrier.getHealthPoints() - totalDamage);
+        } else {
+            anotherCarrier.setHealthPoints(0);
+            System.out.println("It's dead Jim :(");
+        }
 
-    //fight
-    //It should take another carrier as a reference parameter and fire all the ammo from the aircrafts to it, then subtract all the damage from its health points
-    //getStatus
-    //It should return a string about itself and all of its aircrafts' statuses in the following format:
+    }
+
+    public String getStatus() {
+        String status = "";
+        int totalDamage = 0;
+        for (int i = 0; i < this.carrierName.size(); i++) {
+            totalDamage += this.carrierName.get(i).getAllDamage();
+        }
+        status += this.name + ": " + this.healthPoints + ", Aircraft count: " + this.carrierName.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: " + totalDamage + "\n";
+        //HP: 5000, Aircraft count: 5, Ammo Storage: 2300, Total damage: 2280
+        status += "Aircrafts:\n";
+        for (int i = 0; i < this.carrierName.size(); i++) {
+            status += this.carrierName.get(i).getStatus() + "\n";
+        }
+        return status;
+    }
+
+    public int getHealthPoints() {
+        return healthPoints;
+    }
+
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
 }

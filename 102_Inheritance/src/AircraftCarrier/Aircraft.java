@@ -82,4 +82,8 @@ public class Aircraft {
     public void setPriority(boolean priority) {
         isPriority = priority;
     }
+
+    public int getAllDamage() {
+        return allDamage;
+    }
 }
