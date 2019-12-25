@@ -24,9 +24,8 @@ public class Aircraft {
         int fillingCapacityNow = this.maxAmmo - this.ammunition;
         int remainingAmmu;
         if (fillingCapacityNow <= fillingAmmuAmount) {
-            remainingAmmu = fillingAmmuAmount - fillingCapacityNow;
             this.ammunition = this.maxAmmo;
-            remainingAmmu =fillingAmmuAmount - fillingCapacityNow;
+            remainingAmmu = fillingAmmuAmount - fillingCapacityNow;
         } else {
             remainingAmmu = 0;
             this.ammunition += fillingAmmuAmount;
@@ -42,14 +41,6 @@ public class Aircraft {
         return maxAmmo;
     }
 
-    public int getBaseDamage() {
-        return baseDamage;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
     public void setAmmunition(int ammunition) {
         this.ammunition = ammunition;
     }
@@ -62,17 +53,12 @@ public class Aircraft {
         this.baseDamage = baseDamage;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
     public String getType() {
         return this.getClass().getSimpleName();
     }
 
     public String getStatus() {
-        String status = "Type " + this.getClass().getSimpleName() + ", Ammo: " + this.ammunition + ", Base Damage: " + this.baseDamage + ", All Damage: " + this.allDamage;
-        return status;
+        return  "Type " + this.getType() + ", Ammo: " + this.ammunition + ", Base Damage: " + this.baseDamage + ", All Damage: " + this.allDamage;
     }
 
     public boolean isPriority() {

@@ -10,10 +10,10 @@ public class Carrier {
     private int ammoStorage;
     private int healthPoints;
 
-    public Carrier(String name, int ammo, int healthPoints) {
+    public Carrier(String name, int ammoStorage, int healthPoints) {
         this.name = name;
         this.carrierName = new ArrayList<Aircraft>();
-        this.ammoStorage = ammo;
+        this.ammoStorage = ammoStorage;
         this.healthPoints = healthPoints;
     }
 
@@ -48,7 +48,7 @@ public class Carrier {
                 }
             }
             for (int i = 0; i < firstPriorityAircrafts.size(); i++) {
-                if ((firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition()) < this.ammoStorage) {
+                if ((firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition()) <= this.ammoStorage) {
                     this.ammoStorage -= (firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition());
                     firstPriorityAircrafts.get(i).setAmmunition(firstPriorityAircrafts.get(i).getMaxAmmo());
                 } else {
@@ -71,17 +71,18 @@ public class Carrier {
     }
 
     public void fight(Carrier anotherCarrier) {
-        int totalDamage = 0;
-        for (int i = 0; i < this.carrierName.size(); i++) {
-            totalDamage += this.carrierName.get(i).fight();
+        if (this.getHealthPoints() != 0 && anotherCarrier.getHealthPoints() != 0) {
+            int totalDamage = 0;
+            for (int i = 0; i < this.carrierName.size(); i++) {
+                totalDamage += this.carrierName.get(i).fight();
+            }
+            if (anotherCarrier.getHealthPoints() > totalDamage) {
+                anotherCarrier.setHealthPoints(anotherCarrier.getHealthPoints() - totalDamage);
+            } else {
+                anotherCarrier.setHealthPoints(0);
+                System.out.println("It's dead Jim :(");
+            }
         }
-        if (anotherCarrier.getHealthPoints() > totalDamage) {
-            anotherCarrier.setHealthPoints(anotherCarrier.getHealthPoints() - totalDamage);
-        } else {
-            anotherCarrier.setHealthPoints(0);
-            System.out.println("It's dead Jim :(");
-        }
-
     }
 
     public String getStatus() {
@@ -90,7 +91,7 @@ public class Carrier {
         for (int i = 0; i < this.carrierName.size(); i++) {
             totalDamage += this.carrierName.get(i).getAllDamage();
         }
-        status += this.name + ": " + this.healthPoints + ", Aircraft count: " + this.carrierName.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: " + totalDamage + "\n";
+        status += "HP: " + this.healthPoints + ", Aircraft count: " + this.carrierName.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: " + totalDamage + "\n";
         //HP: 5000, Aircraft count: 5, Ammo Storage: 2300, Total damage: 2280
         status += "Aircrafts:\n";
         for (int i = 0; i < this.carrierName.size(); i++) {
