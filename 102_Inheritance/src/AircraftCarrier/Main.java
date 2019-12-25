@@ -1,10 +1,10 @@
 package AircraftCarrier;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ThereIsNoAmmoException {
 
-        Carrier firstOne = new Carrier("firstOne", 1000, 50000);
-        Carrier secondOne = new Carrier("secondOne", 1000, 50000);
+        Carrier firstOne = new Carrier("firstOne", 1000, 10000);
+        Carrier secondOne = new Carrier("secondOne", 1000, 10000);
         for (int i = 0; i < 3; i++) {
             firstOne.add(new F35());
         }
@@ -19,14 +19,21 @@ public class Main {
             secondOne.add(new F16());
         }
 
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < 7; i++) {
             firstOne.fight(secondOne);
             secondOne.fight(firstOne);
-            firstOne.fill();
-            secondOne.fill();
+            try {
+                firstOne.fill();
+            } catch (ThereIsNoAmmoException e) {
+                System.out.println(e.getMessage());
+            }
+            try {
+                secondOne.fill();
+            } catch (ThereIsNoAmmoException e) {
+                System.out.println(e.getMessage());
+            }
         }
         System.out.println(firstOne.getStatus());
         System.out.println(secondOne.getStatus());
-
     }
 }

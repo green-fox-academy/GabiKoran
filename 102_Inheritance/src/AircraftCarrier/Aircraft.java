@@ -58,7 +58,7 @@ public class Aircraft {
     }
 
     public String getStatus() {
-        return  "Type " + this.getType() + ", Ammo: " + this.ammunition + ", Base Damage: " + this.baseDamage + ", All Damage: " + this.allDamage;
+        return "Type " + this.getType() + ", Ammo: " + this.ammunition + ", Base Damage: " + this.baseDamage + ", All Damage: " + this.allDamage;
     }
 
     public boolean isPriority() {

@@ -20,22 +20,22 @@ public class Carrier {
     public void add(Aircraft aircraft) {
         this.carrierName.add(aircraft);
     }
-    
+
     public int getNeededAmmo() {
         int neededAmmo = 0;
         for (int i = 0; i < this.carrierName.size(); i++) {
             neededAmmo += (this.carrierName.get(i).getMaxAmmo() - this.carrierName.get(i).getAmmunition());
-        }  
+        }
         return neededAmmo;
     }
 
-    public void fill() {
+    public void fill() throws ThereIsNoAmmoException {
         if (this.ammoStorage == 0) {
-            System.out.println("Exception, but not catched: \"The carrier's ammo storage is zero.\"");
+            throw new ThereIsNoAmmoException();
         } else if (this.getNeededAmmo() <= this.ammoStorage) {
             for (int i = 0; i < this.carrierName.size(); i++) {
                 this.ammoStorage = this.carrierName.get(i).refill(this.ammoStorage);
-            } 
+            }
         } else {
             List<Aircraft> firstPriorityAircrafts = new ArrayList<Aircraft>();
             List<Aircraft> secondPriorityAircrafts = new ArrayList<Aircraft>();
@@ -66,6 +66,7 @@ public class Carrier {
             }
         }
     }
+
 
     public void fight(Carrier anotherCarrier) {
         if (this.getHealthPoints() != 0 && anotherCarrier.getHealthPoints() != 0) {
