@@ -34,8 +34,7 @@ public class Carrier {
             System.out.println("Exception, but not catched: \"The carrier's ammo storage is zero.\"");
         } else if (this.getNeededAmmo() <= this.ammoStorage) {
             for (int i = 0; i < this.carrierName.size(); i++) {
-                this.ammoStorage -= (this.carrierName.get(i).getMaxAmmo() - this.carrierName.get(i).getAmmunition());
-                this.carrierName.get(i).setAmmunition(this.carrierName.get(i).getMaxAmmo());        
+                this.ammoStorage = this.carrierName.get(i).refill(this.ammoStorage);
             } 
         } else {
             List<Aircraft> firstPriorityAircrafts = new ArrayList<Aircraft>();
@@ -49,8 +48,7 @@ public class Carrier {
             }
             for (int i = 0; i < firstPriorityAircrafts.size(); i++) {
                 if ((firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition()) <= this.ammoStorage) {
-                    this.ammoStorage -= (firstPriorityAircrafts.get(i).getMaxAmmo() - firstPriorityAircrafts.get(i).getAmmunition());
-                    firstPriorityAircrafts.get(i).setAmmunition(firstPriorityAircrafts.get(i).getMaxAmmo());
+                    this.ammoStorage = firstPriorityAircrafts.get(i).refill(this.ammoStorage);
                 } else {
                     firstPriorityAircrafts.get(i).setAmmunition(this.ammoStorage);
                     this.ammoStorage = 0;
@@ -59,8 +57,7 @@ public class Carrier {
             if (this.ammoStorage > 0) {
                 for (int i = 0; i < secondPriorityAircrafts.size(); i++) {
                     if ((secondPriorityAircrafts.get(i).getMaxAmmo() - secondPriorityAircrafts.get(i).getAmmunition()) < this.ammoStorage) {
-                        this.ammoStorage -= (secondPriorityAircrafts.get(i).getMaxAmmo() - secondPriorityAircrafts.get(i).getAmmunition());
-                        secondPriorityAircrafts.get(i).setAmmunition(secondPriorityAircrafts.get(i).getMaxAmmo());
+                        this.ammoStorage = secondPriorityAircrafts.get(i).refill(this.ammoStorage);
                     } else {
                         secondPriorityAircrafts.get(i).setAmmunition(this.ammoStorage);
                         this.ammoStorage = 0;
@@ -92,7 +89,6 @@ public class Carrier {
             totalDamage += this.carrierName.get(i).getAllDamage();
         }
         status += "HP: " + this.healthPoints + ", Aircraft count: " + this.carrierName.size() + ", Ammo Storage: " + this.ammoStorage + ", Total damage: " + totalDamage + "\n";
-        //HP: 5000, Aircraft count: 5, Ammo Storage: 2300, Total damage: 2280
         status += "Aircrafts:\n";
         for (int i = 0; i < this.carrierName.size(); i++) {
             status += this.carrierName.get(i).getStatus() + "\n";
