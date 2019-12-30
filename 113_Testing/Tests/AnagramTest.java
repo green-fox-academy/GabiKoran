@@ -15,24 +15,34 @@ public class AnagramTest {
     }
 
     @Test
-    public void anagramShouldWorkCorrectlyWhenTwoStringsWereGiven() throws StringsHaventTheSameLengthsException {
+    public void anagramShouldWorkCorrectlyWhenTwoStringsWereGiven() throws NullPointerException {
         text1 = "17";
         text2 = "71";
         assertTrue(anagram.isAnagram(text1, text2));
 
-        text1 = "indul";
-        text2 = "ludni";
+        text1 = "indul a görög";
+        text2 = "görög aludni";
         assertTrue(anagram.isAnagram(text1, text2));
+    }
 
-        text1 = "17";
-        text2 = "17";
+    @Test
+    public void anagramShouldWorkCorrectlyWhenDifferentSpacesAreInTheStrings() throws NullPointerException {
+        text1 = "1 7 1";
+        text2 = "171";
+        assertTrue(anagram.isAnagram(text1, text2));
+    }
+
+    @Test
+    public void anagramShouldSendErrorMessageWhenStringsHaventTheSameLengths() throws NullPointerException {
+        text1 = "indul a görög aludni";
+        text2 = "görög aludni";
         assertFalse(anagram.isAnagram(text1, text2));
     }
 
-    @Test (expected = StringsHaventTheSameLengthsException.class)
-    public void anagramShouldThrowExceptionWhenTwoStringsLenghtsArentTheSame() throws StringsHaventTheSameLengthsException {
-        text1 = "indul aludni";
-        text2 = "indul";
-        anagram.isAnagram(text1, text2);
+    @Test (expected = NullPointerException.class)
+    public void anagramShouldSendErrorMessageWhenAtLeastOneStringIsMissing() throws NullPointerException {
+        text1 = null;
+        text2 = "görög aludni";
+        assertFalse(anagram.isAnagram(text1, text2));
     }
 }
