@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 public class ApplesTest {
 
     @Test
-    public void getApple() {
+    public void getAppleShouldReturnApple() {
         Apples apple = new Apples();
         assertEquals("Apple", apple.getApple());
     }
