@@ -1,4 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: #EBEBEB;
-    font-family: 'Raleway', sans-serif;
+  background-color: #EBEBEB;
+  font-family: 'Raleway', sans-serif;
+  color: #333333;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+}
+
+section {
+  margin: 50px auto;
+  padding-left: 86px;
+  padding-top: 60px;
+  padding-right: 86px;
+  padding-bottom: 54px; 
+  height: 520px;
+  width: 560px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 22px;
+    margin-top: 0px;
+    padding-bottom: 28px;
+    margin: 0px;
+}
+
+.form-title {
+    margin-top: 18px;
+    margin-bottom: 20px;
+    font-size: 9px;
+  }
+
+.field {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    width: 388px;
+    height: 54px;
+    border: 1px solid rgb(230,230,230);
+    border-radius: 2px;
+    padding-left: 10px;
+    font-size: 28px;
+    color: #333333;
+}
+
+#forgot-password {
+    background-color: white;
+    border: 0px;
+    padding-left: 279px;
+    font-weight: 200;
+}
+
+#login {
+    margin-top: 65px;
+    width: 150px;
+    height: 55px;
+    background-color: #333333;
+    border: 0px;
+    border-radius: 27px;
+    color: white;
+}
+
+.field:focus {
+    outline: none !important;
+    border:1px solid rgb(41, 182, 41);
+}
+
+#login:focus {
+    outline: none !important;
+    background-color:  rgb(41, 182, 41);
+}
+
+#forgot-password:focus {
+    outline: none !important;
+    color: lightgray;
 }
