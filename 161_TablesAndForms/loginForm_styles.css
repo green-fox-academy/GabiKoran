@@ -49,10 +49,13 @@ h1 {
     color: #333333;
 }
 
+.forgot {
+    text-align: right;
+}
+
 #forgot-password {
     background-color: white;
     border: 0px;
-    padding-left: 279px;
     font-weight: 200;
 }
 
