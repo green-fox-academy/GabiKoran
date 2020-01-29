@@ -22,7 +22,14 @@ th {
     padding-left: 28px;
     border: 1px solid #343A45;  
     border-top: 0; 
-    border-radius: 6;
+}
+
+th:first-child {
+  border-top-left-radius: 3px;
+}
+
+th:last-child {
+  border-top-right-radius: 3px;
 }
 
 tr:nth-child(even)           {background-color:#EBEBEB;}
@@ -48,4 +55,12 @@ table tr:last-child td {
 }
 table tr td:last-child {
   border-right: 0;
+}
+
+tr:last-child td:first-child { 
+  border-bottom-left-radius: 3px; 
+}
+
+tr:last-child td:last-child { 
+  border-bottom-right-radius: 3px; 
 }
