@@ -4,7 +4,7 @@
   <head>
     <title>Sign up</title>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:200,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:200,300,400,500,600&display=swap" rel="stylesheet">
     <link href="signUpForm_styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -13,24 +13,24 @@
       <h1>Sign up</h1>
         <form action="https://newsletter-ws.herokuapp.com/signup" method="POST">
             <div>
-              <input id="username" name="username" type="text" placeholder="Username">
+              <input class="inputfield" id="username" name="username" type="text" placeholder="Username">
             </div>
             <div>
-              <input id="email" name="email" type="email" placeholder="E-mail">
+              <input class="inputfield" id="email" name="email" type="email" placeholder="E-mail">
             </div>
             <div>
-              <input id="password" name="password" type="password" placeholder="Password">
+              <input class="inputfield" id="password" name="password" type="password" placeholder="Password">
             </div>
             <div>
-              <input id="passwordConfirmation" name="passwordConfirmation" type="passwordConfirmation" placeholder="Retype password">
+              <input class="inputfield" id="passwordConfirmation" name="passwordConfirmation" type="passwordConfirmation" placeholder="Retype password">
             </div>
             <div>
-              <input type="button" value="SIGN ME UP">
+              <input id="signupbutton" type="button" value="SIGN ME UP">
             </div>
           </form>
     </section>
     <section class="item2">
-        <div>
+        <div id="or">
             OR
         </div>
     </section>
