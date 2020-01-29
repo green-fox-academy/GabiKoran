@@ -83,3 +83,8 @@ h1 {
     outline: none !important;
     color: lightgray;
 }
+
+#password {
+    background: url(eye.png) no-repeat;
+    background-position: 350px, 10px;
+}
