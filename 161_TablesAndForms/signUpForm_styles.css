@@ -93,3 +93,27 @@ h1 {
   box-shadow: 0px 3px 4px rgba(0, 0, 0, .5);
 }
 
+.socialmediabutton {
+  width: 275px;
+  height: 45px;
+  border: 0px;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#facebook {
+  margin-top: 126px;
+  background-color: #32508E;
+}
+
+#twitter {
+  background-color: #55ACEE;
+}
+
+#google {
+  background-color: #DD4B39;
+}
+
