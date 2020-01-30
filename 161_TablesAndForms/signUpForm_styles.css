@@ -69,6 +69,11 @@ h1 {
   font-size: 18px;
 }
 
+.inputfield:focus {
+  outline: none;
+  border-bottom: 2px solid #16A085;
+}
+
 #signupbutton {
   width: 150px;
   height: 40px;
@@ -98,7 +103,7 @@ h1 {
   height: 45px;
   border: 0px;
   margin-bottom: 25px;
-  border-radius: 3px;
+  border-radius: 2px;
   color: white;
   font-size: 15px;
   font-weight: 600;

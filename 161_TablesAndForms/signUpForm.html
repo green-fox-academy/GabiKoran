@@ -1,50 +1,53 @@
-  
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Sign up</title>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:200,300,400,500,600&display=swap" rel="stylesheet">
-    <link href="signUpForm_styles.css" rel="stylesheet" type="text/css">
-  </head>
-  <body>
-    <div class="grid">
+
+<head>
+  <title>Sign up</title>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway:200,300,400,500,600&display=swap" rel="stylesheet">
+  <link href="signUpForm_styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div class="grid">
     <section class="item1">
       <h1>Sign up</h1>
-        <form action="https://newsletter-ws.herokuapp.com/signup" method="POST">
-            <div>
-              <input class="inputfield" id="username" name="username" type="text" placeholder="Username">
-            </div>
-            <div>
-              <input class="inputfield" id="email" name="email" type="email" placeholder="E-mail">
-            </div>
-            <div>
-              <input class="inputfield" id="password" name="password" type="password" placeholder="Password">
-            </div>
-            <div>
-              <input class="inputfield" id="passwordConfirmation" name="passwordConfirmation" type="passwordConfirmation" placeholder="Retype password">
-            </div>
-            <div>
-              <input id="signupbutton" type="button" value="SIGN ME UP">
-            </div>
-          </form>
+      <form action="https://newsletter-ws.herokuapp.com/signup" method="POST">
+        <div>
+          <input class="inputfield" id="username" name="username" type="text" placeholder="Username">
+        </div>
+        <div>
+          <input class="inputfield" id="email" name="email" type="email" placeholder="E-mail">
+        </div>
+        <div>
+          <input class="inputfield" id="password" name="password" type="password" placeholder="Password">
+        </div>
+        <div>
+          <input class="inputfield" id="passwordConfirmation" name="passwordConfirmation" type="passwordConfirmation"
+            placeholder="Retype password">
+        </div>
+        <div>
+          <input id="signupbutton" type="button" value="SIGN ME UP">
+        </div>
+      </form>
     </section>
     <section class="item2">
-        <div id="or">
-            OR
-        </div>
+      <div id="or">
+        OR
+      </div>
     </section>
     <section class="item3">
-        <div>
-            <input class="socialmediabutton" id="facebook" type="button" value="Log in with facebook">
-        </div>
-        <div>
-            <input class="socialmediabutton" id="twitter" type="button" value="Log in with Twitter">
-        </div>
-        <div>
-            <input class="socialmediabutton" id="google" type="button" value="Log in with Google+">
-        </div>
+      <div>
+        <input class="socialmediabutton" id="facebook" type="button" value="Log in with facebook">
+      </div>
+      <div>
+        <input class="socialmediabutton" id="twitter" type="button" value="Log in with Twitter">
+      </div>
+      <div>
+        <input class="socialmediabutton" id="google" type="button" value="Log in with Google+">
+      </div>
     </section>
   </div>
-  </body>
+</body>
+
 </html>
