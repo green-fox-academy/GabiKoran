@@ -6,16 +6,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @RestController
 public class HelloRESTController {
 
-    @RequestMapping(value="/greeting", method= RequestMethod.GET)
-    public Greeting greeting(@RequestParam(value = "name", required = false)String name, Model model) {
+    private static final String greetingText = "Hello, ";
+    private static AtomicLong Counter = new AtomicLong();
+
+    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    public Greeting greeting(@RequestParam(value = "name", required = false) String name, Model model) {
         if (name == null) {
             name = "Mr. Stranger";
         }
         model.addAttribute("name", name);
-            return new Greeting(1, "Hello, " + name + "!");
+        return new Greeting(Counter.incrementAndGet(), greetingText + name + "!");
     }
 
 }
