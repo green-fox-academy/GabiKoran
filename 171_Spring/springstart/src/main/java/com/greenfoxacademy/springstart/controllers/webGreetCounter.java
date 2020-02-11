@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Controller
-public class webGreetCounter {
+public class WebGreetCounter {
 
     private static AtomicLong GreetingCounter = new AtomicLong();
 
