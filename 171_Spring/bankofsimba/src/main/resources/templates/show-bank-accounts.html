@@ -8,11 +8,13 @@
     <span th:if="${error}" th:text="${error}"></span>
     <table th:unless="${error}">
         <tr>
+            <th th:text="'Index'"></th>
             <th th:text="'Name'"> </th>
             <th th:text="'Balance'"> </th>
             <th th:text="'AnimalType'"> </th>
         </tr>
         <tr th:each="account : ${list}">
+            <td th:text="${accountStat.index}"></td>
             <td th:text="${account.name}"> </td>
             <td th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')} + ' Zebra'"> </td>
             <td th:text="${account.animalType}"> </td>
