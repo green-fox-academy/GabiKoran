@@ -16,14 +16,14 @@ public class BankController {
     public BankController() {
         bankAccounts = new ArrayList<>();
 
-        bankAccounts.add(new BankAccount("Simba", 2000, "lion"));
-        bankAccounts.add(new BankAccount("Nala", 2000, "lion"));
-        bankAccounts.add(new BankAccount("Timon", 1300, "suricate"));
-        bankAccounts.add(new BankAccount("Pumbaa", 1200, "common warthog"));
-        bankAccounts.add(new BankAccount("Zazu", 4700, "red-billed hornbill"));
-        bankAccounts.add(new BankAccount("Shenzi", 500, "spotted hyena"));
-        bankAccounts.add(new BankAccount("Banzai", 325, "spotted hyena"));
-        bankAccounts.add(new BankAccount("Ed", 700, "spotted hyena"));
+        bankAccounts.add(new BankAccount("Simba", 2000, "lion", true, true));
+        bankAccounts.add(new BankAccount("Nala", 2000, "lion", false, true));
+        bankAccounts.add(new BankAccount("Timon", 1300, "suricate", false, true));
+        bankAccounts.add(new BankAccount("Pumbaa", 1200, "common warthog", false, true));
+        bankAccounts.add(new BankAccount("Zazu", 4700, "red-billed hornbill", false, true));
+        bankAccounts.add(new BankAccount("Shenzi", 500, "spotted hyena", false, false));
+        bankAccounts.add(new BankAccount("Banzai", 325, "spotted hyena", false, false));
+        bankAccounts.add(new BankAccount("Ed", 700, "spotted hyena", false, false));
     }
 
     @GetMapping("/show")
