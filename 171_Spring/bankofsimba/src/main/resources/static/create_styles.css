@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(235,156,1);
+    background: linear-gradient(270deg, rgba(235,156,1,1) 0%, rgba(232,109,2,1) 19%, rgba(210,76,2,1) 46%, rgba(182,24,4,1) 73%, rgba(76,0,2,1) 100%);
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: rgb(75, 61, 64);
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+}
+
+.form {
+    margin-left: 100px;
+    margin-top: 100px;
+    width: 375px;
+    height: 555px;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0px 3px 4px rgba(84, 2, 2, .5);
+    padding-left: 50px;
+    padding-top: 58px;
+    color: rgb(75, 61, 64);
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 33px;
+    color: rgb(84, 2, 2);
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 32px;
+    padding: 0px;
+}
+
+.inputfield {
+    height: 41px;
+    width: 275px;
+    margin-bottom: 24px;
+    border-left: 0px solid lightgrey;
+    border-top: 0px solid lightgrey;
+    border-right: 0px solid lightgrey;
+    border-bottom: 1px solid rgb(170, 170, 170);
+    padding-left: 6px;
+    font-size: 18px;
+    color: rgb(75, 61, 64);
+}
+
+.inputfield:focus {
+    outline: none;
+    border-bottom: 3px solid rgb(84, 2, 2);
+}
+
+.checkingbox {
+    margin-bottom: 33px;
+    margin-top: 10px;
+    color: rgb(75, 61, 64);
+}
+
+.checkinglabel {
+    padding-left: 6px;
+    color: rgb(75, 61, 64);
+}
+
+#raiseupbutton {
+    background-color: #B91E04 ;
+    color: white;
+    margin-top: 25px;
+    height: 41px;
+    width: 275px;
+    padding-left: 6px;
+    border: none;
+    border-radius: 5px;
+}
+
+#raiseupbutton:focus {
+    outline: none;
+    background-color: #B91E04;
+}
+
+#raiseupbutton:hover {
+    outline: none;
+    background-color: rgb(140, 33, 15);
+}
+
+#raiseupbutton:active {
+    outline: none;
+    background-color: #D24B02;
+}

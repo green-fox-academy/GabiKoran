@@ -65,4 +65,18 @@ public class BankController {
     public String raiseTheBalance () {
         return "redirect:/details";
     }
+
+    @GetMapping("/new")
+    public String addNewAccountForm (Model model, @ModelAttribute(name="account") BankAccount account) {
+        model.addAttribute("account", account);
+        return "new";
+    }
+
+    @PostMapping("/new")
+    public String addNewAccount (@ModelAttribute(name="account") BankAccount account) {
+        bankAccounts.add(account);
+        return "redirect:/show";
+    }
+
+
 }

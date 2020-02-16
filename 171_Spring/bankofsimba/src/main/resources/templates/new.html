@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Raise the Balance</title>
+    <title>Create New Account</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet">
-    <link href="raise-balance_styles.css" rel="stylesheet" type="text/css">
+    <link href="create_styles.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/thumb/rose/2-rose-png-image-picture-download.png" />
 </head>
 <body>
 <section class="form">
     <h1>Raise the Balance</h1>
-    <form action="#" method="POST">
+    <form action="#" th:action="@{/new}" th:object="${account}" method="POST">
         <div>
             <input class="inputfield" id="name" name="name" type="text" placeholder="Your Name">
         </div>
         <div>
-            <input class="inputfield" id="type" name="type" type="text" placeholder="Your Animal Type">
+            <input class="inputfield" id="balance" name="balance" type="number" placeholder="initial amount">
+        </div>
+        <div>
+            <input class="inputfield" id="animalType" name="animalType" type="text" placeholder="Your Animal Type">
         </div>
         <div>
             <label class ="checkinglabel" for="isKing">Are you a King?</label>
@@ -27,7 +30,7 @@
             <input class="checkingbox" id="isGood" name="isGood" type="checkbox">
         </div>
         <div>
-            <input id="raiseupbutton" type="button" value="RAISE THE BALANCE">
+            <input id="raiseupbutton" type="submit" value="Create account">
         </div>
     </form>
 </section>
