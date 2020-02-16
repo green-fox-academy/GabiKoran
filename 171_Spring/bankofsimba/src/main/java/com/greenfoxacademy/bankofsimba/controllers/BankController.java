@@ -55,4 +55,14 @@ public class BankController {
 
         return "details";
     }
+
+    @GetMapping("/raise")
+    public String raiseTheBalance (Model model) {
+        return "raise-balance";
+    }
+
+    @PostMapping("/raise")
+    public String raiseTheBalance () {
+        return "redirect:/details";
+    }
 }
