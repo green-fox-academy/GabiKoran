@@ -57,18 +57,40 @@ public class BankController {
     }
 
     @GetMapping("/raise")
-    public String raiseTheBalance (Model model) {
+    public String raiseTheBalanceForm () {
         return "raise-balance";
     }
 
     @PostMapping("/raise")
-    public String raiseTheBalance () {
-        return "redirect:/details";
+    public String raiseTheBalance (Model model, @ModelAttribute(name="account") BankAccount inputAccount) {
+
+        BankAccount searchedAccount = null;
+
+        for(BankAccount bankAccount : bankAccounts) {
+            if (bankAccount.getName().equals(inputAccount.getName())) {
+                if (bankAccount.getIsKing()) {
+                    bankAccount.setBalance(bankAccount.getBalance() + 100);
+                } else {
+                    bankAccount.setBalance(bankAccount.getBalance() + 10);
+                }
+                searchedAccount = bankAccount;
+            }
+        }
+
+        String returnText = "redirect:/show";
+
+        if (searchedAccount != null) {
+            model.addAttribute("account", searchedAccount);
+            returnText += "/" + searchedAccount.getName() + "/details";
+        } else {
+            model.addAttribute("error", "No account found");
+        }
+
+        return returnText;
     }
 
     @GetMapping("/new")
-    public String addNewAccountForm (Model model, @ModelAttribute(name="account") BankAccount account) {
-        model.addAttribute("account", account);
+    public String addNewAccountForm () {
         return "new";
     }
 

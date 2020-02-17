@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Account Information</title>
-    <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="utf-8" />
-    <link href="details_styles.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/details_styles.css}" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/thumb/rose/2-rose-png-image-picture-download.png" />
 </head>
 <body>
@@ -19,11 +18,11 @@
             <th th:text="'Good/Bad'"> </th>
         </tr>
         <tr class="tablebody">
-            <td class="name" th:text="${account.name}"> </td>
+            <td class="name" th:text="*{name}"> </td>
             <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"> </td>
-            <td class="animalType" th:text="${account.animalType}"> </td>
-            <td class="isKing" th:text="${account.isKing() ? 'King' : '-'}"> </td>
-            <td class="isGood" th:text="${account.isGood() ? 'Good One' : 'Bad Guy'}"> </td>
+            <td class="animalType" th:text="*{animalType}"> </td>
+            <td class="isKing" th:text="${account.isKing ? 'King' : '-'}"> </td>
+            <td class="isGood" th:text="${account.isGood ? 'Good One' : 'Bad Guy'}"> </td>
         </tr>
     </table>
 </div>
