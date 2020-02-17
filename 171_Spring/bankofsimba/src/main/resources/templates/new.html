@@ -4,13 +4,13 @@
 <head>
     <title>Create New Account</title>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap" rel="stylesheet">
     <link href="create_styles.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/thumb/rose/2-rose-png-image-picture-download.png" />
 </head>
 <body>
 <section class="form">
-    <h1>Raise the Balance</h1>
+    <h1>Create account</h1>
     <form action="#" th:action="@{/new}" th:object="${account}" method="POST">
         <div>
             <input class="inputfield" id="name" name="name" type="text" placeholder="Your Name">
@@ -30,7 +30,7 @@
             <input class="checkingbox" id="isGood" name="isGood" type="checkbox">
         </div>
         <div>
-            <input id="raiseupbutton" type="submit" value="Create account">
+            <input id="createbutton" type="submit" value="Create account">
         </div>
     </form>
 </section>
