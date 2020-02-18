@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="secondBG">
-        <h1 th:text="'Account os ' + ${name}"></h1>
+        <h1 th:text="'Account of ' + ${name}"></h1>
         <span th:if="${error}" th:text="${error}"></span>
         <table th:unless="${error}">
             <thead>
