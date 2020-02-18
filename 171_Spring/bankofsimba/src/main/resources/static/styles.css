@@ -31,8 +31,7 @@ h1 {
 }
 
 table {
-    background: rgb(232,109,2);
-    background: linear-gradient(90deg, rgba(232,109,2,1) 0%, rgba(210,76,2,1) 15%, rgba(182,24,4,1) 56%, rgba(76,0,2,1) 100%);
+
     margin: auto;
     width: auto;
     height: auto;
@@ -40,6 +39,11 @@ table {
     color: rgb(75, 61, 64);
     border-collapse: collapse;
     box-shadow: 0px 3px 4px rgba(122, 122, 122, .5);
+}
+
+thead {
+    background: rgb(232,109,2);
+    background: linear-gradient(90deg, rgba(232,109,2,1) 0%, rgba(210,76,2,1) 15%, rgba(182,24,4,1) 56%, rgba(76,0,2,1) 100%);
 }
 
 th {
@@ -60,20 +64,20 @@ td, th{
     padding: 20px;
 }
 
-.balance::after {
+.balance::after, .kingbalance::after {
     content: "   ZBR";
     font-size: 14px;
 }
 
-.name, .animalType {
+.name, .kingname, .kinganimalType, .animalType {
     text-align: left;
 }
 
-.index, .balance {
+.kingbalance, .balance {
     text-align: right;
 }
 
-.isGood, .isKing {
+.isGood, .isKing , .kingisGood, .kingisKing, .index, .kingindex {
     text-align: center;
 }
 
@@ -166,23 +170,19 @@ tr:last-child td:last-child {
     background-color: #D24B02;
 }
 
-.king {
-    /*color: #bf4a14;*/
+.kingname, .kingindex, .kinganimalType, .kingbalance, .kingisKing, .kingisGood {
+    color: #bf4a14;
 
 
-    /*color: #c3a343;*/
-    /*-webkit-text-fill-color: transparent;*/
-    /*background: -webkit-linear-gradient(transparent, transparent), path(assets/gold_texture.png) repeat;*/
-    /*background: -o-linear-gradient(transparent, transparent);*/
-    /*-webkit-background-clip: text;*/
-
-
-    color:	#D5AD6D; /*if no support for background-clip*/
-
-    /*background: -webkit-linear-gradient(transparent, transparent),*/
-    /*-webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%, rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);*/
-    /*background: -o-linear-gradient(transparent, transparent);*/
-    /*-webkit-background-clip: text;*/
-    /*-webkit-text-fill-color: transparent;*/
+    color: #c3a343;
+    -webkit-text-fill-color: transparent;
+    /*background: -webkit-linear-gradient(transparent, transparent), url('https://c2.staticflickr.com/6/5680/22302333629_0d42d94d22_b.jpg') repeat;*/
+    background: -webkit-linear-gradient(transparent, transparent), url('https://jooinn.com/images/gold-texture-23.jpg') repeat;
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
 }
+
+/*.kingrow {*/
+/*    background-color: rgb(84, 2, 2);*/
+/*}*/
 

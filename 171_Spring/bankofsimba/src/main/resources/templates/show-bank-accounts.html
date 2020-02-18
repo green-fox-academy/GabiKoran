@@ -23,13 +23,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="account : ${list}" th:attr="class=${account.isKing} ? 'king' : 'notking'">
-                <td class="index" th:text="${account.isKing ? '&#9819;   ' : ''} + ${accountStat.count}"></td>
-                <td class="name" th:text="${account.name}"></td>
-                <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"></td>
-                <td class="animalType" th:text="${account.animalType}"></td>
-                <td class="isKing" th:text="${account.isKing ? 'King' : '-'}"></td>
-                <td class="isGood" th:text="${account.isGood ? 'Good One' : 'Bad Guy'}"></td>
+            <tr th:each="account : ${list}" th:attr="class=${account.isKing} ? 'kingrow' : 'notkingrow'">
+                <td th:text="${account.isKing ? '&#9819;   ' : ''} + ${accountStat.count}" th:attr="class=${account.isKing} ? 'kingindex' : 'index'"></td>
+                <td th:text="${account.name}" th:attr="class=${account.isKing} ? 'kingname' : 'name'"></td>
+                <td th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}" th:attr="class=${account.isKing} ? 'kingbalance' : 'balance'"></td>
+                <td th:text="${account.animalType}" th:attr="class=${account.isKing} ? 'kinganimalType' : 'animalType'"></td>
+                <td th:text="${account.isKing ? 'King' : '-'}" th:attr="class=${account.isKing} ? 'kingisKing' : 'isKing'"></td>
+                <td th:text="${account.isGood ? 'Good One' : 'Bad Guy'}" th:attr="class=${account.isKing} ? 'kingisGood' : 'isGood'"></td>
             </tr>
             </tbody>
         </table>
