@@ -12,7 +12,7 @@ body {
 
 .secondBG {
     margin: 100px;
-    width: 900px;
+    width: auto;
     height: auto;
     background-color: white;
     border-radius: 5px;
@@ -77,7 +77,7 @@ td, th{
     text-align: right;
 }
 
-.isGood, .isKing , .kingisGood, .kingisKing, .index, .kingindex {
+.isGood, .isKing , .kingisGood, .kingisKing, .index, .kingindex, .buttonfield {
     text-align: center;
 }
 
@@ -186,3 +186,36 @@ tr:last-child td:last-child {
 /*    background-color: rgb(84, 2, 2);*/
 /*}*/
 
+.tablebutton {
+    background: rgb(182,24,4);
+    background: linear-gradient(90deg, rgba(182,24,4,1) 0%, rgba(210,76,2,1) 29%, rgba(76,0,2,1) 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 100;
+    font-size: 14px;
+    width: 80px;
+    height: 25px;
+}
+
+.tablebutton:focus {
+    outline: none;
+    background-color: #B91E04;
+}
+
+.tablebutton:hover {
+    outline: none;
+    background: rgb(182,24,4);
+    background: linear-gradient(90deg, rgb(202, 25, 4) 0%, rgb(230, 77, 2) 29%, rgb(96, 0, 2) 100%);
+}
+
+.tablebutton:active {
+    outline: none;
+    background: rgb(182,24,4);
+    background: linear-gradient(90deg, rgb(151, 23, 4) 0%, rgb(150, 67, 2) 29%, rgb(96, 0, 2) 100%);
+}
+
+i {
+    font-style: normal;
+    font-weight: 100;
+}

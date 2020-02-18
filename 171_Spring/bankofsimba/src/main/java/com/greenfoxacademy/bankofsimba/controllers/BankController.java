@@ -37,6 +37,31 @@ public class BankController {
         return "show-bank-accounts";
     }
 
+    @PostMapping("/show")
+    public String showAfterPressedTableButton (Model model, @ModelAttribute(name="owner") String inputName) {
+
+        BankAccount searchedAccount = null;
+
+        for(BankAccount bankAccount : bankAccounts) {
+            if (bankAccount.getName().equals(inputName)) {
+                if (bankAccount.getIsKing()) {
+                    bankAccount.setBalance(bankAccount.getBalance() + 100);
+                } else {
+                    bankAccount.setBalance(bankAccount.getBalance() + 10);
+                }
+                searchedAccount = bankAccount;
+            }
+        }
+
+        if (searchedAccount != null) {
+            model.addAttribute("account", searchedAccount);
+        } else {
+            model.addAttribute("error", "No account found");
+        }
+
+        return "redirect:/show";
+    }
+
     @RequestMapping(path = "/show/{name}/details", method = RequestMethod.GET)
     public String getBankAccountByOwnerName(Model model, @PathVariable String name) {
         BankAccount bankAccountByName = null;

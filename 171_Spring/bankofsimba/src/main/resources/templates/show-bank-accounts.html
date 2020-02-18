@@ -20,6 +20,7 @@
                 <th th:text="'AnimalType'"> </th>
                 <th th:text="'King/not'"> </th>
                 <th th:text="'Good/Bad'"> </th>
+                <th th:text="'Raise the balance'"></th>
             </tr>
             </thead>
             <tbody>
@@ -30,6 +31,14 @@
                 <td th:text="${account.animalType}" th:attr="class=${account.isKing} ? 'kinganimalType' : 'animalType'"></td>
                 <td th:text="${account.isKing ? 'King' : '-'}" th:attr="class=${account.isKing} ? 'kingisKing' : 'isKing'"></td>
                 <td th:text="${account.isGood ? 'Good One' : 'Bad Guy'}" th:attr="class=${account.isKing} ? 'kingisGood' : 'isGood'"></td>
+                <td class="buttonfield">
+                    <form action="#" th:action="@{/show}" method="post" >
+                        <input type="hidden" name="owner" th:value="${account.name}" />
+                        <button class="tablebutton" th:id="${account.name}" type="submit" >
+                            <i>Raise</i>
+                        </button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
