@@ -23,8 +23,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="account : ${list}">
-                <td class="index" th:text="${accountStat.count}"></td>
+            <tr th:each="account : ${list}" th:attr="class=${account.isKing} ? 'king' : 'notking'">
+                <td class="index" th:text="${account.isKing ? '&#9819;   ' : ''} + ${accountStat.count}"></td>
                 <td class="name" th:text="${account.name}"></td>
                 <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"></td>
                 <td class="animalType" th:text="${account.animalType}"></td>
