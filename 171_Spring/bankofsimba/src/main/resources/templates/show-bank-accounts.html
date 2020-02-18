@@ -4,28 +4,35 @@
     <title>BankAccounts</title>
     <meta charset="utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
-    <link href="show_styles.css" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/thumb/rose/2-rose-png-image-picture-download.png" />
 </head>
 <body>
-    <span th:if="${error}" th:text="${error}"></span>
-    <table th:unless="${error}">
-        <tr>
-            <th th:text="'Index'"></th>
-            <th th:text="'Name'"> </th>
-            <th th:text="'Balance'"> </th>
-            <th th:text="'AnimalType'"> </th>
-            <th th:text="'King/not'"> </th>
-            <th th:text="'Good/Bad'"> </th>
-        </tr>
-        <tr class="tablebody" th:each="account : ${list}" >
-            <td class="index" th:text="${accountStat.count}"></td>
-            <td class="name" th:text="${account.name}"> </td>
-            <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"> </td>
-            <td class="animalType" th:text="${account.animalType}"> </td>
-            <td class="isKing" th:text="${account.isKing ? 'King' : '-'}"> </td>
-            <td class="isGood" th:text="${account.isGood ? 'Good One' : 'Bad Guy'}"> </td>
-        </tr>
-    </table>
+    <div class="secondBG">
+        <h1>List of Accounts</h1>
+        <span th:if="${error}" th:text="${error}"></span>
+        <table th:unless="${error}">
+            <thead>
+            <tr>
+                <th th:text="'Index'"></th>
+                <th th:text="'Name'"> </th>
+                <th th:text="'Balance'"> </th>
+                <th th:text="'AnimalType'"> </th>
+                <th th:text="'King/not'"> </th>
+                <th th:text="'Good/Bad'"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="account : ${list}">
+                <td class="index" th:text="${accountStat.count}"></td>
+                <td class="name" th:text="${account.name}"></td>
+                <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"></td>
+                <td class="animalType" th:text="${account.animalType}"></td>
+                <td class="isKing" th:text="${account.isKing ? 'King' : '-'}"></td>
+                <td class="isGood" th:text="${account.isGood ? 'Good One' : 'Bad Guy'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

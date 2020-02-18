@@ -3,28 +3,33 @@
 <head>
     <title>Account Information</title>
     <meta charset="utf-8" />
-    <link th:href="@{/details_styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/styles.css}" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="https://freepngimg.com/thumb/rose/2-rose-png-image-picture-download.png" />
 </head>
 <body>
-<div>
-    <span th:if="${error}" th:text="${error}"></span>
-    <table th:unless="${error}" th:object="${account}">
-        <tr>
-            <th th:text="'Name'"> </th>
-            <th th:text="'Balance'"> </th>
-            <th th:text="'AnimalType'"> </th>
-            <th th:text="'King/not'"> </th>
-            <th th:text="'Good/Bad'"> </th>
-        </tr>
-        <tr class="tablebody">
+    <div class="secondBG">
+        <h1 th:text="'Account os ' + ${name}"></h1>
+        <span th:if="${error}" th:text="${error}"></span>
+        <table th:unless="${error}">
+            <thead>
+            <tr>
+                <th th:text="'Name'"></th>
+                <th th:text="'Balance'"></th>
+                <th th:text="'AnimalType'"></th>
+                <th th:text="'King/not'"></th>
+                <th th:text="'Good/Bad'"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
             <td class="name" th:text="*{name}"> </td>
             <td class="balance" th:text="${#numbers.formatDecimal(account.balance, 0, 2, 'POINT')}"> </td>
-            <td class="animalType" th:text="*{animalType}"> </td>
+            <td class="animalType" th:text="${account.animalType}"> </td>
             <td class="isKing" th:text="${account.isKing ? 'King' : '-'}"> </td>
             <td class="isGood" th:text="${account.isGood ? 'Good One' : 'Bad Guy'}"> </td>
         </tr>
+            </tbody>
     </table>
-</div>
+    </div>
 </body>
 </html>
