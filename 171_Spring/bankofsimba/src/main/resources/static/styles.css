@@ -39,11 +39,13 @@ table {
     color: rgb(75, 61, 64);
     border-collapse: collapse;
     box-shadow: 0px 3px 4px rgba(122, 122, 122, .5);
+    border-radius: 5px;
 }
 
 thead {
     background: rgb(232,109,2);
     background: linear-gradient(90deg, rgba(232,109,2,1) 0%, rgba(210,76,2,1) 15%, rgba(182,24,4,1) 56%, rgba(76,0,2,1) 100%);
+    border-radius: 5px;
 }
 
 th {
@@ -54,6 +56,14 @@ th {
     text-align: center;
     border-top: 0;
     border-bottom: 4px solid #713133;
+}
+
+thead th:first-child {
+    border-top-left-radius: 5px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 5px;
 }
 
 tr {
@@ -187,14 +197,15 @@ tr:last-child td:last-child {
 /*}*/
 
 .tablebutton {
-    background: rgb(182,24,4);
-    background: linear-gradient(90deg, rgba(182,24,4,1) 0%, rgba(210,76,2,1) 29%, rgba(76,0,2,1) 100%);
+    /*background: rgb(182,24,4);*/
+    /*background: linear-gradient(90deg, rgba(182,24,4,1) 0%, rgba(210,76,2,1) 29%, rgba(76,0,2,1) 100%);*/
+    background-color: #991103;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 100%;
     font-weight: 100;
     font-size: 14px;
-    width: 80px;
+    width: 25px;
     height: 25px;
 }
 
