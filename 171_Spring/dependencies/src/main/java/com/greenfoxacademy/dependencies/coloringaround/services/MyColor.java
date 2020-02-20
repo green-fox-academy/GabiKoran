@@ -1,4 +1,4 @@
-package com.greenfoxacademy.dependencies.services;
+package com.greenfoxacademy.dependencies.coloringaround.services;
 
 public interface MyColor {
     public void printColor();

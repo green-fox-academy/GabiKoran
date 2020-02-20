@@ -1,7 +1,7 @@
 package com.greenfoxacademy.dependencies;
 
-import com.greenfoxacademy.dependencies.services.MyColor;
-import com.greenfoxacademy.dependencies.services.Printer;
+import com.greenfoxacademy.dependencies.coloringaround.services.MyColor;
+import com.greenfoxacademy.dependencies.coloringaround.services.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

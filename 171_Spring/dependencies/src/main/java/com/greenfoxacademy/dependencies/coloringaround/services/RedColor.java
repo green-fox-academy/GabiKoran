@@ -1,7 +1,6 @@
-package com.greenfoxacademy.dependencies.services;
+package com.greenfoxacademy.dependencies.coloringaround.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 
 public class RedColor implements MyColor{
