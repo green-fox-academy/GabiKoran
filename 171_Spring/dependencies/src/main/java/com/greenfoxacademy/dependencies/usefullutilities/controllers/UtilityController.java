@@ -31,7 +31,6 @@ public class UtilityController {
     @GetMapping("/useful/email")
     public String validateEmail(@RequestParam (required = false) String email, Model model) {
 
-
         if (email != null) {
             model.addAttribute("email", email);
             model.addAttribute("text", utilityService.validateEmail(email) ? " is a valid email address" : " is not a valid email address");
@@ -41,5 +40,29 @@ public class UtilityController {
         }
 
         return "email";
+    }
+
+    @GetMapping("/useful/caesar_encoder")
+    public String caesarEncoding(@RequestParam (required = false) String text, @RequestParam (required = false) Integer number, Model model) {
+
+        if ((text != null) & (number != null)) {
+            model.addAttribute("text", utilityService.caesar(text, number));
+        } else {
+            model.addAttribute("error", "No required inputs were given.");
+        }
+
+        return "caesar";
+    }
+
+    @GetMapping("/useful/caesar_decoder")
+    public String caesarDecoding(@RequestParam (required = false) String text, @RequestParam (required = false) Integer number, Model model) {
+
+        if ((text != null) & (number != null)) {
+            model.addAttribute("text", utilityService.caesar(text, (number * -1)));
+        } else {
+            model.addAttribute("error", "No required inputs were given.");
+        }
+
+        return "caesar";
     }
 }
