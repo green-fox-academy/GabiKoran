@@ -44,25 +44,13 @@ public class UtilityController {
 
     @GetMapping("/useful/caesar_encoder")
     public String caesarEncoding(@RequestParam (required = false) String text, @RequestParam (required = false) Integer number, Model model) {
-
-        if ((text != null) & (number != null)) {
-            model.addAttribute("text", utilityService.caesar(text, number));
-        } else {
-            model.addAttribute("error", "No required inputs were given.");
-        }
-
+        model.addAttribute("text", utilityService.renderCaesar(text, number, true));
         return "caesar";
     }
 
     @GetMapping("/useful/caesar_decoder")
     public String caesarDecoding(@RequestParam (required = false) String text, @RequestParam (required = false) Integer number, Model model) {
-
-        if ((text != null) & (number != null)) {
-            model.addAttribute("text", utilityService.caesar(text, (number * -1)));
-        } else {
-            model.addAttribute("error", "No required inputs were given.");
-        }
-
+        model.addAttribute("text", utilityService.renderCaesar(text, number, false));
         return "caesar";
     }
 }

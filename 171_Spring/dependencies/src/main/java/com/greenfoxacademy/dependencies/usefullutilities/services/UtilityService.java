@@ -40,4 +40,16 @@ public class UtilityService {
         }
         return result;
     }
+
+    public String renderCaesar(String text, Integer number, boolean encode) {
+        if ((text == null) || (number == null)) {
+            return "Please give me a text and a number in the URL!";
+        } else {
+            if (encode) {
+                return caesar(text, number);
+            } else {
+                return caesar(text, -number);
+            }
+        }
+    }
 }
