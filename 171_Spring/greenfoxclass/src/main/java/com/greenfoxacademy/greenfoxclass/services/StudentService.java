@@ -33,4 +33,8 @@ public class StudentService {
             return " has been saved to the Students' list.";
         }
     }
+
+    public int count() {
+        return names.size();
+    }
 }

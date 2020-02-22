@@ -7,7 +7,7 @@
 <body>
 <div>
     <ul th:each="name : ${names}">
-        <li th:text="${name}"></li>
+        <li th:text="${nameStat.count} + ' ' + ${name}"></li>
     </ul>
 </div>
 <div>

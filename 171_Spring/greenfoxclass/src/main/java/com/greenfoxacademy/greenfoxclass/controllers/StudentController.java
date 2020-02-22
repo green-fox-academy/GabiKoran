@@ -22,7 +22,8 @@ public class StudentController {
     }
 
     @GetMapping("/gfa")
-    public String mainPage() {
+    public String mainPage(Model model) {
+        model.addAttribute("count", studentService.count());
         return "gfa";
     }
 
