@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Links</title>
+    <title>Save</title>
 </head>
 <body>
     <div>
-        <a href="/gfa/list">Students' List</a>
+        <p th:text="${name} + ${text}"></p>
     </div>
     <div>
-        <a href="/gfa/add">Add new Student</a>
+        <a href="/gfa/list" th:text="'Show the list of Students'"></a>
     </div>
 </body>
 </html>

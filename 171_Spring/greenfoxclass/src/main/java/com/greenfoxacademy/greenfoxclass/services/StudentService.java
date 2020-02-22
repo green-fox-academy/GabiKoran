@@ -24,4 +24,13 @@ public class StudentService {
     public void save(String student) {
         names.add(student);
     }
+
+    public String renderSave(String student) {
+        if (student == null) {
+            return "Please give the name.";
+        } else {
+            save(student);
+            return " has been saved to the Students' list.";
+        }
+    }
 }

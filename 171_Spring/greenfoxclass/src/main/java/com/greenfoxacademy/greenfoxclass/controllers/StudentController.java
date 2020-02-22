@@ -5,6 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.jws.WebParam;
 
 @Controller
 public class StudentController {
@@ -26,4 +31,17 @@ public class StudentController {
         model.addAttribute("names", studentService.findAll());
         return "list";
     }
+
+    @GetMapping("/gfa/add")
+    public String addNewStudent() {
+        return "add";
+    }
+
+    @PostMapping("/gfa/save")
+    public String addNewStudentSave(Model model, @ModelAttribute(name = "name") String name) {
+        model.addAttribute("text", studentService.renderSave(name));
+        model.addAttribute("name", name);
+        return "save";
+    }
+
 }
