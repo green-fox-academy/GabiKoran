@@ -45,4 +45,14 @@ public class StudentController {
         return "save";
     }
 
+    @GetMapping("/gfa/check")
+    public String check() {
+        return "check";
+    }
+
+    @PostMapping("/gfa/check-answer")
+    public String checkPost(Model model, @ModelAttribute(name = "name") String name) {
+        model.addAttribute("text", studentService.check(name)?"Yes, " + name + " is a student.":"No, " + name + " isn't greenfox student.");
+        return "check-answer";
+    }
 }
