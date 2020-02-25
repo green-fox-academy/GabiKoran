@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Programmer Fox Club</title>
 </head>
-<body>
+<body th:object="${fox}">
     <div>
         <a href="#">information</a>
     </div>
@@ -12,14 +12,14 @@
         <img src="images/fox.png" alt="cute little green fox">
     </div>
     <div>
-        <p th:text="'This is Mr. Fox.......'"></p>
+        <p th:text="'This is ' + *{getName()} + '. Currently living on ' + *{getFood()} + ' and ' + *{getDrink()} + '. He knows ' + *{getTricks().size()} + '.'"></p>
     </div>
     <div>
         <h1>Known tricks</h1>
     </div>
-    <ul>
-        <li>write HTML</li>
-        <li>code in JAVA</li>
+    <span th:if="${error}" th:text="${error}"></span>
+    <ul th:unless="${error}" th:each="trick : *{getTricks()}">
+        <li th:text="${trick}"></li>
     </ul>
 </body>
 </html>
