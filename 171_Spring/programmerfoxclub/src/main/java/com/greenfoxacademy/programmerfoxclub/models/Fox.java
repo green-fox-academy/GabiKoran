@@ -12,6 +12,9 @@ public class Fox {
 
     public Fox(String name) {
         this.name = name;
+        this.tricks = new ArrayList<>();
+        this.food = "-";
+        this.drink = "-";
     }
 
     public Fox(String name, ArrayList<String> tricks, String food, String drink) {
@@ -19,6 +22,10 @@ public class Fox {
         this.tricks = tricks;
         this.food = food;
         this.drink = drink;
+    }
+
+    public void addTrick(String trick) {
+        tricks.add(trick);
     }
 
     public String getName() {
@@ -51,5 +58,13 @@ public class Fox {
 
     public void setDrink(String drink) {
         this.drink = drink;
+    }
+
+    public boolean tricksIsEmpty() {
+        if (this.getTricks().isEmpty() || this.getTricks() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

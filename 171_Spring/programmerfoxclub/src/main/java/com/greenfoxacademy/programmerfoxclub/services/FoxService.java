@@ -16,7 +16,7 @@ public class FoxService {
         foxes.add(new Fox("Mr. Green", new ArrayList(), "salad", "water"));
         foxes.add(new Fox("Vuk"));
         foxes.add(new Fox("Karak"));
-        foxes.add(new Fox("Csele"));
+        foxes.add(new Fox("Csele", new ArrayList(), "salad", "water"));
     }
 
     public ArrayList<Fox> findAll() {

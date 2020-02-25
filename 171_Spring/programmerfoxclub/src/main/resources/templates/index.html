@@ -12,7 +12,17 @@
         <img src="images/fox.png" alt="cute little green fox">
     </div>
     <div>
-        <p th:text="'This is ' + *{getName()} + '. Currently living on ' + *{getFood()} + ' and ' + *{getDrink()} + '. He knows ' + *{getTricks().size()} + '.'"></p>
+<!--        <span th:text="'This is ' + *{getName()} + '. Currently living on '"></span>-->
+<!--        <span th:if="*{food == null}">-</span>-->
+<!--        <span th:unless="*{food == null}" th:text="*{food}"></span>-->
+<!--        <span th:text="' and '"></span>-->
+<!--        <span th:if="*{drink == null}">-</span>-->
+<!--        <span th:unless="*{drink == null}" th:text="*{getDrink()}"></span>-->
+<!--        <span th:text="'. He knows '"></span>-->
+<!--        <span th:if="*{tricksIsEmpty()}">0</span>-->
+<!--        <span th:unless="*{tricksIsEmpty()}" th:text="*{getTricks().size()}">0</span>-->
+<!--        <span th:text="' tricks.'"></span>-->
+        <p th:text="'This is ' + *{name} + '. Currently living on ' + *{food} + ' and ' + *{drink} + '. He knows ' + *{tricks.size()} + ' tricks.'"></p>
     </div>
     <div>
         <h1>Known tricks</h1>
