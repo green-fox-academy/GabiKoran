@@ -20,6 +20,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index(@RequestParam String name, Model model) {
+        model.addAttribute("name", name);
         model.addAttribute("fox", foxService.find(name));
         if (foxService.find(name).getTricks() == null || foxService.find(name).getTricks().size() == 0) {
             model.addAttribute("error", "You know no tricks, yet. Go and learn some.");

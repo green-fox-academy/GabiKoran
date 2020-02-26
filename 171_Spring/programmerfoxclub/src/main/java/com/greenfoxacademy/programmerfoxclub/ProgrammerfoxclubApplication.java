@@ -1,6 +1,7 @@
 package com.greenfoxacademy.programmerfoxclub;
 
 import com.greenfoxacademy.programmerfoxclub.models.Food;
+import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -22,6 +23,9 @@ public class ProgrammerfoxclubApplication {
 //                System.out.println(food.toString());
 //            }
 //        }
+
+//        FoxService foxService = new FoxService();
+//        System.out.println(foxService.find("Csele").getTricks().get(foxService.find("Csele").getTricks().size() - 1));
     }
 
 }
