@@ -16,6 +16,12 @@ public class ProgrammerfoxclubApplication {
 //        for (Food food : Food.values()) {
 //            System.out.println(food);
 //        }
+
+//        for (Food food : Food.values()) {
+//            if (food.toString().toLowerCase().equals("pizza")) {
+//                System.out.println(food.toString());
+//            }
+//        }
     }
 
 }

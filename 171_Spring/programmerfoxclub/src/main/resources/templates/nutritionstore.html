@@ -27,11 +27,11 @@
             <form th:action="@{'/nutritionstore?name=' + ${name}}" th:method="post">
                 <label for="food">Food</label>
                 <select th:name="food" id="food" th:style="'text-transform: lowercase'">
-                    <option th:each="food : ${foods}" th:text="${food}" th:style="'text-transform: lowercase'"></option>
+                    <option th:each="food : ${foods}" th:text="${food}" th:style="'text-transform: lowercase'" th:selected="${food.toString().toLowerCase().equals(currentFood)}"></option>
                 </select>
                 <label for="drink">Drink</label>
                 <select th:name="drink" id="drink" th:style="'text-transform: lowercase'">
-                    <option th:each="drink : ${drinks}" th:text="${drink}" th:style="'text-transform: lowercase'"></option>
+                    <option th:each="drink : ${drinks}" th:text="${drink}" th:style="'text-transform: lowercase'" th:selected="${drink.toString().toLowerCase().equals(currentDrink)}"></option>
                 </select>
                 <input type="submit" value="Change">
             </form>

@@ -29,6 +29,8 @@ public class FoxController {
         model.addAttribute("name", name);
         model.addAttribute("foods", Food.values());
         model.addAttribute("drinks", Drink.values());
+        model.addAttribute("currentFood", foxService.find(name).getFood());
+        model.addAttribute("currentDrink", foxService.find(name).getDrink());
         return "nutritionstore";
     }
 
