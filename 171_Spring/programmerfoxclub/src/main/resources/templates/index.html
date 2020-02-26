@@ -5,31 +5,27 @@
     <title>Programmer Fox Club</title>
 </head>
 <body th:object="${fox}">
-    <div>
-        <a href="#">information</a>
-    </div>
-    <div>
-        <img src="images/fox.png" alt="cute little green fox">
-    </div>
-    <div>
-<!--        <span th:text="'This is ' + *{getName()} + '. Currently living on '"></span>-->
-<!--        <span th:if="*{food == null}">-</span>-->
-<!--        <span th:unless="*{food == null}" th:text="*{food}"></span>-->
-<!--        <span th:text="' and '"></span>-->
-<!--        <span th:if="*{drink == null}">-</span>-->
-<!--        <span th:unless="*{drink == null}" th:text="*{getDrink()}"></span>-->
-<!--        <span th:text="'. He knows '"></span>-->
-<!--        <span th:if="*{tricksIsEmpty()}">0</span>-->
-<!--        <span th:unless="*{tricksIsEmpty()}" th:text="*{getTricks().size()}">0</span>-->
-<!--        <span th:text="' tricks.'"></span>-->
-        <p th:text="'This is ' + *{name} + '. Currently living on ' + *{food} + ' and ' + *{drink} + '. He knows ' + *{tricks.size()} + ' tricks.'"></p>
-    </div>
-    <div>
-        <h1>Known tricks</h1>
-    </div>
-    <span th:if="${error}" th:text="${error}"></span>
-    <ul th:unless="${error}" th:each="trick : *{getTricks()}">
-        <li th:text="${trick}"></li>
-    </ul>
+    <header>
+        <nav>
+            <div>
+                <a href="#">information</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <img src="images/fox.png" alt="cute little green fox">
+        </div>
+        <div>
+            <p th:text="'This is ' + *{name} + '. Currently living on ' + *{food} + ' and ' + *{drink} + '. He knows ' + *{tricks.size()} + ' tricks.'"></p>
+        </div>
+        <div>
+            <h1>Known tricks</h1>
+        </div>
+        <span th:if="${error}" th:text="${error}"></span>
+        <ul th:unless="${error}" th:each="trick : *{getTricks()}">
+            <li th:text="${trick}"></li>
+        </ul>
+    </main>
 </body>
 </html>

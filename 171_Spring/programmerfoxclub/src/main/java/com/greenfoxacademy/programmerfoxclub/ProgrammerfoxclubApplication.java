@@ -1,5 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub;
 
+import com.greenfoxacademy.programmerfoxclub.models.Food;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProgrammerfoxclubApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(ProgrammerfoxclubApplication.class, args);
+
+
+        //iteralas az enumban
+//        for (Food food : Food.values()) {
+//            System.out.println(food);
+//        }
     }
 
 }
