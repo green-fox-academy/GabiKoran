@@ -35,7 +35,7 @@
         </div>
         <span th:if="${error}" th:text="${error}"></span>
         <ul th:unless="${error}" th:each="trick : *{getTricks()}">
-            <li th:text="${trick}"></li>
+            <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>
         </ul>
     </main>
 </body>
