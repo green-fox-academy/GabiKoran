@@ -18,7 +18,7 @@
                 <a th:href="@{'/trickcenter?name=' + ${name}}">Trick Center</a>
             </li>
             <li>
-                <a href="#">Action Histrory</a>
+                <a th:href="@{'/actionhistory?name=' + ${name}}">Action History</a>
             </li>
         </ul>
     </nav>
@@ -28,7 +28,7 @@
             <img src="images/fox.png" alt="cute little green fox">
         </div>
         <div>
-            <p th:text="'This is ' + *{name} + '. Currently living on ' + *{food} + ' and ' + *{drink} + '. He knows ' + *{tricks.size()} + ' tricks.'"></p>
+            <p th:text="'This is ' + *{name} + '. Currently living on ' + *{food} + ' and ' + *{drink} + '. It knows ' + *{tricks.size()} + ' tricks.'"></p>
         </div>
         <div>
             <h1>Known tricks</h1>

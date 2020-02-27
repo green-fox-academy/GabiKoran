@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Trick Center</title>
+    <title>Action History</title>
 </head>
 <body>
 <header>
@@ -24,14 +24,10 @@
     </nav>
 </header>
 <main>
-    <span th:if="${message}" th:text="${message}"></span>
-    <form th:unless="${message}" th:action="@{'/trickcenter?name=' + ${name}}" th:method="post">
-        <label for="trick" th:text="'Tricks:'"></label>
-        <select th:name="trick" id="trick" th:style="'text-transform: lowercase'">
-            <option th:each="trick : ${tricks}" th:text="${trick}" th:style="'text-transform: lowercase'"></option>
-        </select>
-        <input type="submit" value="Learn">
-    </form>
+    <span th:if="${error}" th:text="${error}"></span>
+    <ul th:unless="${error}" th:each="action : *{actions}">
+        <li th:text="${action}"></li>
+    </ul>
 </main>
 </body>
 </html>

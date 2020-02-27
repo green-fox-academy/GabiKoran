@@ -1,7 +1,10 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class Fox {
 
@@ -10,6 +13,9 @@ public class Fox {
     private String food;
     private String drink;
     private ArrayList<String> unknownTricks;
+    private ArrayList<String> actions;
+    private String previousFood;
+    private String previousDrink;
 
     public Fox(String name) {
         this.name = name;
@@ -20,6 +26,9 @@ public class Fox {
         for (Trick trick : Trick.values()) {
             unknownTricks.add(trick.toString());
         }
+        actions = new ArrayList<>();
+        this.previousFood = "-";
+        this.previousDrink = "-";
     }
 
     public Fox(String name, ArrayList<String> tricks, String food, String drink) {
@@ -31,6 +40,9 @@ public class Fox {
         for (Trick trick : Trick.values()) {
             unknownTricks.add(trick.toString());
         }
+        actions = new ArrayList<>();
+        this.previousFood = "-";
+        this.previousDrink = "-";
     }
 
     public void addTrick(String trick) {
@@ -44,10 +56,6 @@ public class Fox {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public ArrayList<String> getTricks() {
         return tricks;
     }
@@ -57,6 +65,7 @@ public class Fox {
     }
 
     public void setFood(String food) {
+        this.previousFood = this.food;
         this.food = food;
     }
 
@@ -65,7 +74,12 @@ public class Fox {
     }
 
     public void setDrink(String drink) {
+        this.previousDrink = this.drink;
         this.drink = drink;
+    }
+
+    public ArrayList<String> getActions() {
+        return actions;
     }
 
     public void setTricks(ArrayList<String> tricks) {
@@ -76,15 +90,25 @@ public class Fox {
         return unknownTricks;
     }
 
-    public void setUnknownTricks(ArrayList<String> unknownTricks) {
-        this.unknownTricks = unknownTricks;
-    }
-
     public boolean tricksIsEmpty() {
         if (this.getTricks().isEmpty() || this.getTricks() == null) {
             return false;
         } else {
             return true;
         }
+    }
+
+    public void addAction(String action) {
+        Date date = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyy. MMMMMMMM dd. hh:mm:ss ");
+        actions.add((ft.format(date)).toString().toLowerCase() + action);
+    }
+
+    public String getPreviousFood() {
+        return previousFood;
+    }
+
+    public String getPreviousDrink() {
+        return previousDrink;
     }
 }
