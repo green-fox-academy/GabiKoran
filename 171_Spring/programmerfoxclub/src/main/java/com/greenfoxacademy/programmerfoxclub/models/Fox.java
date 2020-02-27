@@ -1,8 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -110,5 +108,20 @@ public class Fox {
 
     public String getPreviousDrink() {
         return previousDrink;
+    }
+
+    public ArrayList<String> getLastFiveActions() {
+
+        ArrayList<String> lastFiveActions = new ArrayList<>();
+
+        if (this.actions.size() >= 5) {
+            for (int i = (this.actions.size() - 5); i < (this.actions.size()); i++) {
+                lastFiveActions.add(this.actions.get(i));
+            }
+        } else {
+            lastFiveActions = this.actions;
+        }
+
+        return lastFiveActions;
     }
 }

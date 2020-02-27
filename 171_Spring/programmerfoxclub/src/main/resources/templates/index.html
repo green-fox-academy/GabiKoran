@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Programmer Fox Club</title>
@@ -33,9 +33,16 @@
         <div>
             <h1>Known tricks</h1>
         </div>
-        <span th:if="${error}" th:text="${error}"></span>
-        <ul th:unless="${error}" th:each="trick : *{getTricks()}">
+        <span th:if="${error1}" th:text="${error1}"></span>
+        <ul th:unless="${error1}" th:each="trick : *{getTricks()}">
             <li th:text="${trick}" th:style="'text-transform: lowercase'"></li>
+        </ul>
+        <div>
+            <h1>Action history</h1>
+        </div>
+        <span th:if="${error2}" th:text="${error2}"></span>
+        <ul th:unless="${error2}" th:each="action : ${actions}">
+            <li th:text="${action}"></li>
         </ul>
     </main>
 </body>

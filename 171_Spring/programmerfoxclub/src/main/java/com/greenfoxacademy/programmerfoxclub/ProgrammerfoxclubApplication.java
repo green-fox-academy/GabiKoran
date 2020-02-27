@@ -36,9 +36,10 @@ public class ProgrammerfoxclubApplication {
 //
 //        System.out.println(ft.format(date));
 
-        Date date = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MMMMMMMM dd. hh:mm:ss ");
-        System.out.println((ft.format(date)).toString());
+//        Date date = new Date( );
+//        SimpleDateFormat ft = new SimpleDateFormat ("yyyy.MMMMMMMM dd. hh:mm:ss ");
+//        System.out.println((ft.format(date)).toString());
+
     }
 
 }

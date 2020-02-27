@@ -23,7 +23,13 @@ public class MainController {
         model.addAttribute("name", name);
         model.addAttribute("fox", foxService.find(name));
         if (foxService.find(name).getTricks() == null || foxService.find(name).getTricks().size() == 0) {
-            model.addAttribute("error", "You know no tricks, yet. Go and learn some.");
+            model.addAttribute("error1", "You know no tricks, yet. Go and learn some.");
+        }
+        if (foxService.find(name).getActions().isEmpty()) {
+            model.addAttribute("error2", "You have not any actions, yet. So do something. Let's learn, drink or eat. Welcome.");
+        } else {
+            model.addAttribute("actions", foxService.find(name).getLastFiveActions());
+            System.out.println(foxService.find(name).getLastFiveActions().toString());
         }
         return "index";
     }
