@@ -1,6 +1,8 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -98,8 +100,17 @@ public class Fox {
 
     public void addAction(String action) {
         Date date = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyy. MMMMMMMM dd. hh:mm:ss ");
-        actions.add((ft.format(date)).toString().toLowerCase() + action);
+        // ez hasonlít legjobban, de angolul írja ki, így ez így bénán néz ki:
+//        SimpleDateFormat ft = new SimpleDateFormat ("yyyy. MMMM dd. hh:mm:ss ");
+        SimpleDateFormat ft = new SimpleDateFormat ("dd MMM yyyy hh:mm:ss ");
+
+        actions.add((ft.format(date)) + action);
+
+        // Viki verzió:
+//        LocalDateTime now = LocalDateTime.now();
+//        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy. MMMM dd. HH:mm:ss");
+//
+//        actions.add((now.format(format)) + action);
     }
 
     public String getPreviousFood() {
