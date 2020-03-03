@@ -8,10 +8,15 @@
 </head>
         <body>
         <div class="secondBG">
-            <h1>Todos for today:</h1>
-<!--            <span th:if="${error}" th:text="${error}"></span>-->
-            <a th:href="@{/todo/add}">Add new todo</a>
-            <table>
+            <div th:if="${error}" th:text="${error}"></div>
+            <h1 th:unless="${error}">Todos for today:</h1>
+            <div>
+                <a th:href="@{/todo/add}">Add new todo</a>
+            </div>
+            <div>
+                <a th:if="${error}" th:href="@{/todo}">Back to the list</a>
+            </div>
+            <table th:unless="${error}">
                 <thead>
                 <tr>
                     <th th:text="'ID'"></th>

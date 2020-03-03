@@ -18,28 +18,40 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
+//    public Iterable<Todo> findAll() {
+//        return todoRepository.findAll();
+//    }
+//
+//    public Iterable<Todo> findAllActive() {
+//        ArrayList<Todo> activeTodos = new ArrayList<>();
+//        for (Todo todo : todoRepository.findAll()) {
+//            if (!todo.isDone()) {
+//                activeTodos.add(todo);
+//            }
+//        }
+//        return activeTodos;
+//    }
+//
+//    public Iterable<Todo> findAllDone() {
+//        ArrayList<Todo> doneTodos = new ArrayList<>();
+//        for (Todo todo : todoRepository.findAll()) {
+//            if (todo.isDone()) {
+//                doneTodos.add(todo);
+//            }
+//        }
+//        return doneTodos;
+//    }
+
     public Iterable<Todo> findAll() {
         return todoRepository.findAll();
     }
 
-    public Iterable<Todo> findAllActive() {
-        ArrayList<Todo> activeTodos = new ArrayList<>();
-        for (Todo todo : todoRepository.findAll()) {
-            if (!todo.isDone()) {
-                activeTodos.add(todo);
-            }
-        }
-        return activeTodos;
+    public Iterable<Todo> findAllByIsDone() {
+        return todoRepository.findAllByIsDone(true);
     }
 
-    public Iterable<Todo> findAllDone() {
-        ArrayList<Todo> doneTodos = new ArrayList<>();
-        for (Todo todo : todoRepository.findAll()) {
-            if (todo.isDone()) {
-                doneTodos.add(todo);
-            }
-        }
-        return doneTodos;
+    public Iterable<Todo> findAllByIsNotDone() {
+        return todoRepository.findAllByIsDone(false);
     }
 
     public void add(String title) {

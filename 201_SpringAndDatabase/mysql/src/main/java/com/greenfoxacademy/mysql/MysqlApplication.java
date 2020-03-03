@@ -25,9 +25,9 @@ public class MysqlApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         todoRepository.save(new Todo("I have to learn Object Relational Mapping"));
         todoRepository.save(new Todo("Drill the swing to the ceiling", true, false));
-        todoRepository.save(new Todo("Change the text on the bicycle", true, false));
+        todoRepository.save(new Todo("Change the text on the bicycle", true, true));
         todoRepository.save(new Todo("Take back the books to the library", true, false));
-        todoRepository.save(new Todo("Apply for GYES", true, false));
+        todoRepository.save(new Todo("Apply for GYES", true, true));
         todoRepository.save(new Todo("Register to the school admissions", true, true));
     }
 }

@@ -22,11 +22,11 @@ public class TodoController {
         if (isActive == null) {
             model.addAttribute("todos", todoService.findAll());
         } else if (isActive.toLowerCase().equals("true")) {
-            model.addAttribute("todos", todoService.findAllActive());
+            model.addAttribute("todos", todoService.findAllByIsNotDone());
         } else if (isActive.toLowerCase().equals("false")) {
-            model.addAttribute("todos", todoService.findAllDone());
+            model.addAttribute("todos", todoService.findAllByIsDone());
         } else {
-            model.addAttribute("error", "Please write a valid request.");
+            model.addAttribute("error", "Please write a valid query.");
         }
         return "todolist";
     }
