@@ -9,5 +9,4 @@ public interface TodoRepository extends CrudRepository <Todo, Long> {
 
     Iterable<Todo> findAllByIsDone(boolean isDone);
 
-
 }

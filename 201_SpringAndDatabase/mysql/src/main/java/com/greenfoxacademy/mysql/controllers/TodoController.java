@@ -31,6 +31,12 @@ public class TodoController {
         return "todolist";
     }
 
+    @PostMapping("/{id}/delete")
+    public String deleteTodoById(@PathVariable Long id) {
+        todoService.deleteById(id);
+        return "redirect:/todo";
+    }
+
     @GetMapping("/add")
     public String addForm() {
         return "add";

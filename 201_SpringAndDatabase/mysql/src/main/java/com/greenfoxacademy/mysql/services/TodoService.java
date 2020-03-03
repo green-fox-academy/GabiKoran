@@ -18,30 +18,6 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-//    public Iterable<Todo> findAll() {
-//        return todoRepository.findAll();
-//    }
-//
-//    public Iterable<Todo> findAllActive() {
-//        ArrayList<Todo> activeTodos = new ArrayList<>();
-//        for (Todo todo : todoRepository.findAll()) {
-//            if (!todo.isDone()) {
-//                activeTodos.add(todo);
-//            }
-//        }
-//        return activeTodos;
-//    }
-//
-//    public Iterable<Todo> findAllDone() {
-//        ArrayList<Todo> doneTodos = new ArrayList<>();
-//        for (Todo todo : todoRepository.findAll()) {
-//            if (todo.isDone()) {
-//                doneTodos.add(todo);
-//            }
-//        }
-//        return doneTodos;
-//    }
-
     public Iterable<Todo> findAll() {
         return todoRepository.findAll();
     }
@@ -56,5 +32,9 @@ public class TodoService {
 
     public void add(String title) {
         todoRepository.save(new Todo(title));
+    }
+
+    public void deleteById(Long id) {
+        todoRepository.deleteById(id);
     }
 }
