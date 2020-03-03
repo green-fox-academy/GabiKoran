@@ -41,4 +41,8 @@ public class TodoService {
         }
         return doneTodos;
     }
+
+    public void add(String title) {
+        todoRepository.save(new Todo(title));
+    }
 }

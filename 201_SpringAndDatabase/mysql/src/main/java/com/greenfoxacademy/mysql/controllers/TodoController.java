@@ -5,9 +5,7 @@ import com.greenfoxacademy.mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo")
@@ -31,5 +29,16 @@ public class TodoController {
             model.addAttribute("error", "Please write a valid request.");
         }
         return "todolist";
+    }
+
+    @GetMapping("/add")
+    public String addForm() {
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String add(@ModelAttribute(name="title") String title) {
+        todoService.add(title);
+        return "redirect:/todo";
     }
 }
