@@ -47,4 +47,10 @@ public class TodoController {
         todoService.add(title);
         return "redirect:/todo";
     }
+
+    @GetMapping("/{id}/edit")
+    public String editForm(@PathVariable Long id, Model model) {
+        model.addAttribute("id", id);
+        return "edit";
+    }
 }

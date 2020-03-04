@@ -24,6 +24,7 @@
                     <th th:text="'URGENT'"> </th>
                     <th th:text="'DONE'"> </th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,11 @@
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
                             <button th:text="'delete'"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{'/todo/' + ${todo.id} + '/edit'}" method="get">
+                            <button th:text="'edit'"></button>
                         </form>
                     </td>
                 </tr>
