@@ -31,8 +31,8 @@
                 <tr th:each="todo : ${todos}">
                     <td th:text="${todo.id}"></td>
                     <td th:text="${todo.title}"></td>
-                    <td th:text="${todo.isUrgent() ? '!' : '-'}"></td>
-                    <td th:text="${todo.isDone() ? 'Done': '-'}"></td>
+                    <td th:text="${todo.isUrgent ? '!' : '-'}"></td>
+                    <td th:text="${todo.isDone ? 'Done': '-'}"></td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
                             <button th:text="'delete'"></button>

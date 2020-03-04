@@ -5,8 +5,7 @@ import com.greenfoxacademy.mysql.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -34,7 +33,26 @@ public class TodoService {
         todoRepository.save(new Todo(title));
     }
 
+    public void edit(Todo todo) {
+        todoRepository.save(todo);
+    }
+
     public void deleteById(Long id) {
         todoRepository.deleteById(id);
+    }
+
+//    public Optional<Todo> findOneById(Long id) {
+//        return todoRepository.findById(id);
+//    }
+
+    public Todo findTodoById(Long id) {
+        Optional<Todo> findOneById = todoRepository.findById(id);
+        if (findOneById.isPresent()) {
+            return findOneById.get();
+        }
+        return null;
+
+    //return findOneById.orElse(null);
+
     }
 }

@@ -51,6 +51,24 @@ public class TodoController {
     @GetMapping("/{id}/edit")
     public String editForm(@PathVariable Long id, Model model) {
         model.addAttribute("id", id);
+        model.addAttribute("todo", todoService.findTodoById(id));
+        model.addAttribute("title", todoService.findTodoById(id).getTitle());
         return "edit";
     }
+
+    @PostMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, String title, Boolean isUrgent,  Boolean isDone) {
+        if (isUrgent == null) {
+            isUrgent = false;
+        }
+        if (isDone == null) {
+            isDone = false;
+        }
+        todoService.findTodoById(id).setTitle(title);
+        todoService.findTodoById(id).setIsUrgent(isUrgent);
+        todoService.findTodoById(id).setIsDone(isDone);
+        todoService.edit(todoService.findTodoById(id));
+        return "redirect:/todo";
+    }
+
 }
