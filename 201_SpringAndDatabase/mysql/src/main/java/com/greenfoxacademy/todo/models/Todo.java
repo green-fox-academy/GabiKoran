@@ -1,4 +1,4 @@
-package com.greenfoxacademy.mysql.models;
+package com.greenfoxacademy.todo.models;
 
 import javax.persistence.*;
 

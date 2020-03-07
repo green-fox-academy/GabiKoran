@@ -1,8 +1,6 @@
-package com.greenfoxacademy.mysql.controllers;
+package com.greenfoxacademy.todo.controllers;
 
-import com.greenfoxacademy.mysql.repositories.TodoRepository;
-import com.greenfoxacademy.mysql.services.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

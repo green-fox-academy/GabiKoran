@@ -1,24 +1,24 @@
-package com.greenfoxacademy.mysql;
+package com.greenfoxacademy.todo;
 
-import com.greenfoxacademy.mysql.models.Todo;
-import com.greenfoxacademy.mysql.repositories.TodoRepository;
+import com.greenfoxacademy.todo.models.Todo;
+import com.greenfoxacademy.todo.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MysqlApplication implements CommandLineRunner {
+public class TodoApplication implements CommandLineRunner {
 
     private TodoRepository todoRepository;
 
     @Autowired
-    public MysqlApplication (TodoRepository todoRepository) {
+    public TodoApplication(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(MysqlApplication.class, args);
+        SpringApplication.run(TodoApplication.class, args);
     }
 
     @Override

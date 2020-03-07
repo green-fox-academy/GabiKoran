@@ -1,7 +1,7 @@
-package com.greenfoxacademy.mysql.services;
+package com.greenfoxacademy.todo.services;
 
-import com.greenfoxacademy.mysql.models.Todo;
-import com.greenfoxacademy.mysql.repositories.TodoRepository;
+import com.greenfoxacademy.todo.models.Todo;
+import com.greenfoxacademy.todo.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
