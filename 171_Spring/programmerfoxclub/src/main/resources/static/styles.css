@@ -3,13 +3,63 @@
 }
 
 body {
-    /*background: #3CB879;*/
-    /*background: -webkit-linear-gradient(top left, #3CB879, #F6F4CE);*/
-    /*background: -moz-linear-gradient(top left, #3CB879, #F6F4CE);*/
-    /*background: linear-gradient(to bottom right, #3CB879, #F6F4CE);*/
-
-    /*color: white;*/
+    background-color: rgb(246, 244, 206);
+    background-image: url("http://img.freepik.com/free-vector/abstract-triangle-tile-mosaic-background-design_1164-1266.jpg?size=338&ext=jpg");
+    background-repeat: repeat;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
 }
 
+section {
+    background-color: white;
+    border-radius: 20px;
+    width: 800px;
+    height: auto;
+    margin: 50px auto;
+    padding-bottom: 50px;
+    /*padding: 50px;*/
+}
 
+main {
+    margin: 50px;
+}
 
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #014F00;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: fixed;
+    top: 50px;
+    width: 800px;
+}
+
+nav li {
+    display: inline;
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: #EAF1CA;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #017335;
+}
+
+/*.active {*/
+/*    background-color: #3CB879;*/
+/*}*/
+
+nav li a:hover {
+    background-color: #014F00;
+}
+
+h1 {
+    color: #017335;
+    font-weight: 700;
+}

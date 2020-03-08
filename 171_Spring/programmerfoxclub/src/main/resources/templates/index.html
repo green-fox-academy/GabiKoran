@@ -7,6 +7,7 @@
     <link th:href="@{/styles.css}" rel="stylesheet" type="text/css">
 </head>
 <body th:object="${fox}">
+<section>
 <header>
     <nav>
         <ul>
@@ -22,6 +23,7 @@
             <li>
                 <a th:href="@{'/actionhistory?name=' + ${name}}">Action History</a>
             </li>
+            <li style="float:right"><a th:href="@{/login}">LogIn/LogOut</a></li>
         </ul>
     </nav>
 </header>
@@ -47,5 +49,6 @@
             <li th:text="${action}"></li>
         </ul>
     </main>
+</section>
 </body>
 </html>
