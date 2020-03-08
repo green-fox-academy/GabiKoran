@@ -29,7 +29,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #014F00;
+    background-color: #017335;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     position: fixed;
@@ -56,7 +56,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #014F00;
+    background-color: #01853c;
 }
 
 h1 {
