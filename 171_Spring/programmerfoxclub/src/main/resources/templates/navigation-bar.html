@@ -1,0 +1,21 @@
+<header xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="navigation-bar">
+    <nav>
+        <ul>
+            <li>
+                <a th:attr="class=${active == 'index'} ? 'active'" th:href="@{'/?name=' + ${name}}">Information</a>
+            </li>
+            <li>
+                <a th:attr="class=${active == 'nutritionstore'} ? 'active'" th:href="@{'/nutritionstore?name=' + ${name}}">Nutrition Store</a>
+            </li>
+            <li>
+                <a th:attr="class=${active == 'trickcenter'} ? 'active'" th:href="@{'/trickcenter?name=' + ${name}}">Trick Center</a>
+            </li>
+            <li>
+                <a th:attr="class=${active == 'actionhistory'} ? 'active'" th:href="@{'/actionhistory?name=' + ${name}}">Action History</a>
+            </li>
+            <li style="float:right">
+                <a th:attr="class=${active == 'login'} ? 'active'" th:href="@{/login}">LogIn/LogOut</a>
+            </li>
+        </ul>
+    </nav>
+</header>

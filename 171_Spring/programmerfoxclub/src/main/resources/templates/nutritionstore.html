@@ -3,26 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Nutrition Store</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
+        <link th:href="@{/styles.css}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a th:href="@{'/?name=' + ${name}}">Information</a>
-                    </li>
-                    <li>
-                        <a th:href="@{'/nutritionstore?name=' + ${name}}">Nutrition Store</a>
-                    </li>
-                    <li>
-                        <a th:href="@{'/trickcenter?name=' + ${name}}">Trick Center</a>
-                    </li>
-                    <li>
-                        <a th:href="@{'/actionhistory?name=' + ${name}}">Action History</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+    <section>
+    <div th:replace="navigation-bar :: navigation-bar">
+    </div>
         <main>
             <form th:action="@{'/nutritionstore?name=' + ${name}}" th:method="post">
                 <label for="food">Food</label>
@@ -36,5 +23,6 @@
                 <input type="submit" value="Change">
             </form>
         </main>
+    </section>
     </body>
 </html>

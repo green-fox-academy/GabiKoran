@@ -30,6 +30,7 @@ public class FoxController {
         model.addAttribute("drinks", Drink.values());
         model.addAttribute("currentFood", foxService.find(name).getFood());
         model.addAttribute("currentDrink", foxService.find(name).getDrink());
+        model.addAttribute("active", "nutritionstore");
         return "nutritionstore";
     }
 
@@ -50,6 +51,7 @@ public class FoxController {
         } else {
             model.addAttribute("tricks", foxService.find(name).getUnknownTricks());
         }
+        model.addAttribute("active", "trickcenter");
         return "trickcenter";
     }
 
@@ -68,6 +70,7 @@ public class FoxController {
         } else {
             model.addAttribute("actions", foxService.find(name).getActions());
         }
+        model.addAttribute("active", "actionhistory");
         return "actionhistory";
     }
 }

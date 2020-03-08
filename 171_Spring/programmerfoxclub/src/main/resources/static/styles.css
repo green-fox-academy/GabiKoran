@@ -14,10 +14,10 @@ section {
     background-color: white;
     border-radius: 20px;
     width: 800px;
-    height: auto;
+    height: 650px;
     margin: 50px auto;
-    padding-bottom: 50px;
-    /*padding: 50px;*/
+    padding-top: 1px;
+    /*overflow: auto; !* Enable scrolling if the section has too much content *!*/
 }
 
 main {
@@ -33,7 +33,7 @@ nav ul {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     position: fixed;
-    top: 50px;
+    top: 25px;
     width: 800px;
 }
 
@@ -51,9 +51,9 @@ nav li a {
     background-color: #017335;
 }
 
-/*.active {*/
-/*    background-color: #3CB879;*/
-/*}*/
+.active {
+    background-color: #3CB879;
+}
 
 nav li a:hover {
     background-color: #014F00;
@@ -62,4 +62,11 @@ nav li a:hover {
 h1 {
     color: #017335;
     font-weight: 700;
+}
+
+main ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
 }

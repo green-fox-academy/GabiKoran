@@ -31,11 +31,13 @@ public class MainController {
             model.addAttribute("actions", foxService.find(name).getLastFiveActions());
             System.out.println(foxService.find(name).getLastFiveActions().toString());
         }
+        model.addAttribute("active", "index");
         return "index";
     }
 
     @GetMapping("/login")
-    public String loginGet() {
+    public String loginGet (Model model) {
+        model.addAttribute("active", "login");
         return "login";
     }
 
