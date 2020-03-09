@@ -16,8 +16,10 @@ public class TodoController {
     }
 
     @RequestMapping(value={"/list", "/", ""}, method= RequestMethod.GET)
-    public String list(@RequestParam (required = false) String isActive, Model model) {
-        if (isActive == null) {
+    public String list(@RequestParam (required = false) String isActive, Model model, @RequestParam (required = false) String search) {
+        if (search != null) {
+            model.addAttribute("todos", todoService.findAllByTitleContains(search));
+        } else if (isActive == null) {
             model.addAttribute("todos", todoService.findAll());
         } else if (isActive.toLowerCase().equals("true")) {
             model.addAttribute("todos", todoService.findAllByIsNotDone());
@@ -68,5 +70,4 @@ public class TodoController {
         todoService.edit(todoService.findTodoById(id));
         return "redirect:/todo";
     }
-
 }

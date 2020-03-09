@@ -41,18 +41,16 @@ public class TodoService {
         todoRepository.deleteById(id);
     }
 
-//    public Optional<Todo> findOneById(Long id) {
-//        return todoRepository.findById(id);
-//    }
-
     public Todo findTodoById(Long id) {
         Optional<Todo> findOneById = todoRepository.findById(id);
         if (findOneById.isPresent()) {
             return findOneById.get();
         }
         return null;
+        //return findOneById.orElse(null);
+    }
 
-    //return findOneById.orElse(null);
-
+    public Iterable<Todo> findAllByTitleContains(String input) {
+        return todoRepository.findAllByTitleContains(input);
     }
 }
