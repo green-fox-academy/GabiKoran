@@ -13,8 +13,16 @@ public class Todo {
     private String title;
     private boolean isUrgent;
     private boolean isDone;
+//    @ManyToOne(cascade = CascadeType.ALL)
     @ManyToOne
     private Assignee assignee;
+
+    public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
+        this.title = title;
+        this.isUrgent = isUrgent;
+        this.isDone = isDone;
+        this.assignee = assignee;
+    }
 
     public Todo(String title, boolean isUrgent, boolean isDone) {
         this.title = title;

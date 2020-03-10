@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.controllers;
 
+import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class TodoController {
 
     private TodoService todoService;
+    private AssigneeService assigneeService;
 
-    public TodoController(TodoService todoService) {
+    public TodoController(TodoService todoService, AssigneeService assigneeService) {
         this.todoService = todoService;
+        this.assigneeService = assigneeService;
     }
 
     @RequestMapping(value={"/list", "/", ""}, method= RequestMethod.GET)
@@ -52,7 +55,7 @@ public class TodoController {
     public String editForm(@PathVariable Long id, Model model) {
         model.addAttribute("id", id);
         model.addAttribute("todo", todoService.findTodoById(id));
-        model.addAttribute("title", todoService.findTodoById(id).getTitle());
+        model.addAttribute("persons", assigneeService.findAll());
         return "edit";
     }
 
