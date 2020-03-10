@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Assignee</title>
+</head>
+    <body>
+        <h1>Edit Assignee</h1>
+        <form action="#" th:action="@{'/assignees/' + ${id} + '/edit'}" th:method="post">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" th:name="name" th:value="${assignee.getName()}">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" th:value="${assignee.getEmail()}" th:name="email">
+            </div>
+            <input type="submit" th:value="Submit">
+            <a th:href="@{/assignees}">Cancel</a>
+        </form>
+    </body>
+</html>

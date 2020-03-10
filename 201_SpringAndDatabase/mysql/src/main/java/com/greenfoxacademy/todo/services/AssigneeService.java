@@ -5,6 +5,8 @@ import com.greenfoxacademy.todo.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AssigneeService {
 
@@ -29,5 +31,14 @@ public class AssigneeService {
 
     public void deleteById(Long id) {
         assigneeRepository.deleteById(id);
+    }
+
+    public Assignee findAssigneeById(Long id) {
+        Optional<Assignee> findOneById = assigneeRepository.findById(id);
+        if (findOneById.isPresent()) {
+            return findOneById.get();
+        }
+        return null;
+        //return findOneById.orElse(null);
     }
 }

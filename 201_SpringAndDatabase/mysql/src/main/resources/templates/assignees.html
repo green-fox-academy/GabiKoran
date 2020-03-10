@@ -19,6 +19,8 @@
             <th th:text="'ID'"></th>
             <th th:text="'NAME'"> </th>
             <th th:text="'EMAIL'"> </th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +28,16 @@
             <td th:text="${assignee.id}"></td>
             <td th:text="${assignee.name}"></td>
             <td th:text="${assignee.email}"></td>
+            <td>
+                <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/delete'}" method="post">
+                    <button th:text="'delete'"></button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/edit'}" method="get">
+                    <button th:text="'edit'"></button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -37,4 +37,27 @@ public class AssigneesController {
         assigneeService.add(name, email);
         return "redirect:/assignees";
     }
+
+    @PostMapping("/{id}/delete")
+    public String deleteTodoById(@PathVariable Long id) {
+        assigneeService.deleteById(id);
+        return "redirect:/assignees";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editForm(@PathVariable Long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("assignee", assigneeService.findAssigneeById(id));
+        model.addAttribute("name", assigneeService.findAssigneeById(id).getName());
+        model.addAttribute("name", assigneeService.findAssigneeById(id).getEmail());
+        return "editAssignee";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, String name, String email) {
+        assigneeService.findAssigneeById(id).setName(name);
+        assigneeService.findAssigneeById(id).setEmail(email);
+        assigneeService.edit(assigneeService.findAssigneeById(id));
+        return "redirect:/assignees";
+    }
 }
