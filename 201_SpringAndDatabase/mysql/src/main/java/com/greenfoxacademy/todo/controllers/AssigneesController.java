@@ -4,9 +4,7 @@ import com.greenfoxacademy.todo.services.AssigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/assignees")
@@ -27,5 +25,16 @@ public class AssigneesController {
             model.addAttribute("error", "We haven't any assignees, yet.");
         }
         return "assignees";
+    }
+
+    @GetMapping("/addAssignee")
+    public String addForm() {
+        return "addAssignee";
+    }
+
+    @PostMapping("/addAssignee")
+    public String add(@ModelAttribute(name="name") String name, @ModelAttribute(name="email") String email) {
+        assigneeService.add(name, email);
+        return "redirect:/assignees";
     }
 }

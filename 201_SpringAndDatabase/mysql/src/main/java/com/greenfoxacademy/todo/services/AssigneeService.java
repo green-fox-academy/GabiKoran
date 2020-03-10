@@ -18,4 +18,16 @@ public class AssigneeService {
     public Iterable<Assignee> findAll() {
         return assigneeRepository.findAll();
     }
+
+    public void add(String name, String email) {
+        assigneeRepository.save(new Assignee(name, email));
+    }
+
+    public void edit(Assignee assignee) {
+        assigneeRepository.save(assignee);
+    }
+
+    public void deleteById(Long id) {
+        assigneeRepository.deleteById(id);
+    }
 }

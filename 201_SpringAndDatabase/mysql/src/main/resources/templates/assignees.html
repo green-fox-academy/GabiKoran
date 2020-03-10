@@ -10,6 +10,9 @@
 <div class="secondBG">
     <div th:if="${error}" th:text="${error}"></div>
     <h1 th:unless="${error}">Assignees:</h1>
+    <div>
+        <a th:href="@{/assignees/addAssignee}">Add new assignee</a>
+    </div>
     <table th:unless="${error}">
         <thead>
         <tr>
