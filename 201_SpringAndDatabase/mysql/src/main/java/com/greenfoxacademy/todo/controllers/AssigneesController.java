@@ -6,9 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/assignee")
+@RequestMapping("/assignees")
 public class AssigneesController {
 
     private AssigneeService assigneeService;
@@ -18,9 +19,13 @@ public class AssigneesController {
         this.assigneeService = assigneeService;
     }
 
-    @GetMapping("/assignees")
+    @RequestMapping(value={"/list", "/", ""}, method= RequestMethod.GET)
     public String listAssignees(Model model) {
-        model.addAttribute("assigness", assigneeService.findAll());
+        if (assigneeService.findAll() != null) {
+            model.addAttribute("assigness", assigneeService.findAll());
+        } else {
+            model.addAttribute("error", "We haven't any assignees, yet.");
+        }
         return "assignees";
     }
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:type="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignees</title>
+</head>
+<body>
+<div class="secondBG">
+    <div th:if="${error}" th:text="${error}"></div>
+    <h1 th:unless="${error}">Assignees:</h1>
+    <table th:unless="${error}">
+        <thead>
+        <tr>
+            <th th:text="'ID'"></th>
+            <th th:text="'NAME'"> </th>
+            <th th:text="'EMAIL'"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="assignee : ${assigness}">
+            <td th:text="${assignee.id}"></td>
+            <td th:text="${assignee.name}"></td>
+            <td th:text="${assignee.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
