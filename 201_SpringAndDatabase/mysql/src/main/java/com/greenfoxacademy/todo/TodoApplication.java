@@ -27,15 +27,22 @@ public class TodoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        todoRepository.save(new Todo("I have to learn Object Relational Mapping"));
-        todoRepository.save(new Todo("Drill the swing to the ceiling", true, false));
-        todoRepository.save(new Todo("Change the text on the bicycle", true, true));
-        todoRepository.save(new Todo("Take back the books to the library", true, false));
-        todoRepository.save(new Todo("Apply for GYES", true, true));
-        todoRepository.save(new Todo("Register to the school admissions", true, true));
+        todoRepository.save(new Todo("aaa"));
+        todoRepository.save(new Todo("bbb", true, false));
+        todoRepository.save(new Todo("ccc", true, true));
+        todoRepository.save(new Todo("ddd", true, false));
+        todoRepository.save(new Todo("eee", true, true));
+        todoRepository.save(new Todo("fff", true, true));
+        todoRepository.save(new Todo("ggg", true, true));
+        todoRepository.save(new Todo("hhh", true, false));
+        todoRepository.save(new Todo("iii", true, true));
+        todoRepository.save(new Todo("jjj", true, true));
 
         assigneeRepository.save(new Assignee("Csenge", "csenge@gmail.com"));
         assigneeRepository.save(new Assignee("Hajni", "hajni@gmail.com"));
         assigneeRepository.save(new Assignee("Dóri", "dori@gmail.com"));
+        assigneeRepository.save(new Assignee("Viki", "viki@gmail.com"));
+        assigneeRepository.save(new Assignee("Johi", "johi@gmail.com"));
+        assigneeRepository.save(new Assignee("Eszter", "eszter@gmail.com"));
     }
 }

@@ -13,6 +13,8 @@ public class Todo {
     private String title;
     private boolean isUrgent;
     private boolean isDone;
+    @ManyToOne
+    private Assignee assignee;
 
     public Todo(String title, boolean isUrgent, boolean isDone) {
         this.title = title;
@@ -57,5 +59,13 @@ public class Todo {
 
     public void setIsDone(boolean done) {
         isDone = done;
+    }
+
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
     }
 }
