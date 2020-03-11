@@ -11,20 +11,20 @@
         <form action="#" th:action="@{'/todo/' + ${id} + '/edit'}" th:method="post">
             <div>
                 <label for="title">Todo Description</label>
-                <input type="text" id="title" th:name="title" th:value="${todo.getTitle()}">
+                <input type="text" id="title" th:name="title" th:value="${todo.title}">
             </div>
             <div>
                 <label for="isUrgent">Urgent</label>
-                <input type="checkbox" id="isUrgent" th:name="isUrgent" th:checked="${todo.getIsUrgent()}">
+                <input type="checkbox" id="isUrgent" th:name="isUrgent" th:checked="${todo.isUrgent}">
             </div>
             <div>
                 <label for="isDone">Done</label>
-                <input type="checkbox" id="isDone" th:name="isDone" th:checked="${todo.getIsDone()}">
+                <input type="checkbox" id="isDone" th:name="isDone" th:checked="${todo.isDone}">
             </div>
             <div>
                 <label for="assignee">Assignee</label>
                 <select id="assignee" th:name="assignee">
-                    <option th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${todo.assignee.getName()}"></option>
+                    <option th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(currentAssignee)}"></option>
                 </select>
             </div>
             <input type="submit" th:value="Submit">

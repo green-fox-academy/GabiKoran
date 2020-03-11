@@ -55,6 +55,7 @@ public class TodoController {
     public String editForm(@PathVariable Long id, Model model) {
         model.addAttribute("id", id);
         model.addAttribute("todo", todoService.findTodoById(id));
+        model.addAttribute("currentAssignee", todoService.findTodoById(id).getAssignee().getName());
         model.addAttribute("persons", assigneeService.findAll());
         return "edit";
     }

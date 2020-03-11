@@ -28,11 +28,11 @@ public class TodoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Assignee csenge = new Assignee("Csenge", "csenge@gmail.com");
-        Assignee hajni = new Assignee("Hajni", "csenge@gmail.com");
-        Assignee dori = new Assignee("Dóri", "csenge@gmail.com");
-        Assignee viki = new Assignee("Viki", "csenge@gmail.com");
-        Assignee johi = new Assignee("Johi", "csenge@gmail.com");
-        Assignee eszter = new Assignee("Eszter", "csenge@gmail.com");
+        Assignee hajni = new Assignee("Hajni", "hajni@gmail.com");
+        Assignee dori = new Assignee("Dóri", "dori@gmail.com");
+        Assignee viki = new Assignee("Viki", "viki@gmail.com");
+        Assignee johi = new Assignee("Johi", "johi@gmail.com");
+        Assignee eszter = new Assignee("Eszter", "eszter@gmail.com");
 
         assigneeRepository.save(csenge);
         assigneeRepository.save(hajni);
