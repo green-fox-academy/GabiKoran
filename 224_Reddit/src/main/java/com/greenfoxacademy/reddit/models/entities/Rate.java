@@ -1,6 +1,7 @@
 package com.greenfoxacademy.reddit.models.entities;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 
 @Entity
 public class Rate {
