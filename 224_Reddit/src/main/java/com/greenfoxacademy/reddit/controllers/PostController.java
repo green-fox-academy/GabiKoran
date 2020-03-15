@@ -2,6 +2,7 @@ package com.greenfoxacademy.reddit.controllers;
 
 import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.services.PostService;
+import com.greenfoxacademy.reddit.services.RateService;
 import com.greenfoxacademy.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +17,13 @@ public class PostController {
 
     private PostService postService;
     private UserService userService;
+    private RateService rateService;
 
     @Autowired
-    public PostController(PostService postService, UserService userService) {
+    public PostController(PostService postService, UserService userService, RateService rateService) {
         this.postService = postService;
         this.userService = userService;
+        this.rateService = rateService;
     }
 
     @GetMapping("/{userid}/p1")
@@ -62,13 +65,15 @@ public class PostController {
 
     @PostMapping("/{userid}/{postid}/plus")
     public String incrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
-        postService.incrementRating(postid);
+        rateService.ratePlus(postid, userid);
+//        postService.incrementRating(postid);
         return "redirect:/" + userid + "/p1";
     }
 
     @PostMapping("/{userid}/{postid}/minus")
     public String decrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
-        postService.decrementRating(postid);
+        rateService.rateMinus(postid, userid);
+//        postService.decrementRating(postid);
         return "redirect:/" + userid + "/p1";
     }
 }

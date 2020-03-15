@@ -2,6 +2,8 @@ package com.greenfoxacademy.reddit.models.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -15,10 +17,13 @@ public class Post {
     private LocalDate creationDate;
     @ManyToOne
     private User owner;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Rate> postRatings;
 
     public Post() {
         this.rating = 1;
         this.creationDate = LocalDate.now();
+        this.postRatings = new ArrayList<>();
     }
 
     public Post(String title, String url) {
@@ -26,6 +31,7 @@ public class Post {
         this.url = url;
         this.rating = 1;
         this.creationDate = LocalDate.now();
+        this.postRatings = new ArrayList<>();
     }
 
     public Long getId() {

@@ -16,15 +16,20 @@ public class User {
     @JoinTable(name = "ownership")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Post> posts;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Rate> userRatings;
+
 
     public User() {
         posts = new ArrayList<>();
+        userRatings = new ArrayList<>();
     }
 
     public User(String name, String email) {
         this.name = name;
         this.email = email;
         posts = new ArrayList<>();
+        userRatings = new ArrayList<>();
     }
 
     public User(String name, String email, String password) {
@@ -32,6 +37,7 @@ public class User {
         this.email = email;
         this.password = password;
         posts = new ArrayList<>();
+        userRatings = new ArrayList<>();
     }
 
     public Long getId() {
