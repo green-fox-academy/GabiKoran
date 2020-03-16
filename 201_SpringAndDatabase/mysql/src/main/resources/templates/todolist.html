@@ -41,7 +41,10 @@
                     <td th:text="${todo.title}"></td>
                     <td th:text="${todo.isUrgent ? '!' : '-'}"></td>
                     <td th:text="${todo.isDone ? 'Done': '-'}"></td>
-                    <td th:text="${todo.assignee.getName()}"></td>
+                    <td>
+                        <span th:if="*{todo.assignee == null} "> - </span>
+                        <span th:unless="*{todo.assignee == null}" th:text="*{todo.assignee.getName()}"></span>
+                    </td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
                             <button th:text="'delete'"></button>

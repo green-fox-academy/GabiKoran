@@ -24,7 +24,8 @@
             <div>
                 <label for="assignee">Assignee</label>
                 <select id="assignee" th:name="assignee">
-                    <option th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(currentAssignee)}"></option>
+                    <option th:if="${currentAssignee != null}" th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(currentAssignee)}"></option>
+                    <option th:unless="${currentAssignee != null}" th:each="person : ${persons}" th:text="${person.getName()}"></option>
                 </select>
             </div>
             <input type="submit" th:value="Submit">

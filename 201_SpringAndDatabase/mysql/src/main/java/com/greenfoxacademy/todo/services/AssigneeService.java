@@ -41,4 +41,8 @@ public class AssigneeService {
         return null;
         //return findOneById.orElse(null);
     }
+
+    public Optional<Assignee> getAssigneeByName(String name) {
+        return assigneeRepository.findByName(name);
+    }
 }

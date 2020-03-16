@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.controllers;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.stereotype.Controller;
@@ -55,13 +56,17 @@ public class TodoController {
     public String editForm(@PathVariable Long id, Model model) {
         model.addAttribute("id", id);
         model.addAttribute("todo", todoService.findTodoById(id));
-        model.addAttribute("currentAssignee", todoService.findTodoById(id).getAssignee().getName());
+        if (todoService.findTodoById(id).getAssignee() != null) {
+            model.addAttribute("currentAssignee", todoService.findTodoById(id).getAssignee().getName());
+        } else {
+            model.addAttribute("currentAssignee", null);
+        }
         model.addAttribute("persons", assigneeService.findAll());
         return "edit";
     }
 
     @PostMapping("/{id}/edit")
-    public String edit(@PathVariable Long id, String title, Boolean isUrgent,  Boolean isDone) {
+    public String edit(@PathVariable Long id, String title, Boolean isUrgent, Boolean isDone, String assignee) {
         if (isUrgent == null) {
             isUrgent = false;
         }
@@ -71,6 +76,8 @@ public class TodoController {
         todoService.findTodoById(id).setTitle(title);
         todoService.findTodoById(id).setIsUrgent(isUrgent);
         todoService.findTodoById(id).setIsDone(isDone);
+        Assignee a = assigneeService.getAssigneeByName(assignee).get();
+        todoService.findTodoById(id).setAssignee(a);
         todoService.edit(todoService.findTodoById(id));
         return "redirect:/todo";
     }

@@ -30,7 +30,7 @@ public class TodoService {
     }
 
     public void add(String title) {
-        todoRepository.save(new Todo(title));
+        todoRepository.save(new Todo(title, false, false, null));
     }
 
     public void edit(Todo todo) {
