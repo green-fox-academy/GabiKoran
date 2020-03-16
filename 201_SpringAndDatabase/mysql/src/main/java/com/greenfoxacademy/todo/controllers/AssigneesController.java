@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todo.controllers;
 
 import com.greenfoxacademy.todo.services.AssigneeService;
+import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class AssigneesController {
 
     private AssigneeService assigneeService;
+    private TodoService todoService;
 
     @Autowired
-    public AssigneesController(AssigneeService assigneeService) {
+    public AssigneesController(AssigneeService assigneeService, TodoService todoService) {
         this.assigneeService = assigneeService;
+        this.todoService = todoService;
     }
 
     @RequestMapping(value={"/list", "/", ""}, method= RequestMethod.GET)
@@ -59,5 +62,17 @@ public class AssigneesController {
         assigneeService.findAssigneeById(id).setEmail(email);
         assigneeService.edit(assigneeService.findAssigneeById(id));
         return "redirect:/assignees";
+    }
+
+    @GetMapping("/{id}/todos")
+    public String listTodosForAssignee(@PathVariable Long id, Model model) {
+        model.addAttribute("id", id);
+        model.addAttribute("assignee", assigneeService.findAssigneeById(id));
+        if (assigneeService.findAssigneeById(id) != null) {
+            model.addAttribute("todosForAssignee", todoService.findAllByAssignee(assigneeService.findAssigneeById(id)));
+        } else {
+            model.addAttribute("error", "You have not any todos, yet.");
+        }
+        return "listTodosForAssignee";
     }
 }

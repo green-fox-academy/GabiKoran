@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.services;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,9 @@ public class TodoService {
 
     public Iterable<Todo> findAllByTitleContains(String input) {
         return todoRepository.findAllByTitleContains(input);
+    }
+
+    public Iterable<Todo> findAllByAssignee(Assignee assignee) {
+        return todoRepository.findAllByAssignee(assignee);
     }
 }

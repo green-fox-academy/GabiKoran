@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todo.services;
 
 import com.greenfoxacademy.todo.models.Assignee;
+import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
