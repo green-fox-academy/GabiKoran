@@ -1,6 +1,9 @@
 package com.greenfoxacademy.todo.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table (name = "todos")
@@ -16,25 +19,34 @@ public class Todo {
 //    @ManyToOne(cascade = CascadeType.ALL)
     @ManyToOne
     private Assignee assignee;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dueDate;
 
     public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
         this.title = title;
         this.isUrgent = isUrgent;
         this.isDone = isDone;
         this.assignee = assignee;
+        this.creationDate = LocalDate.now();
     }
 
     public Todo(String title, boolean isUrgent, boolean isDone) {
         this.title = title;
         this.isUrgent = isUrgent;
         this.isDone = isDone;
+        this.creationDate = LocalDate.now();
+
     }
 
     public Todo(String title) {
         this.title = title;
+        this.creationDate = LocalDate.now();
     }
 
     public Todo() {
+        this.creationDate = LocalDate.now();
     }
 
     public long getId() {
@@ -75,5 +87,21 @@ public class Todo {
 
     public void setAssignee(Assignee assignee) {
         this.assignee = assignee;
+    }
+
+    public LocalDate getCreatindDate() {
+        return creationDate;
+    }
+
+    public void setCreatindDate(LocalDate creatindDate) {
+        this.creationDate = creatindDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 }
