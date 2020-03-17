@@ -43,7 +43,7 @@
                     <td th:text="${todo.isDone ? 'Done': '-'}"></td>
                     <td>
                         <span th:if="*{todo.assignee == null} "> - </span>
-                        <span th:unless="*{todo.assignee == null}" th:text="*{todo.assignee.getName()}"></span>
+                        <a th:href="@{'/assignees/' + ${todo.assignee.id} + '/todos'}" th:text="${todo.assignee.name}"></a>
                     </td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + ${todo.id} + '/delete'}" method="post">
