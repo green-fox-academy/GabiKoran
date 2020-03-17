@@ -47,7 +47,7 @@
                     <td th:text="${todo.title}"></td>
                     <td th:text="${todo.isUrgent ? '!' : '-'}"></td>
                     <td th:text="${todo.isDone ? 'Done': '-'}"></td>
-                    <td th:text="${todo.getCreatindDate()}"></td>
+                    <td th:text="${todo.getCreationDate()}"></td>
                     <td>
                         <span th:if="*{todo.assignee == null} "> - </span>
                         <a th:href="@{'/assignees/' + ${todo.assignee.id} + '/todos'}" th:text="${todo.assignee.name}"></a>

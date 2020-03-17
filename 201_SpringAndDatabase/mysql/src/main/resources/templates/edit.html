@@ -22,6 +22,10 @@
                 <input type="checkbox" id="isDone" th:name="isDone" th:checked="${todo.isDone}">
             </div>
             <div>
+                <label for="dueDate">Done</label>
+                <input type="date" id="dueDate" th:name="dueDate">
+            </div>
+            <div>
                 <label for="assignee">Assignee</label>
                 <select id="assignee" th:name="assignee">
                     <option th:if="${currentAssignee != null}" th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(currentAssignee)}"></option>

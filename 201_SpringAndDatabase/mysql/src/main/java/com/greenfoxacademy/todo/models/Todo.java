@@ -89,12 +89,12 @@ public class Todo {
         this.assignee = assignee;
     }
 
-    public LocalDate getCreatindDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreatindDate(LocalDate creatindDate) {
-        this.creationDate = creatindDate;
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public LocalDate getDueDate() {
@@ -103,5 +103,10 @@ public class Todo {
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }
