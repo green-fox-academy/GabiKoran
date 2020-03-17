@@ -3,9 +3,12 @@ package com.greenfoxacademy.todo.controllers;
 import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/todo")
@@ -66,7 +69,10 @@ public class TodoController {
     }
 
     @PostMapping("/{id}/edit")
-    public String edit(@PathVariable Long id, String title, Boolean isUrgent, Boolean isDone, String assignee) {
+    public String edit(@PathVariable Long id, String title, Boolean isUrgent, Boolean isDone, String assignee, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate) {
+        //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline
+        // @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate
+
         if (isUrgent == null) {
             isUrgent = false;
         }
@@ -76,6 +82,7 @@ public class TodoController {
         todoService.findTodoById(id).setTitle(title);
         todoService.findTodoById(id).setIsUrgent(isUrgent);
         todoService.findTodoById(id).setIsDone(isDone);
+        todoService.findTodoById(id).setDueDate(dueDate);
         Assignee a = assigneeService.getAssigneeByName(assignee).get();
         todoService.findTodoById(id).setAssignee(a);
         todoService.edit(todoService.findTodoById(id));
