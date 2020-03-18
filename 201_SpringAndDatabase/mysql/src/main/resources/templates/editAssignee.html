@@ -8,14 +8,14 @@
 </head>
     <body>
         <h1>Edit Assignee</h1>
-        <form action="#" th:action="@{'/assignees/' + ${id} + '/edit'}" th:method="post">
+        <form action="#" th:action="@{'/assignees/' + ${id} + '/edit'}" method="post" th:object="${assignee}">
             <div>
                 <label for="name">Name</label>
-                <input type="text" id="name" th:name="name" th:value="${assignee.getName()}">
+                <input type="text" id="name" name="name" th:value="*{name}">
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" th:value="${assignee.getEmail()}" th:name="email">
+                <input type="email" id="email" name="email" th:value="*{email}">
             </div>
             <input type="submit" value="Submit">
             <a th:href="@{/assignees}">Cancel</a>

@@ -1,5 +1,6 @@
 package com.greenfoxacademy.todo.controllers;
 
+import com.greenfoxacademy.todo.models.Assignee;
 import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,18 +53,13 @@ public class AssigneesController {
 
     @GetMapping("/{id}/edit")
     public String editForm(@PathVariable Long id, Model model) {
-        model.addAttribute("id", id);
         model.addAttribute("assignee", assigneeService.findAssigneeById(id));
-        model.addAttribute("name", assigneeService.findAssigneeById(id).getName());
-        model.addAttribute("name", assigneeService.findAssigneeById(id).getEmail());
         return "editAssignee";
     }
 
     @PostMapping("/{id}/edit")
-    public String edit(@PathVariable Long id, String name, String email) {
-        assigneeService.findAssigneeById(id).setName(name);
-        assigneeService.findAssigneeById(id).setEmail(email);
-        assigneeService.edit(assigneeService.findAssigneeById(id));
+    public String edit(@ModelAttribute Assignee assignee) {
+        assigneeService.edit(assignee);
         return "redirect:/assignees";
     }
 

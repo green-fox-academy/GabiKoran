@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Edit Todo</h1>
-        <form action="#" th:action="@{'/todo/' + ${id} + '/edit'}" th:method="post" th:object="${todo}">
+        <form action="#" th:action="@{'/todo/' + ${id} + '/edit'}" method="post" th:object="${todo}">
             <div>
                 <label for="title">Todo Description</label>
                 <input type="text" id="title" name="title" th:value="*{title}">
