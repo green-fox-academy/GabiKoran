@@ -34,6 +34,10 @@ public class TodoService {
         todoRepository.save(new Todo(title));
     }
 
+    public void add(Todo todo) {
+        todoRepository.save(todo);
+    }
+
     public void edit(Todo todo) {
         todoRepository.save(todo);
     }

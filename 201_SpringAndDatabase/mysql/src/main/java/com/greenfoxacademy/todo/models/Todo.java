@@ -24,6 +24,15 @@ public class Todo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dueDate;
 
+    public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee, LocalDate dueDate) {
+        this.title = title;
+        this.isUrgent = isUrgent;
+        this.isDone = isDone;
+        this.assignee = assignee;
+        this.dueDate = dueDate;
+        this.creationDate = LocalDate.now();
+    }
+
     public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
         this.title = title;
         this.isUrgent = isUrgent;

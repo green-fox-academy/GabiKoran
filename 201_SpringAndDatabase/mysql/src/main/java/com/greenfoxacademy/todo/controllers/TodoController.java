@@ -42,13 +42,14 @@ public class TodoController {
     }
 
     @GetMapping("/add")
-    public String addForm() {
+    public String addForm(Model model) {
+        model.addAttribute("assignees", assigneeService.findAll());
         return "add";
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute(name="title") String title) {
-        todoService.add(title);
+    public String add(@ModelAttribute Todo todo) {
+        todoService.add(todo);
         return "redirect:/todo";
     }
 
