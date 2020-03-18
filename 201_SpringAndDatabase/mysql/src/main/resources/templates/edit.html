@@ -8,28 +8,28 @@
     </head>
     <body>
         <h1>Edit Todo</h1>
-        <form action="#" th:action="@{'/todo/' + ${id} + '/edit'}" th:method="post">
+        <form action="#" th:action="@{'/todo/' + ${id} + '/edit'}" th:method="post" th:object="${todo}">
             <div>
                 <label for="title">Todo Description</label>
-                <input type="text" id="title" th:name="title" th:value="${todo.title}">
+                <input type="text" id="title" name="title" th:value="*{title}">
             </div>
             <div>
                 <label for="isUrgent">Urgent</label>
-                <input type="checkbox" id="isUrgent" th:name="isUrgent" th:checked="${todo.isUrgent}">
+                <input type="checkbox" id="isUrgent" name="isUrgent" th:checked="*{isUrgent}">
             </div>
             <div>
                 <label for="isDone">Done</label>
-                <input type="checkbox" id="isDone" th:name="isDone" th:checked="${todo.isDone}">
+                <input type="checkbox" id="isDone" name="isDone" th:checked="*{isDone}">
             </div>
             <div>
                 <label for="dueDate">Done</label>
-                <input type="date" id="dueDate" th:name="dueDate" th:value="${todo.dueDate}">
+                <input type="date" id="dueDate" name="dueDate" th:value="*{dueDate}">
             </div>
             <div>
                 <label for="assignee">Assignee</label>
-                <select id="assignee" th:name="assignee">
-                    <option th:if="${currentAssignee != null}" th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(currentAssignee)}"></option>
-                    <option th:unless="${currentAssignee != null}" th:each="person : ${persons}" th:text="${person.getName()}"></option>
+                <select id="assignee" name="assignee">
+                    <option th:if="*{assignee != null}" th:each="person : ${persons}" th:text="${person.getName()}" th:selected="${person.name.equals(todo.getAssignee().getName())}" th:value="${person.id}"></option>
+                    <option th:unless="*{assignee != null}" th:each="person : ${persons}" th:text="${person.getName()}" th:value="${person.id}"></option>
                 </select>
             </div>
             <input type="submit" value="Submit">

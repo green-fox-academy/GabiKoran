@@ -1,14 +1,11 @@
 package com.greenfoxacademy.todo.controllers;
 
-import com.greenfoxacademy.todo.models.Assignee;
+import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/todo")
@@ -57,35 +54,14 @@ public class TodoController {
 
     @GetMapping("/{id}/edit")
     public String editForm(@PathVariable Long id, Model model) {
-        model.addAttribute("id", id);
         model.addAttribute("todo", todoService.findTodoById(id));
-        if (todoService.findTodoById(id).getAssignee() != null) {
-            model.addAttribute("currentAssignee", todoService.findTodoById(id).getAssignee().getName());
-        } else {
-            model.addAttribute("currentAssignee", null);
-        }
         model.addAttribute("persons", assigneeService.findAll());
         return "edit";
     }
 
     @PostMapping("/{id}/edit")
-    public String edit(@PathVariable Long id, String title, Boolean isUrgent, Boolean isDone, String assignee, @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate) {
-        //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate deadline
-        // @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate
-
-        if (isUrgent == null) {
-            isUrgent = false;
-        }
-        if (isDone == null) {
-            isDone = false;
-        }
-        todoService.findTodoById(id).setTitle(title);
-        todoService.findTodoById(id).setIsUrgent(isUrgent);
-        todoService.findTodoById(id).setIsDone(isDone);
-        todoService.findTodoById(id).setDueDate(dueDate);
-        Assignee a = assigneeService.getAssigneeByName(assignee).get();
-        todoService.findTodoById(id).setAssignee(a);
-        todoService.edit(todoService.findTodoById(id));
+    public String edit(@ModelAttribute Todo todo) {
+        todoService.edit(todo);
         return "redirect:/todo";
     }
 }
