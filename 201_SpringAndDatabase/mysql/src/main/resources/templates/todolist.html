@@ -49,8 +49,8 @@
                     <td th:text="*{isDone ? 'Done': '-'}"></td>
                     <td th:text="*{getCreationDate()}"></td>
                     <td>
-                        <span th:if="*{assignee == null} "> - </span>
-                        <a th:href="@{'/assignees/' + *{assignee.id} + '/todos'}" th:text="*{assignee.name}"></a>
+                        <span th:if="*{assignee == null}"> - </span>
+                        <a th:unless="*{assignee == null}" th:href="@{'/assignees/' + *{assignee.id} + '/todos'}" th:text="*{assignee.name}"></a>
                     </td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + *{id} + '/delete'}" method="post">
