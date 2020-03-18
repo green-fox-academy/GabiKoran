@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/assignees")
 public class AssigneesController {
@@ -22,10 +25,10 @@ public class AssigneesController {
 
     @RequestMapping(value={"/list", "/", ""}, method= RequestMethod.GET)
     public String listAssignees(Model model) {
-        if (assigneeService.findAll() != null) {
-            model.addAttribute("assigness", assigneeService.findAll());
-        } else {
+        if (assigneeService.findAll() == null || assigneeService.findAllSize() == 0) {
             model.addAttribute("error", "We haven't any assignees, yet.");
+        } else {
+            model.addAttribute("assigness", assigneeService.findAll());
         }
         return "assignees";
     }

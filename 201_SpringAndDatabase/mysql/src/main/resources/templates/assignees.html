@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
-<link href="styles.css" rel="stylesheet" type="text/css">
-<head>
-    <meta charset="UTF-8">
-    <title>Assignees</title>
-</head>
-<body>
-<div class="secondBG">
-    <div th:if="${error}" th:text="${error}"></div>
-    <div th:unless="${error}">
-        <h1>Assignees:</h1>
-    <div>
-        <a th:href="@{/assignees/addAssignee}">Add new assignee</a>
-    </div>
-        <table>
-        <thead>
-        <tr>
-            <th th:text="'ID'"></th>
-            <th th:text="'NAME'"> </th>
-            <th th:text="'EMAIL'"> </th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="assignee : ${assigness}" th:object="${assignee}">
-            <td th:text="*{id}"></td>
-            <td>
-                    <a th:href="@{'/assignees/' + *{id} + '/todos'}" th:text="*{name}"></a>
-            </td>
-            <td th:text="*{email}"></td>
-            <td>
-                <form action="#" th:action="@{'/assignees/' + *{id} + '/delete'}" method="post">
-                    <button>delete</button>
-                </form>
-            </td>
-            <td>
-                <form action="#" th:action="@{'/assignees/' + *{id} + '/edit'}" method="get">
-                    <button>edit</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    </div>
-    <div>
-        <a th:href="@{/todo}">Go to todos</a>
-    </div>
-</div>
-</body>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Assignees</title>
+    </head>
+    <body>
+        <div class="secondBG">
+            <div th:if="${error}" th:text="${error}"></div>
+            <div th:unless="${error}">
+                <h1>Assignees:</h1>
+                <div>
+                    <a th:href="@{/assignees/addAssignee}">Add new assignee</a>
+                </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="assignee : ${assigness}" th:object="${assignee}">
+                                <td th:text="*{id}"></td>
+                                <td>
+                                        <a th:href="@{'/assignees/' + *{id} + '/todos'}" th:text="*{name}"></a>
+                                </td>
+                                <td th:text="*{email}"></td>
+                                <td>
+                                    <form action="#" th:action="@{'/assignees/' + *{id} + '/delete'}" method="post">
+                                        <button>delete</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="#" th:action="@{'/assignees/' + *{id} + '/edit'}" method="get">
+                                        <button>edit</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <a th:href="@{/todo}">Go to todos</a>
+                </div>
+        </div>
+    </body>
 </html>

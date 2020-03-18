@@ -46,4 +46,12 @@ public class AssigneeService {
     public Optional<Assignee> getAssigneeByName(String name) {
         return assigneeRepository.findByName(name);
     }
+
+    public int findAllSize() {
+        int counter = 0;
+        for (Object i : findAll()) {
+            counter++;
+        }
+        return counter;
+    }
 }
