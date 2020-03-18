@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:type="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
 <link href="styles.css" rel="stylesheet" type="text/css">
 <head>
@@ -9,11 +9,12 @@
 <body>
 <div class="secondBG">
     <div th:if="${error}" th:text="${error}"></div>
-    <h1 th:unless="${error}">Assignees:</h1>
+    <div th:unless="${error}">
+        <h1>Assignees:</h1>
     <div>
         <a th:href="@{/assignees/addAssignee}">Add new assignee</a>
     </div>
-    <table th:unless="${error}">
+        <table>
         <thead>
         <tr>
             <th th:text="'ID'"></th>
@@ -24,25 +25,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="assignee : ${assigness}">
-            <td th:text="${assignee.id}"></td>
+        <tr th:each="assignee : ${assigness}" th:object="${assignee}">
+            <td th:text="*{id}"></td>
             <td>
-                    <a th:href="@{'/assignees/' + ${assignee.id} + '/todos'}" th:text="${assignee.name}"></a>
+                    <a th:href="@{'/assignees/' + *{id} + '/todos'}" th:text="*{name}"></a>
             </td>
-            <td th:text="${assignee.email}"></td>
+            <td th:text="*{email}"></td>
             <td>
-                <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/delete'}" method="post">
-                    <button th:text="'delete'"></button>
+                <form action="#" th:action="@{'/assignees/' + *{id} + '/delete'}" method="post">
+                    <button>delete</button>
                 </form>
             </td>
             <td>
-                <form action="#" th:action="@{'/assignees/' + ${assignee.id} + '/edit'}" method="get">
-                    <button th:text="'edit'"></button>
+                <form action="#" th:action="@{'/assignees/' + *{id} + '/edit'}" method="get">
+                    <button>edit</button>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
+    </div>
     <div>
         <a th:href="@{/todo}">Go to todos</a>
     </div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<div class="secondBG">
+    <form action="#" th:action="@{'/todo/'}" method="get">
+        <div>
+            <label for="assigneeName">Search for assignee:</label>
+            <input th:name="assigneeName" id="assigneeName" type="text" placeholder="'Assignee Name'">
+        </div>
+        <div>
+            <label for="title"></label>
+            <input th:name="search" id="title" type="text" placeholder="'Assignee Name'">
+        </div>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
