@@ -6,6 +6,7 @@ import com.greenfoxacademy.todo.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -61,5 +62,16 @@ public class TodoService {
 
     public Iterable<Todo> findAllByAssignee(Assignee assignee) {
         return todoRepository.findAllByAssignee(assignee);
+    }
+
+    public void setAssigneeNull(Todo todo) {
+        todo.setAssignee(null);
+        todoRepository.save(todo);
+    }
+
+    public void setAssigneeNullForTodoList (List<Todo> todos) {
+        for (Todo todo : todos) {
+            setAssigneeNull(todo);
+        }
     }
 }

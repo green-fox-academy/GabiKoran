@@ -65,4 +65,14 @@ public class TodoController {
         todoService.edit(todo);
         return "redirect:/todo";
     }
+
+    @GetMapping("/search")
+    public String searchForm() {
+        return "search";
+    }
+
+    @GetMapping("/search-result")
+    public String showSearchResult() {
+        return "search-result";
+    }
 }

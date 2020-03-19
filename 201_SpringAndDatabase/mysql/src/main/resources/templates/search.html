@@ -7,14 +7,30 @@
     </head>
     <body>
         <div class="secondBG">
-            <form action="#" th:action="@{'/todo/'}" method="get">
+            <form action="#" th:action="@{'/todo/search-result'}" method="get">
                 <div>
-                    <label for="assigneeName">Search for assignee:</label>
-                    <input th:name="assigneeName" id="assigneeName" type="text" placeholder="'Assignee Name'">
+                    <label for="searchTitle">Search in title:</label>
+                    <input name="searchTitle" id="searchTitle" type="text">
                 </div>
                 <div>
-                    <label for="title"></label>
-                    <input th:name="search" id="title" type="text" placeholder="'Assignee Name'">
+                    <label for="isUrgent">Urgent:</label>
+                    <select name="isUrgent" id="isUrgent">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">urgent</option>
+                        <option value="0">not urgent</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="isDone">Status:</label>
+                    <select name="isDone" id="isDone">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option value="1">done</option>
+                        <option value="0">not finished yet</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="assigneeName">Search for assignee:</label>
+                    <input th:name="assigneeName" id="assigneeName" type="text">
                 </div>
                 <input type="submit" value="Search">
             </form>

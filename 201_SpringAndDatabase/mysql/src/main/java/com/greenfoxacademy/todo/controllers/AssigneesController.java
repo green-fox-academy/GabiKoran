@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todo.controllers;
 
 import com.greenfoxacademy.todo.models.Assignee;
+import com.greenfoxacademy.todo.models.Todo;
 import com.greenfoxacademy.todo.services.AssigneeService;
 import com.greenfoxacademy.todo.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class AssigneesController {
 
     @PostMapping("/{id}/delete")
     public String deleteTodoById(@PathVariable Long id) {
+        todoService.setAssigneeNullForTodoList((List<Todo>)todoService.findAllByAssignee(assigneeService.findAssigneeById(id)));
         assigneeService.deleteById(id);
         return "redirect:/assignees";
     }
