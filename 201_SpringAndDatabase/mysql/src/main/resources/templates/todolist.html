@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<link href="https://fonts.googleapis.com/css?family=Raleway:100,500,700&display=swap" rel="stylesheet">-->
-<!--<link href="styles.css" rel="stylesheet" type="text/css">-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<head>
-    <meta charset="UTF-8">
-    <title>Todos</title>
-</head>
-        <body>
-        <div class="secondBG">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <title>Todos</title>
+    </head>
+    <body>
+        <div>
             <form action="#" th:action="@{'/todo/'}" method="get">
                 <input th:name="search" type="text">
                 <input type="submit" value="Search">
@@ -24,28 +22,28 @@
             <div>
                 <a th:if="${error}" th:href="@{/todo}">Back to the list</a>
             </div>
-            <table th:unless="${error}">
+            <table class="table table-sm" th:unless="${error}">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>DEADLINE</th>
-                    <th>ACTION</th>
-                    <th>URGENT</th>
-                    <th>DONE</th>
-                    <th>CREATION DATE</th>
-                    <th>ASSIGNEE</th>
-                    <th></th>
-                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">DEADLINE</th>
+                    <th scope="col">ACTION</th>
+                    <th scope="col">URGENT</th>
+                    <th scope="col">DONE</th>
+                    <th scope="col">CREATION DATE</th>
+                    <th scope="col">ASSIGNEE</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="todo : ${todos}" th:object="${todo}">
-                    <td th:text="*{id}"></td>
+                    <td th:text="*{id}"></th>
                     <td>
                         <span th:if="*{getDueDate() == null} "> ---- - -- - -- </span>
                         <span th:unless="*{getDueDate() == null} " th:text="*{getDueDate()}"></span>
                     </td>
-                    <td th:text="*{title}"></td>
+                    <th scope="row" th:text="*{title}"></th>
                     <td th:text="*{isUrgent ? '!' : '-'}"></td>
                     <td th:text="*{isDone ? 'Done': '-'}"></td>
                     <td th:text="*{getCreationDate()}"></td>
@@ -55,12 +53,12 @@
                     </td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + *{id} + '/delete'}" method="post">
-                            <button>delete</button>
+                            <button class="btn btn-danger">delete</button>
                         </form>
                     </td>
                     <td>
                         <form action="#" th:action="@{'/todo/' + *{id} + '/edit'}" method="get">
-                            <button>edit</button>
+                            <button class="btn btn-primary">edit</button>
                         </form>
                     </td>
                 </tr>
@@ -70,5 +68,5 @@
                 <a th:href="@{/todo}">Show full list</a>
             </div>
         </div>
-        </body>
+    </body>
 </html>
