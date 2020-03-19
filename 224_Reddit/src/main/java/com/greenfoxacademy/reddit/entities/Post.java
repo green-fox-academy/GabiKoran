@@ -16,13 +16,13 @@ public class Post {
     private Integer votes;
 
     public Post() {
-        this.votes = 0;
+        this.votes = 1;
     }
 
     public Post(String title, String url) {
         this.title = title;
         this.url = url;
-        this.votes = 0;
+        this.votes = 1;
     }
 
     public Long getId() {
