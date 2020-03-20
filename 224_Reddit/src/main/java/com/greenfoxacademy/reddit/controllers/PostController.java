@@ -21,4 +21,9 @@ public class PostController {
         model.addAttribute("posts", postService.findAllPosts());
         return "index";
     }
+
+    @GetMapping("/submit")
+    public String submitNewPost() {
+        return "submit";
+    }
 }
