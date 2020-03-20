@@ -21,7 +21,7 @@ public class PostController {
 
     @GetMapping("/")
     public String listPosts(Model model) {
-        model.addAttribute("posts", postService.findAllPostsOrderByVotesDesc());
+        model.addAttribute("posts", postService.findAllPostsOrderByRatingDesc());
         return "index";
     }
 
@@ -33,6 +33,18 @@ public class PostController {
     @PostMapping("/submit")
     public String submitNewPost(@ModelAttribute Post post) {
         postService.save(post);
+        return "redirect:/";
+    }
+
+    @PostMapping("/plus")
+    public String incrementRating(@ModelAttribute(name="id") Long id) {
+        postService.incrementRating(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("/minus")
+    public String decrementRating(@ModelAttribute(name="id") Long id) {
+        postService.decrementRating(id);
         return "redirect:/";
     }
 }

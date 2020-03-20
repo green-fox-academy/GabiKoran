@@ -14,12 +14,18 @@
         <div>
             <table>
                 <tbody th:each="post : ${posts}" th:object="${post}">
-                    <td th:text="*{votes}"></td>
+                    <td th:text="*{rating}"></td>
                     <td>
-                        <button>+</button>
+                        <form action="#" th:action="@{/plus}" method="post">
+                            <input type="hidden" name="id" th:value="*{id}">
+                            <button>+</button>
+                        </form>
                     </td>
                     <td>
-                        <button>-</button>
+                        <form action="#" th:action="@{/minus}" method="post">
+                            <input type="hidden" name="id" th:value="*{id}">
+                            <button>-</button>
+                        </form>
                     </td>
                     <td>
                         <a th:text="*{title}" th:href="*{url}"></a>

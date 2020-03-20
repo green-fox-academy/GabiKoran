@@ -13,16 +13,16 @@ public class Post {
     private Long id;
     private String title;
     private String url;
-    private Integer votes;
+    private Integer rating;
 
     public Post() {
-        this.votes = 1;
+        this.rating = 1;
     }
 
     public Post(String title, String url) {
         this.title = title;
         this.url = url;
-        this.votes = 1;
+        this.rating = 1;
     }
 
     public Long getId() {
@@ -49,11 +49,11 @@ public class Post {
         this.url = url;
     }
 
-    public Integer getVotes() {
-        return votes;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setVotes(Integer votes) {
-        this.votes = votes;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 }
