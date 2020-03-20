@@ -9,7 +9,7 @@
             <a href="/submit">Submit new post</a>
         </div>
         <div>
-            <h1>Trending Posts</h1>
+            <h1 align="center">Trending Posts</h1>
         </div>
         <div>
             <table>
@@ -22,7 +22,7 @@
                         <button>-</button>
                     </td>
                     <td>
-                        <a th:text="*{title}"></a>
+                        <a th:text="*{title}" th:href="*{url}"></a>
                     </td>
                 </tbody>
             </table>

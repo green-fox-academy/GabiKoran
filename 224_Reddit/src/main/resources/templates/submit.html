@@ -5,23 +5,25 @@
         <title>Submit a new post</title>
     </head>
     <body>
-        <div>
-            <h1>Submit a new post</h1>
-        </div>
-        <div>
-            <form>
-                <div>
-                    <label for="title">Title:</label>
-                    <input id="title" type="text">
-                </div>
-                <div>
-                    <label for="url">URL:</label>
-                    <input id="url" type="text">
-                </div>
-                <div>
-                    <input type="submit" value="Submit">
-                </div>
-            </form>
+        <div align="center">
+            <div>
+                <h1>Submit a new post</h1>
+            </div>
+            <div>
+                <form action="#" th:action="@{/submit}" method="post">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input id="title" type="text" name="title">
+                    </div>
+                    <div>
+                        <label for="url">URL:</label>
+                        <input id="url" type="text" name="url">
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>

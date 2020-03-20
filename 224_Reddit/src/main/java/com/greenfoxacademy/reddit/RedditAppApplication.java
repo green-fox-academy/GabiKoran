@@ -25,5 +25,6 @@ public class RedditAppApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         postRepository.save(new Post("These simulations show how to flatten the coronavirus growth curve", "https://www.washingtonpost.com/graphics/2020/world/corona-simulator/?fbclid=IwAR0SqkVRQCWN-GlbIkbnR3HCdSRYd2LBSicOgBQ74S5lZF_G6UfxlXd3Lq0"));
+        postRepository.save(new Post("index", "https://index.hu/"));
     }
 }
