@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PostService {
 
-    List<Post> findAllPosts();
     Post save(Post post);
+    List<Post> findAllPostsOrderByVotesDesc();
 }

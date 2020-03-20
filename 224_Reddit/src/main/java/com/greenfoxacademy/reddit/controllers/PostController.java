@@ -21,7 +21,7 @@ public class PostController {
 
     @GetMapping("/")
     public String listPosts(Model model) {
-        model.addAttribute("posts", postService.findAllPosts());
+        model.addAttribute("posts", postService.findAllPostsOrderByVotesDesc());
         return "index";
     }
 
