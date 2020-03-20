@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Post {
@@ -14,15 +15,18 @@ public class Post {
     private String title;
     private String url;
     private Integer rating;
+    private LocalDate creationDate;
 
     public Post() {
         this.rating = 1;
+        this.creationDate = LocalDate.now();
     }
 
     public Post(String title, String url) {
         this.title = title;
         this.url = url;
         this.rating = 1;
+        this.creationDate = LocalDate.now();
     }
 
     public Long getId() {
@@ -55,5 +59,9 @@ public class Post {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
     }
 }
