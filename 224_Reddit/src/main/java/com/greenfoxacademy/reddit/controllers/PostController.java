@@ -1,8 +1,10 @@
 package com.greenfoxacademy.reddit.controllers;
 
-import com.greenfoxacademy.reddit.entities.Post;
+import com.greenfoxacademy.reddit.models.PageRequest;
+import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +22,21 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String listPosts(Model model) {
-        model.addAttribute("posts", postService.findAllPostsOrderByRatingDesc());
-        return "index";
+    public String listPostsPage1(Model model) {
+        model.addAttribute("posts", postService.page001());
+        return "page1";
+    }
+
+    @GetMapping("/2")
+    public String listPostsPage2(Model model) {
+        model.addAttribute("posts", postService.page002());
+        return "page2";
+    }
+
+    @GetMapping("/3")
+    public String listPostsPage3(Model model) {
+        model.addAttribute("posts", postService.page003());
+        return "page3";
     }
 
     @GetMapping("/submit")

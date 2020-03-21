@@ -1,4 +1,4 @@
-package com.greenfoxacademy.reddit.entities;
+package com.greenfoxacademy.reddit.models.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
