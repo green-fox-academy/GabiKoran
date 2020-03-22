@@ -22,6 +22,11 @@ public class PostController {
     }
 
     @GetMapping("/")
+    public String startPage() {
+        return "redirect:/login";
+    }
+
+    @GetMapping("/9")
     public String listPostsPage1(Model model) {
         model.addAttribute("posts", postService.page001());
         return "page1";
@@ -60,5 +65,10 @@ public class PostController {
     public String decrementRating(@ModelAttribute(name="id") Long id) {
         postService.decrementRating(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String renderLoginPage() {
+        return "login";
     }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Reddit</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div align="center">
+            <div>
+                <h1>Login</h1>
+            </div>
+            <div>
+                <form action="#" th:action="@{/login}" method="post">
+                    <div>
+                        <label for="login-name">Name:</label>
+                        <input id="login-name" type="text" name="name">
+                    </div>
+                    <div>
+                        <label for="login-password">Password:</label>
+                        <input id="login-password" type="password" name="password">
+                    </div>
+                    <div>
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div align="center">
+            <div>
+                <h1>Sign up</h1>
+            </div>
+            <div>
+                <form action="#" th:action="@{/signup}" method="post">
+                    <div>
+                        <label for="signup-name">Name:</label>
+                        <input id="signup-name" type="text" name="name">
+                    </div>
+                    <div>
+                        <label for="signup-email">Email:</label>
+                        <input id="signup-email" type="email" name="email">
+                    </div>
+                    <div>
+                        <label for="signup-password">Password:</label>
+                        <input id="signup-password" type="password" name="password">
+                    </div>
+                    <div>
+                        <label for="signup-password2">Confirm password:</label>
+                        <input id="signup-password2" type="password" name="password2">
+                    </div>
+                    <div>
+                        <input type="submit" value="Sign up">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
