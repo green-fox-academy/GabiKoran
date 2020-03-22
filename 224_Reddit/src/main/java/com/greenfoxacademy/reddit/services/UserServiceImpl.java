@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         if (isEmailRegistered(email) && isEmailAndPasswordCorrect(email, password)) {
             return "redirect:/" + getUserByEmail(email).getId() + "/p1";
         } else {
-            return "redirect:/login?error=invalid%20email%20or%20password";
+            return "redirect:/login?loginerror=invalid%20email%20or%20password";
         }
     }
 

@@ -22,42 +22,46 @@ public class PostController {
 
     @GetMapping("/{id}/p1")
     public String listPostsPage1(Model model, @PathVariable Long id) {
+        model.addAttribute("userid", id);
         model.addAttribute("posts", postService.page001());
         return "page1";
     }
 
-    @GetMapping("/p2")
-    public String listPostsPage2(Model model) {
+    @GetMapping("/{id}/p2")
+    public String listPostsPage2(Model model, @PathVariable Long id) {
+        model.addAttribute("userid", id);
         model.addAttribute("posts", postService.page002());
         return "page2";
     }
 
-    @GetMapping("/p3")
-    public String listPostsPage3(Model model) {
+    @GetMapping("/{id}/p3")
+    public String listPostsPage3(Model model, @PathVariable Long id) {
+        model.addAttribute("userid", id);
         model.addAttribute("posts", postService.page003());
         return "page3";
     }
 
-    @GetMapping("/submit")
-    public String renderSubmitNewPost() {
+    @GetMapping("/{id}/submit")
+    public String renderSubmitNewPost(Model model, @PathVariable Long id) {
+        model.addAttribute("userid", id);
         return "submit";
     }
 
-    @PostMapping("/submit")
-    public String submitNewPost(@ModelAttribute Post post) {
+    @PostMapping("/{id}/submit")
+    public String submitNewPost(@ModelAttribute Post post, @PathVariable Long id) {
         postService.save(post);
-        return "redirect:/";
+        return "redirect:/" + id + "/p1";
     }
 
-    @PostMapping("/plus")
+    @PostMapping("/{id}/plus")
     public String incrementRating(@ModelAttribute(name="id") Long id) {
         postService.incrementRating(id);
-        return "redirect:/";
+        return "redirect:/" + id + "/p1";
     }
 
-    @PostMapping("/minus")
+    @PostMapping("/{id}/minus")
     public String decrementRating(@ModelAttribute(name="id") Long id) {
         postService.decrementRating(id);
-        return "redirect:/";
+        return "redirect:/" + id + "/p1";
     }
 }

@@ -57,9 +57,5 @@ public class RedditAppApplication implements CommandLineRunner {
         userRepository.save(new User("Eszter", "eszter@gmail.hu", "12345"));
         userRepository.save(new User("Johi", "johi@gmail.hu", "12345"));
         userRepository.save(new User("Gabi", "gabi@gmail.hu", "12345"));
-
-        System.out.println(userService.getUserByEmail("csenge@gmail.hu").getName());
-        System.out.println(userService.isEmailRegistered("csenge@gmail.hu"));
-        System.out.println(userService.isEmailAndPasswordCorrect("csenge@gmail.hu", "12345"));
     }
 }

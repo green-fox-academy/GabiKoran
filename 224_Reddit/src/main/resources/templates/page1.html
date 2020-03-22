@@ -7,7 +7,7 @@
 </head>
     <body>
         <div>
-            <a href="/submit">Submit new post</a>
+            <a th:href="'/' + ${userid} + '/submit'">Submit new post</a>
         </div>
         <div>
             <h1 align="center">Trending Posts</h1>
@@ -17,13 +17,13 @@
                 <tbody th:each="post : ${posts}" th:object="${post}">
                     <td th:text="*{rating}"></td>
                     <td>
-                        <form action="#" th:action="@{/plus}" method="post">
+                        <form action="#" th:action="'/' + ${userid} + '/plus'" method="post">
                             <input type="hidden" name="id" th:value="*{id}">
                             <button>+</button>
                         </form>
                     </td>
                     <td>
-                        <form action="#" th:action="@{/minus}" method="post">
+                        <form action="#" th:action="'/' + ${userid} + '/minus'" method="post">
                             <input type="hidden" name="id" th:value="*{id}">
                             <button>-</button>
                         </form>
@@ -45,10 +45,10 @@
                         </a>
                     </li>
                     <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
-                    <li class="page-item"><a class="page-link" href="/p2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="/p3">3</a></li>
+                    <li class="page-item"><a class="page-link" th:href="'/' + ${userid} + '/p2'">2</a></li>
+                    <li class="page-item"><a class="page-link" th:href="'/' + ${userid} + '/p3'">3</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="/p2" aria-label="Next">
+                        <a class="page-link" th:href="'/' + ${userid} + '/p2'" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>

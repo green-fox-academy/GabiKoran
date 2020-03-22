@@ -10,7 +10,7 @@
             <div>
                 <h1>Login</h1>
             </div>
-            <div class="text-danger" th:if="${error}" th:text="${error}"></div>
+            <div class="text-danger" th:if="${loginerror}" th:text="${loginerror}"></div>
             <div>
                 <form action="#" th:action="@{/login}" method="post">
                     <div>

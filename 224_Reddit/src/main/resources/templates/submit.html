@@ -11,7 +11,7 @@
                 <h1>Submit a new post</h1>
             </div>
             <div>
-                <form action="#" th:action="@{/submit}" method="post">
+                <form action="#" th:action="'/' + ${userid} + '/submit'" method="post">
                     <div>
                         <label for="title">Title:</label>
                         <input id="title" type="text" name="title">

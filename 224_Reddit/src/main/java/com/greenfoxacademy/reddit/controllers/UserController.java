@@ -26,9 +26,9 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String renderLoginPage(Model model, @RequestParam(required = false) String error) {
-        if (error != null) {
-            model.addAttribute("error", error);
+    public String renderLoginPage(Model model, @RequestParam(required = false) String loginerror) {
+        if (loginerror != null) {
+            model.addAttribute("loginerror", loginerror);
         }
         return "/login";
     }
