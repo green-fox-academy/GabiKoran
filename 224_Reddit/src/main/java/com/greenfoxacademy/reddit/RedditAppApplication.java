@@ -1,7 +1,10 @@
 package com.greenfoxacademy.reddit;
 
 import com.greenfoxacademy.reddit.models.entities.Post;
+import com.greenfoxacademy.reddit.models.entities.User;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
+import com.greenfoxacademy.reddit.repositories.UserRepository;
+import com.greenfoxacademy.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,10 +16,14 @@ import java.util.TimeZone;
 public class RedditAppApplication implements CommandLineRunner {
 
     private PostRepository postRepository;
+    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public RedditAppApplication (PostRepository postRepository) {
+    public RedditAppApplication(PostRepository postRepository, UserRepository userRepository, UserService userService) {
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     public static void main(String[] args) {
@@ -42,5 +49,17 @@ public class RedditAppApplication implements CommandLineRunner {
         postRepository.save(new Post("Scary Pocket - Umbrella | Rihanna | Funk cover ft. Cimorelli", "https://www.youtube.com/watch?v=UceKSaN9IW4"));
         postRepository.save(new Post("hiperkarma – jószerencsét!", "https://www.youtube.com/watch?v=PV4rM9sMF-0"));
         postRepository.save(new Post("index", "https://index.hu/"));
+
+        userRepository.save(new User("Hajni", "hajni@gmail.hu", "12345"));
+        userRepository.save(new User("Csenge", "csenge@gmail.hu", "12345"));
+        userRepository.save(new User("Dóri", "dori@gmail.hu", "12345"));
+        userRepository.save(new User("Viki", "viki@gmail.hu", "12345"));
+        userRepository.save(new User("Eszter", "eszter@gmail.hu", "12345"));
+        userRepository.save(new User("Johi", "johi@gmail.hu", "12345"));
+        userRepository.save(new User("Gabi", "gabi@gmail.hu", "12345"));
+
+        System.out.println(userService.getUserByEmail("csenge@gmail.hu").getName());
+        System.out.println(userService.isEmailRegistered("csenge@gmail.hu"));
+        System.out.println(userService.isEmailAndPasswordCorrect("csenge@gmail.hu", "12345"));
     }
 }

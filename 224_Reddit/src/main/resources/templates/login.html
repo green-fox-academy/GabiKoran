@@ -10,11 +10,12 @@
             <div>
                 <h1>Login</h1>
             </div>
+            <div class="text-danger" th:if="${error}" th:text="${error}"></div>
             <div>
                 <form action="#" th:action="@{/login}" method="post">
                     <div>
-                        <label for="login-name">Name:</label>
-                        <input id="login-name" type="text" name="name">
+                        <label for="login-email">Name:</label>
+                        <input id="login-email" type="email" name="email">
                     </div>
                     <div>
                         <label for="login-password">Password:</label>

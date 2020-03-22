@@ -1,14 +1,13 @@
 package com.greenfoxacademy.reddit.controllers;
 
-import com.greenfoxacademy.reddit.models.PageRequest;
 import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -21,24 +20,19 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping("/")
-    public String startPage() {
-        return "redirect:/login";
-    }
-
-    @GetMapping("/9")
-    public String listPostsPage1(Model model) {
+    @GetMapping("/{id}/p1")
+    public String listPostsPage1(Model model, @PathVariable Long id) {
         model.addAttribute("posts", postService.page001());
         return "page1";
     }
 
-    @GetMapping("/2")
+    @GetMapping("/p2")
     public String listPostsPage2(Model model) {
         model.addAttribute("posts", postService.page002());
         return "page2";
     }
 
-    @GetMapping("/3")
+    @GetMapping("/p3")
     public String listPostsPage3(Model model) {
         model.addAttribute("posts", postService.page003());
         return "page3";
@@ -65,10 +59,5 @@ public class PostController {
     public String decrementRating(@ModelAttribute(name="id") Long id) {
         postService.decrementRating(id);
         return "redirect:/";
-    }
-
-    @GetMapping("/login")
-    public String renderLoginPage() {
-        return "login";
     }
 }
