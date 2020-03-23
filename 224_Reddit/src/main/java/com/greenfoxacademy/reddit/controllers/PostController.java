@@ -2,6 +2,7 @@ package com.greenfoxacademy.reddit.controllers;
 
 import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.services.PostService;
+import com.greenfoxacademy.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +15,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PostController {
 
     private PostService postService;
+    private UserService userService;
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
+        this.userService = userService;
     }
 
     @GetMapping("/{userid}/p1")
     public String listPostsPage1(Model model, @PathVariable Long userid) {
         model.addAttribute("userid", userid);
+        model.addAttribute("user", userService.findById(userid));
         model.addAttribute("posts", postService.page001());
         return "page1";
     }
@@ -30,6 +34,7 @@ public class PostController {
     @GetMapping("/{userid}/p2")
     public String listPostsPage2(Model model, @PathVariable Long userid) {
         model.addAttribute("userid", userid);
+        model.addAttribute("user", userService.findById(userid));
         model.addAttribute("posts", postService.page002());
         return "page2";
     }
@@ -37,6 +42,7 @@ public class PostController {
     @GetMapping("/{userid}/p3")
     public String listPostsPage3(Model model, @PathVariable Long userid) {
         model.addAttribute("userid", userid);
+        model.addAttribute("user", userService.findById(userid));
         model.addAttribute("posts", postService.page003());
         return "page3";
     }
@@ -44,6 +50,7 @@ public class PostController {
     @GetMapping("/{userid}/submit")
     public String renderSubmitNewPost(Model model, @PathVariable Long userid) {
         model.addAttribute("userid", userid);
+        model.addAttribute("user", userService.findById(userid));
         return "submit";
     }
 
