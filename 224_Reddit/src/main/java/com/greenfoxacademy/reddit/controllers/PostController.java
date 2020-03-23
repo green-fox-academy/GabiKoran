@@ -20,48 +20,48 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping("/{id}/p1")
-    public String listPostsPage1(Model model, @PathVariable Long id) {
-        model.addAttribute("userid", id);
+    @GetMapping("/{userid}/p1")
+    public String listPostsPage1(Model model, @PathVariable Long userid) {
+        model.addAttribute("userid", userid);
         model.addAttribute("posts", postService.page001());
         return "page1";
     }
 
-    @GetMapping("/{id}/p2")
-    public String listPostsPage2(Model model, @PathVariable Long id) {
-        model.addAttribute("userid", id);
+    @GetMapping("/{userid}/p2")
+    public String listPostsPage2(Model model, @PathVariable Long userid) {
+        model.addAttribute("userid", userid);
         model.addAttribute("posts", postService.page002());
         return "page2";
     }
 
-    @GetMapping("/{id}/p3")
-    public String listPostsPage3(Model model, @PathVariable Long id) {
-        model.addAttribute("userid", id);
+    @GetMapping("/{userid}/p3")
+    public String listPostsPage3(Model model, @PathVariable Long userid) {
+        model.addAttribute("userid", userid);
         model.addAttribute("posts", postService.page003());
         return "page3";
     }
 
-    @GetMapping("/{id}/submit")
-    public String renderSubmitNewPost(Model model, @PathVariable Long id) {
-        model.addAttribute("userid", id);
+    @GetMapping("/{userid}/submit")
+    public String renderSubmitNewPost(Model model, @PathVariable Long userid) {
+        model.addAttribute("userid", userid);
         return "submit";
     }
 
-    @PostMapping("/{id}/submit")
-    public String submitNewPost(@ModelAttribute Post post, @PathVariable Long id) {
+    @PostMapping("/{userid}/submit")
+    public String submitNewPost(@ModelAttribute Post post, @PathVariable Long userid) {
         postService.save(post);
-        return "redirect:/" + id + "/p1";
+        return "redirect:/" + userid + "/p1";
     }
 
-    @PostMapping("/{id}/plus")
-    public String incrementRating(@ModelAttribute(name="id") Long id) {
-        postService.incrementRating(id);
-        return "redirect:/" + id + "/p1";
+    @PostMapping("/{userid}/{postid}/plus")
+    public String incrementRating(@ModelAttribute(name="postid") Long postid, @PathVariable Long userid) {
+        postService.incrementRating(postid);
+        return "redirect:/" + userid + "/p1";
     }
 
-    @PostMapping("/{id}/minus")
-    public String decrementRating(@ModelAttribute(name="id") Long id) {
-        postService.decrementRating(id);
-        return "redirect:/" + id + "/p1";
+    @PostMapping("/{userid}/{postid}/minus")
+    public String decrementRating(@ModelAttribute(name="postid") Long postid, @PathVariable Long userid) {
+        postService.decrementRating(postid);
+        return "redirect:/" + userid + "/p1";
     }
 }

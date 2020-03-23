@@ -17,14 +17,14 @@
                     <tbody th:each="post : ${posts}" th:object="${post}">
                     <td th:text="*{rating}"></td>
                     <td>
-                        <form action="#" th:action="'/' + ${userid} + '/plus'" method="post">
-                            <input type="hidden" name="id" th:value="*{id}">
+                        <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/plus'" method="post">
+                            <input type="hidden" name="postid" th:value="*{id}">
                             <button>+</button>
                         </form>
                     </td>
                     <td>
-                        <form action="#" th:action="'/' + ${userid} + '/minus'" method="post">
-                            <input type="hidden" name="id" th:value="*{id}">
+                        <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/minus'" method="post">
+                            <input type="hidden" name="postid" th:value="*{id}">
                             <button>-</button>
                         </form>
                     </td>
