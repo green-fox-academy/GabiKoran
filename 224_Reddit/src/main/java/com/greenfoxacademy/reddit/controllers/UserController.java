@@ -26,10 +26,9 @@ public class UserController {
 
 
     @GetMapping("/login")
-    public String renderLoginPage(Model model, @RequestParam(required = false) String loginerror) {
-        if (loginerror != null) {
-            model.addAttribute("loginerror", loginerror);
-        }
+    public String renderLoginPage(Model model, @RequestParam(required = false) String loginerror, @RequestParam(required = false) String signuperror) {
+        model.addAttribute("loginerror", loginerror);
+        model.addAttribute("signuperror", signuperror);
         return "/login";
     }
 
@@ -38,4 +37,8 @@ public class UserController {
         return userService.getLoginPath(email, password);
     }
 
+    @PostMapping("/signup")
+    public String signup(String name, String email, String password, String password2) {
+        return userService.getSignUpPath(name, email, password, password2);
+    }
 }

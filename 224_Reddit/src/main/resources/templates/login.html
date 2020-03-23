@@ -31,6 +31,7 @@
             <div>
                 <h1>Sign up</h1>
             </div>
+            <div class="text-danger" th:if="${signuperror}" th:text="${signuperror}"></div>
             <div>
                 <form action="#" th:action="@{/signup}" method="post">
                     <div>

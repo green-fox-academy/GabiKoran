@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         if (isEmailRegistered(email) && isEmailAndPasswordCorrect(email, password)) {
             return "redirect:/" + getUserByEmail(email).getId() + "/p1";
         } else {
-            return "redirect:/login?loginerror=invalid%20email%20or%20password";
+            return "redirect:/login?loginerror=Invalid%20email%20or%20password.";
         }
     }
 
@@ -61,6 +61,18 @@ public class UserServiceImpl implements UserService {
             return userRepository.findUserByEmail(email).get();
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public String getSignUpPath(String name, String email, String password, String password2) {
+        if (isEmailRegistered(email)) {
+            return "redirect:/login?signuperror=This email was registered earlier.";
+        } else if (!password.equals(password2)) {
+            return "redirect:/login?signuperror=Please check the password.";
+        } else {
+            save(new User(name, email, password));
+            return "redirect:/" + getUserByEmail(email).getId() + "/p1";
         }
     }
 }

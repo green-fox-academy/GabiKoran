@@ -15,4 +15,6 @@ public interface UserService {
     String getLoginPath(String email, String password);
 
     User getUserByEmail(String email);
+
+    String getSignUpPath(String name, String email, String password, String password2);
 }
