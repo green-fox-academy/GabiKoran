@@ -1,21 +1,20 @@
 package com.greenfoxacademy.reddit.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Post {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String url;
     private Integer rating;
     private LocalDate creationDate;
+    @ManyToOne
+    private User owner;
 
     public Post() {
         this.rating = 1;
@@ -63,5 +62,13 @@ public class Post {
 
     public LocalDate getCreationDate() {
         return creationDate;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

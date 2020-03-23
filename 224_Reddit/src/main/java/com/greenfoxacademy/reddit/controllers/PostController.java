@@ -56,18 +56,18 @@ public class PostController {
 
     @PostMapping("/{userid}/submit")
     public String submitNewPost(@ModelAttribute Post post, @PathVariable Long userid) {
-        postService.save(post);
+        postService.save(post, userid);
         return "redirect:/" + userid + "/p1";
     }
 
     @PostMapping("/{userid}/{postid}/plus")
-    public String incrementRating(@ModelAttribute(name="postid") Long postid, @PathVariable Long userid) {
+    public String incrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
         postService.incrementRating(postid);
         return "redirect:/" + userid + "/p1";
     }
 
     @PostMapping("/{userid}/{postid}/minus")
-    public String decrementRating(@ModelAttribute(name="postid") Long postid, @PathVariable Long userid) {
+    public String decrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
         postService.decrementRating(postid);
         return "redirect:/" + userid + "/p1";
     }

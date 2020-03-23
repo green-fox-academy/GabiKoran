@@ -2,6 +2,7 @@ package com.greenfoxacademy.reddit.services;
 
 import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
+import com.greenfoxacademy.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,14 +15,24 @@ import java.util.Optional;
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, UserRepository userRepository) {
         this.postRepository = postRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public Post save(Post post) {
+        return postRepository.save(post);
+    }
+
+    @Override
+    public Post save(Post post, Long userId) {
+        if (userRepository.findById(userId).isPresent()) {
+            post.setOwner(userRepository.findById(userId).get());
+        }
         return postRepository.save(post);
     }
 
@@ -64,8 +75,8 @@ public class PostServiceImpl implements PostService {
     public void incrementRating(Long id) {
         Optional current = postRepository.findById(id);
         if (current.isPresent()) {
-            Post currentPost = (Post)current.get();
-            currentPost.setRating(currentPost.getRating()+1);
+            Post currentPost = (Post) current.get();
+            currentPost.setRating(currentPost.getRating() + 1);
             save(currentPost);
         }
     }
@@ -74,8 +85,8 @@ public class PostServiceImpl implements PostService {
     public void decrementRating(Long id) {
         Optional current = postRepository.findById(id);
         if (current.isPresent()) {
-            Post currentPost = (Post)current.get();
-            currentPost.setRating(currentPost.getRating()-1);
+            Post currentPost = (Post) current.get();
+            currentPost.setRating(currentPost.getRating() - 1);
             save(currentPost);
         }
     }

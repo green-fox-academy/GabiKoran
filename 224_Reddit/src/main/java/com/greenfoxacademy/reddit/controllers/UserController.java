@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute (name = "email") String email, @ModelAttribute (name = "password") String password) {
+    public String login(@ModelAttribute(name = "email") String email, @ModelAttribute(name = "password") String password) {
         return userService.getLoginPath(email, password);
     }
 

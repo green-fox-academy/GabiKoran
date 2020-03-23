@@ -1,9 +1,8 @@
 package com.greenfoxacademy.reddit.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -14,19 +13,25 @@ public class User {
     private String name;
     private String email;
     private String password;
+    @JoinTable(name = "ownership")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Post> posts;
 
     public User() {
+        posts = new ArrayList<>();
     }
 
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+        posts = new ArrayList<>();
     }
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+        posts = new ArrayList<>();
     }
 
     public Long getId() {
@@ -59,5 +64,18 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+        posts.stream().forEach(post -> post.setOwner(this));
+    }
+
+    public void addPost(Post post) {
+        this.posts.add(post);
     }
 }
