@@ -5,20 +5,22 @@
         <title>Reddit</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
-        <body>
-            <div class="text-right">
-                <div th:text="${user.name}"></div>
-                <a href="/login">Log out</a>
-            </div>
-            <div>
-                <a th:href="'/' + ${userid} + '/submit'">Submit new post</a>
-            </div>
-            <div>
-                <h1 align="center">Trending Posts</h1>
-            </div>
-            <div>
-                <table>
-                    <tbody th:each="post : ${posts}" th:object="${post}">
+    <body>
+    <div class="container-xl">
+        <div class="text-right">
+            <span th:text="${user.name}"></span>
+            <a href="/login">Log out</a>
+        </div>
+        <div>
+            <a th:href="'/' + ${userid} + '/submit'">Submit new post</a>
+        </div>
+        <div>
+            <h1 class="text-center">Trending Posts</h1>
+        </div>
+        <div>
+            <table>
+                <tbody th:each="post : ${posts}" th:object="${post}">
+                <div>
                     <td th:text="*{rating}"></td>
                     <td>
                         <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/plus'" method="post">
@@ -36,9 +38,10 @@
                         <a th:text="*{title}" th:href="*{url}"></a>
                     </td>
                     <td th:text="*{creationDate}"></td>
-                    </tbody>
-                </table>
-            </div>
+                </div>
+                </tbody>
+            </table>
+        </div>
             <div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -60,5 +63,6 @@
                 </ul>
             </nav>
         </div>
+    </div>
     </body>
 </html>
