@@ -1,0 +1,37 @@
+package com.greenfoxacademy.frontend.controllers;
+
+import com.greenfoxacademy.frontend.models.Doubling;
+import com.greenfoxacademy.frontend.models.ErrorMessage;
+import com.greenfoxacademy.frontend.services.MainService;
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class MainController {
+
+    private MainService mainService;
+
+    @Autowired
+    public MainController(MainService mainService) {
+        this.mainService = mainService;
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/doubling")
+    public ResponseEntity doubling(@RequestParam(required = false) Integer input)  {
+        if (input == null) {
+            return ResponseEntity.status(200).body(new ErrorMessage("Please provide an input!"));
+        } else {
+            Doubling doubling = new Doubling();
+            return ResponseEntity.status(200).body(mainService.doubling(input));
+        }
+    }
+}
