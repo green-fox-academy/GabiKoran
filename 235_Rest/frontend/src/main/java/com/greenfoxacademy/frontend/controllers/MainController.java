@@ -28,12 +28,7 @@ public class MainController {
 
     @GetMapping("/doubling")
     public ResponseEntity doubling(@RequestParam(required = false) Integer input)  {
-        if (input == null) {
-            return ResponseEntity.status(200).body(new ErrorMessage("Please provide an input!"));
-        } else {
-            Doubling doubling = new Doubling();
-            return ResponseEntity.status(200).body(mainService.doubling(input));
-        }
+        return mainService.doubling(input);
     }
 
     @GetMapping("/greeter")

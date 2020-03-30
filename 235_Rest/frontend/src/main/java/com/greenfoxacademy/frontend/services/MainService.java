@@ -12,9 +12,13 @@ public class MainService {
     public MainService() {
     }
 
-    public Doubling doubling(int received) {
-        Doubling doubling = new Doubling(received, received * 2);
-        return doubling;
+    public ResponseEntity doubling(Integer received) {
+        if (received == null) {
+            return ResponseEntity.status(200).body(new ErrorMessage("Please provide an input!"));
+        } else {
+            Doubling doubling = new Doubling(received);
+            return ResponseEntity.status(200).body(doubling);
+        }
     }
 
     public ResponseEntity greeting (String name, String title) {
