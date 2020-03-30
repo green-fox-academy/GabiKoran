@@ -2,6 +2,7 @@ package com.greenfoxacademy.frontend.controllers;
 
 import com.greenfoxacademy.frontend.models.Doubling;
 import com.greenfoxacademy.frontend.models.ErrorMessage;
+import com.greenfoxacademy.frontend.models.Greeting;
 import com.greenfoxacademy.frontend.services.MainService;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,10 @@ public class MainController {
             Doubling doubling = new Doubling();
             return ResponseEntity.status(200).body(mainService.doubling(input));
         }
+    }
+
+    @GetMapping("/greeter")
+    public ResponseEntity greeting(@RequestParam (required = false) String name, @RequestParam (required = false) String title) {
+        return mainService.greeting(name, title);
     }
 }
