@@ -1,5 +1,6 @@
 package com.greenfoxacademy.frontend.controllers;
 
+import com.greenfoxacademy.frontend.models.Appenda;
 import com.greenfoxacademy.frontend.models.Doubling;
 import com.greenfoxacademy.frontend.models.ErrorMessage;
 import com.greenfoxacademy.frontend.models.Greeting;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -35,4 +37,10 @@ public class MainController {
     public ResponseEntity greeting(@RequestParam (required = false) String name, @RequestParam (required = false) String title) {
         return mainService.greeting(name, title);
     }
+
+    @GetMapping("/appenda/{appendable}")
+    public ResponseEntity appenda(@PathVariable String appendable) {
+        return ResponseEntity.status(200).body(new Appenda(appendable));
+    }
+
 }

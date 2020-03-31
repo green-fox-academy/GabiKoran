@@ -1,5 +1,6 @@
 package com.greenfoxacademy.frontend.services;
 
+import com.greenfoxacademy.frontend.models.Appenda;
 import com.greenfoxacademy.frontend.models.Doubling;
 import com.greenfoxacademy.frontend.models.ErrorMessage;
 import com.greenfoxacademy.frontend.models.Greeting;
@@ -32,4 +33,5 @@ public class MainService {
             return ResponseEntity.status(400).body(new ErrorMessage("Please provide a title!"));
         }
     }
+
 }
