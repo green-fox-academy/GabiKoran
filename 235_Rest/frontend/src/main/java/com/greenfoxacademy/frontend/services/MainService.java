@@ -1,9 +1,6 @@
 package com.greenfoxacademy.frontend.services;
 
-import com.greenfoxacademy.frontend.models.Appenda;
-import com.greenfoxacademy.frontend.models.Doubling;
-import com.greenfoxacademy.frontend.models.ErrorMessage;
-import com.greenfoxacademy.frontend.models.Greeting;
+import com.greenfoxacademy.frontend.models.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +29,16 @@ public class MainService {
         } else {
             return ResponseEntity.status(400).body(new ErrorMessage("Please provide a title!"));
         }
+    }
+
+    public int action(String action, DoUntil doUntil) {
+        int result = 0;
+        if (action.equals("sum")) {
+            result = doUntil.sum();
+        } else if (action.equals("factor")) {
+            result = doUntil.factor();
+        }
+        return result;
     }
 
 }

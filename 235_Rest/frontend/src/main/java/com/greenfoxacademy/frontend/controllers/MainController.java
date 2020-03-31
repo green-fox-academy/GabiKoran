@@ -1,17 +1,12 @@
 package com.greenfoxacademy.frontend.controllers;
 
-import com.greenfoxacademy.frontend.models.Appenda;
-import com.greenfoxacademy.frontend.models.Doubling;
-import com.greenfoxacademy.frontend.models.ErrorMessage;
-import com.greenfoxacademy.frontend.models.Greeting;
+import com.greenfoxacademy.frontend.models.*;
 import com.greenfoxacademy.frontend.services.MainService;
 import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -43,4 +38,14 @@ public class MainController {
         return ResponseEntity.status(200).body(new Appenda(appendable));
     }
 
+    @PostMapping("/dountil/{action}")
+    public ResponseEntity doUntil(@PathVariable String action, @RequestBody DoUntil doUntil) {
+        if (doUntil == null) {
+            return ResponseEntity.status(400).body(new ErrorMessage("Please provide a number!"));
+        } else if (action.equals("sum") || action.equals("factor")) {
+            return ResponseEntity.status(200).body(new Result(mainService.action(action, doUntil)));
+        } else {
+            return ResponseEntity.status(400).body(new ErrorMessage("No action found"));
+        }
+    }
 }
