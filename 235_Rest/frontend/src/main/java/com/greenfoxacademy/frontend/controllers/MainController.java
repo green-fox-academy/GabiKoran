@@ -48,4 +48,17 @@ public class MainController {
             return ResponseEntity.status(400).body(new ErrorMessage("No action found"));
         }
     }
+
+     @PostMapping("/arrays")
+    public ResponseEntity arrays(@RequestBody ArrayHandler arrayHandler) {
+         if (arrayHandler.getWhat().equals("sum")) {
+             return ResponseEntity.status(200).body(new Result(arrayHandler.sum()));
+         } else if (arrayHandler.getWhat().equals("multiply")) {
+             return ResponseEntity.status(200).body(new Result(arrayHandler.multiply()));
+        } else if (arrayHandler.getWhat().equals("double")) {
+            return ResponseEntity.status(200).body(new ResultArray(arrayHandler.doubleArray()));
+         } else {
+             return ResponseEntity.status(400).body(new ErrorMessage("Please provide what to do with the numbers!"));
+         }
+     }
 }
