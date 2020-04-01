@@ -6,4 +6,4 @@
 
 [foundationExam](https://github.com/GabiKoran/culpaeus-foundation-normal-exam)
 
-[Peer to Peer Chat application](https://github.com/GabiKoran/p2p-chat)
+[Peer to Peer Chat](https://github.com/GabiKoran/p2p-chat)
