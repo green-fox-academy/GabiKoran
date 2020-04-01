@@ -2,6 +2,8 @@
 
 [Todo App](https://github.com/GabiKoran/todo-app)
 
-[Wanderer](https://github.com/GabiKoran/wanderer-java)
+[Wanderer Game](https://github.com/GabiKoran/wanderer-java)
 
 [foundationExam](https://github.com/GabiKoran/culpaeus-foundation-normal-exam)
+
+[Peer to Peer Chat application](https://github.com/GabiKoran/p2p-chat)
