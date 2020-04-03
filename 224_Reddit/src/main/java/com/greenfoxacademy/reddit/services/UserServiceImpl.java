@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getLoginPath(String email, String password) {
         if (isEmailRegistered(email) && isEmailAndPasswordCorrect(email, password)) {
-            return "redirect:/" + getUserByEmail(email).getId() + "/p1";
+            return "redirect:/" + getUserByEmail(email).getId();
         } else {
             return "redirect:/login?loginerror=Invalid%20email%20or%20password.";
         }
@@ -70,12 +70,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getSignUpPath(String name, String email, String password, String password2) {
         if (isEmailRegistered(email)) {
-            return "redirect:/login?signuperror=This email was registered earlier.";
+            return "redirect:/login?signuperror=This%20email%20was%20registered%20earlier.";
         } else if (!password.equals(password2)) {
-            return "redirect:/login?signuperror=Please check the password.";
+            return "redirect:/login?signuperror=Please%20check%20the%20password.";
         } else {
             save(new User(name, email, password));
-            return "redirect:/" + getUserByEmail(email).getId() + "/p1";
+            return "redirect:/" + getUserByEmail(email).getId();
         }
     }
 }

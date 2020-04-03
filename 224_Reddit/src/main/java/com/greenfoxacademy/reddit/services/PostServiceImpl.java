@@ -4,11 +4,14 @@ import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
 import com.greenfoxacademy.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,33 +45,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Page<Post> page001() {
-        Pageable page = PageRequest.of(0, 10);
-        return postRepository.findAllByOrderByRatingDesc(page);
-    }
-
-    @Override
-    public Page<Post> page002() {
-        Pageable page = PageRequest.of(1, 10);
-        return postRepository.findAllByOrderByRatingDesc(page);
-    }
-
-    @Override
-    public Page<Post> page003() {
-        Pageable page = PageRequest.of(2, 10);
-        return postRepository.findAllByOrderByRatingDesc(page);
-    }
-
-    @Override
-    public Page<Post> page004() {
-        Pageable page = PageRequest.of(3, 10);
-        return postRepository.findAllByOrderByRatingDesc(page);
-    }
-
-    @Override
-    public Page<Post> page005() {
-        Pageable page = PageRequest.of(4, 10);
-        return postRepository.findAllByOrderByRatingDesc(page);
+    public Page<Post> listPosts(Integer page) {
+        Pageable pageable = PageRequest.of(0, 10);
+        if (page != null) {
+            pageable = PageRequest.of(page, 10);
+        }
+        return postRepository.findAllByOrderByRatingDesc(pageable);
     }
 
     @Override
@@ -89,5 +71,24 @@ public class PostServiceImpl implements PostService {
             currentPost.setRating(currentPost.getRating() - 1);
             save(currentPost);
         }
+    }
+
+    @Override
+    public Integer numberOfPages() {
+        Integer postsNumbers = postRepository.countAllBy();
+        if (postsNumbers%10 != 0) {
+            return postsNumbers/10 + 1;
+        } else {
+            return postsNumbers/10;
+        }
+    }
+
+    @Override
+    public int[] pages() {
+        int[] pages = new int[numberOfPages()];
+        for (int i = 0; i < numberOfPages(); i++) {
+            pages[i] = i + 1;
+        }
+        return pages;
     }
 }

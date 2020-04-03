@@ -10,5 +10,7 @@ public interface PostRepository extends PagingAndSortingRepository<Post, Long> {
 
     Page<Post> findAllByOrderByRatingDesc(Pageable pageable);
 
+    Integer countAllBy();
+
 }
 

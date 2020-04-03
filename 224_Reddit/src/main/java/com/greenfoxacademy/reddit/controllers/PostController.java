@@ -7,10 +7,7 @@ import com.greenfoxacademy.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
@@ -26,28 +23,14 @@ public class PostController {
         this.rateService = rateService;
     }
 
-    @GetMapping("/{userid}/p1")
-    public String listPostsPage1(Model model, @PathVariable Long userid) {
+    @GetMapping("/{userid}")
+    public String listPostsPage(Model model, @PathVariable Long userid, @RequestParam (required = false) Integer page) {
         model.addAttribute("userid", userid);
         model.addAttribute("user", userService.findById(userid));
-        model.addAttribute("posts", postService.page001());
-        return "page1";
-    }
-
-    @GetMapping("/{userid}/p2")
-    public String listPostsPage2(Model model, @PathVariable Long userid) {
-        model.addAttribute("userid", userid);
-        model.addAttribute("user", userService.findById(userid));
-        model.addAttribute("posts", postService.page002());
-        return "page2";
-    }
-
-    @GetMapping("/{userid}/p3")
-    public String listPostsPage3(Model model, @PathVariable Long userid) {
-        model.addAttribute("userid", userid);
-        model.addAttribute("user", userService.findById(userid));
-        model.addAttribute("posts", postService.page003());
-        return "page3";
+        model.addAttribute("posts", postService.listPosts(page));
+        model.addAttribute("page", page);
+        model.addAttribute("pages", postService.pages());
+        return "page";
     }
 
     @GetMapping("/{userid}/submit")
@@ -60,20 +43,18 @@ public class PostController {
     @PostMapping("/{userid}/submit")
     public String submitNewPost(@ModelAttribute Post post, @PathVariable Long userid) {
         postService.save(post, userid);
-        return "redirect:/" + userid + "/p1";
+        return "redirect:/" + userid + "?page=0";
     }
 
     @PostMapping("/{userid}/{postid}/plus")
     public String incrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
         rateService.ratePlus(postid, userid);
-//        postService.incrementRating(postid);
-        return "redirect:/" + userid + "/p1";
+        return "redirect:/" + userid;
     }
 
     @PostMapping("/{userid}/{postid}/minus")
     public String decrementRating(@ModelAttribute(name = "postid") Long postid, @PathVariable Long userid) {
         rateService.rateMinus(postid, userid);
-//        postService.decrementRating(postid);
-        return "redirect:/" + userid + "/p1";
+        return "redirect:/" + userid;
     }
 }

@@ -16,13 +16,9 @@ public interface PostService {
 
     void decrementRating(Long id);
 
-    Page<Post> page001();
+    Page<Post> listPosts(Integer page);
 
-    Page<Post> page002();
+    Integer numberOfPages();
 
-    Page<Post> page003();
-
-    Page<Post> page004();
-
-    Page<Post> page005();
+    int[] pages();
 }
