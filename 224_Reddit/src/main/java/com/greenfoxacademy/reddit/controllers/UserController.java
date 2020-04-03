@@ -1,5 +1,6 @@
 package com.greenfoxacademy.reddit.controllers;
 
+import com.greenfoxacademy.reddit.models.entities.User;
 import com.greenfoxacademy.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,26 +20,45 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String startPage() {
-        return "redirect:/login";
-    }
-
-
-    @GetMapping("/login")
-    public String renderLoginPage(Model model, @RequestParam(required = false) String loginerror, @RequestParam(required = false) String signuperror) {
-        model.addAttribute("loginerror", loginerror);
-        model.addAttribute("signuperror", signuperror);
-        return "/login";
+    @GetMapping(path = {"", "/login"})
+    public String renderLoginPage(Model model, @RequestParam(required = false) String error) {
+        if (error != null) {
+            switch (error) {
+                case "invalid-login":
+                    model.addAttribute("loginerror", "Invalid email or password.");
+                    break;
+                case "signup-email":
+                    model.addAttribute("signuperror", "This email was registered earlier.");
+                    break;
+                case "signup-password":
+                    model.addAttribute("signuperror", "Please check the password.");
+                    break;
+                default:
+                    model.addAttribute("loginerror", "Unknown error.");
+                    model.addAttribute("signuperror", "Unknown error.");
+            }
+        }
+        return "login";
     }
 
     @PostMapping("/login")
     public String login(@ModelAttribute(name = "email") String email, @ModelAttribute(name = "password") String password) {
-        return userService.getLoginPath(email, password);
+        if (userService.isEmailRegistered(email) && userService.isEmailAndPasswordCorrect(email, password)) {
+            return "redirect:/" + userService.getUserByEmail(email).getId();
+        } else {
+            return "redirect:/login?error=invalid-login";
+        }
     }
 
     @PostMapping("/signup")
     public String signup(String name, String email, String password, String password2) {
-        return userService.getSignUpPath(name, email, password, password2);
+        if (userService.isEmailRegistered(email)) {
+            return "redirect:/login?error=signup-email";
+        } else if (!password.equals(password2)) {
+            return "redirect:/login?error=signup-password";
+        } else {
+            userService.save(new User(name, email, password));
+            return "redirect:/" + userService.getUserByEmail(email).getId();
+        }
     }
 }

@@ -30,11 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isEmailRegistered(String email) {
-        if (userRepository.findUserByEmail(email).isPresent()) {
-            return true;
-        } else {
-            return false;
-        }
+        return userRepository.findUserByEmail(email).isPresent();
     }
 
     @Override
