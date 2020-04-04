@@ -77,4 +77,8 @@ public class Post {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+
+    public void rate(Integer ratingValue) {
+        this.rating += ratingValue;
+    }
 }

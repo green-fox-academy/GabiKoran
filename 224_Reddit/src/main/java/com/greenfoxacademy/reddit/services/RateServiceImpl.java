@@ -1,5 +1,6 @@
 package com.greenfoxacademy.reddit.services;
 
+import com.greenfoxacademy.reddit.models.entities.Post;
 import com.greenfoxacademy.reddit.models.entities.Rate;
 import com.greenfoxacademy.reddit.models.entities.RateId;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
@@ -7,6 +8,8 @@ import com.greenfoxacademy.reddit.repositories.RateRepository;
 import com.greenfoxacademy.reddit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class RateServiceImpl implements RateService {
@@ -23,30 +26,20 @@ public class RateServiceImpl implements RateService {
     }
 
     @Override
-    public void ratePlus(Long postId, Long userId) {
-        RateId checkId = new RateId(userId, postId);
-        if (!rateRepository.findById(checkId).isPresent()) {
-            rateRepository.save(new Rate(new RateId(userId, postId), true));
-            postRepository.findById(postId).get().setRating(postRepository.findById(postId).get().getRating() + 1);
-            postRepository.save(postRepository.findById(postId).get());
-        } else if (rateRepository.findById(checkId).isPresent() && !rateRepository.findById(checkId).get().isPlusOrMinus()) {
-            rateRepository.findById(checkId).get().setPlusOrMinus(true);
-            postRepository.findById(postId).get().setRating(postRepository.findById(postId).get().getRating() + 2);
-            postRepository.save(postRepository.findById(postId).get());
-        }
-    }
+    public void rate(Long postId, Long userId, Integer ratingValue) {
+        RateId checkedRateId = new RateId(userId, postId);
+        Optional<Rate> currentRate = rateRepository.findById(checkedRateId);
+        Post currentPost = postRepository.findById(postId).get();
 
-    @Override
-    public void rateMinus(Long postId, Long userId) {
-        RateId checkId = new RateId(userId, postId);
-        if (!rateRepository.findById(checkId).isPresent()) {
-            rateRepository.save(new Rate(new RateId(userId, postId), false));
-            postRepository.findById(postId).get().setRating(postRepository.findById(postId).get().getRating() - 1);
-            postRepository.save(postRepository.findById(postId).get());
-        } else if (rateRepository.findById(checkId).isPresent() && rateRepository.findById(checkId).get().isPlusOrMinus()) {
-            rateRepository.findById(checkId).get().setPlusOrMinus(false);
-            postRepository.findById(postId).get().setRating(postRepository.findById(postId).get().getRating() - 2);
-            postRepository.save(postRepository.findById(postId).get());
+
+        if (!currentRate.isPresent()) {
+            rateRepository.save(new Rate(new RateId(userId, postId), ratingValue));
+            currentPost.rate(ratingValue);
+            postRepository.save(currentPost);
+        } else if (currentRate.isPresent() && currentRate.get().getRatingValue() != ratingValue) {
+            currentRate.get().setRatingValue(ratingValue);
+            currentPost.rate(ratingValue * 2);
+            postRepository.save(currentPost);
         }
     }
 }

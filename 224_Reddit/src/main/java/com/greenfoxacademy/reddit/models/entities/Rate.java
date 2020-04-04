@@ -8,8 +8,7 @@ public class Rate {
 
     @EmbeddedId
     private RateId rateId;
-
-    private boolean isPlusOrMinus;
+    private int ratingValue;
 
     public Rate() {
     }
@@ -18,9 +17,9 @@ public class Rate {
         this.rateId = rateId;
     }
 
-    public Rate(RateId rateId, boolean isPlusOrMinus) {
+    public Rate(RateId rateId, int ratingValue) {
         this.rateId = rateId;
-        this.isPlusOrMinus = isPlusOrMinus;
+        this.ratingValue = ratingValue;
     }
 
     public RateId getRateId() {
@@ -31,11 +30,13 @@ public class Rate {
         this.rateId = rateId;
     }
 
-    public boolean isPlusOrMinus() {
-        return isPlusOrMinus;
+    public int getRatingValue() {
+        return ratingValue;
     }
 
-    public void setPlusOrMinus(boolean plusOrMinus) {
-        isPlusOrMinus = plusOrMinus;
+    public void setRatingValue(int ratingValue) {
+        if (ratingValue == 1 || ratingValue == -1) {
+            this.ratingValue = ratingValue;
+        }
     }
 }
