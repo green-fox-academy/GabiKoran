@@ -46,15 +46,9 @@ public class PostController {
         return "redirect:/" + userid + "?page=0";
     }
 
-    @PostMapping("/{userid}/{postid}/plus")
-    public String incrementRating(@ModelAttribute(name = "postid") Long postId, @PathVariable(name = "userid") Long userId) {
-        rateService.rate(postId, userId, 1);
-        return "redirect:/" + userId;
-    }
-
-    @PostMapping("/{userid}/{postid}/minus")
-    public String decrementRating(@ModelAttribute(name = "postid") Long postId, @PathVariable(name = "userid")  Long userId) {
-        rateService.rate(postId, userId, -1);
+    @PostMapping("/{userid}/{postid}/rate")
+    public String rate(@ModelAttribute(name = "postid") Long postId, @PathVariable(name = "userid")  Long userId, @ModelAttribute(name = "rateValue") int rateValue) {
+        rateService.rate(postId, userId, rateValue);
         return "redirect:/" + userId;
     }
 }

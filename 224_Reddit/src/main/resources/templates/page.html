@@ -25,14 +25,18 @@
                         <div>
                             <td th:text="*{rating}"></td>
                             <td>
-                                <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/plus'" method="post">
+                                <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/rate'" method="post">
                                     <input type="hidden" name="postid" th:value="*{id}">
+                                    <input type="hidden" name="rateValue" value="1">
+                                    <input type="hidden" name="page" th:value="${page}">
                                     <button>+</button>
                                 </form>
                             </td>
                             <td>
-                                <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/minus'" method="post">
+                                <form action="#" th:action="'/' + ${userid} + '/' + *{id} + '/rate'" method="post">
                                     <input type="hidden" name="postid" th:value="*{id}">
+                                    <input type="hidden" name="rateValue" value="-1">
+                                    <input type="hidden" name="page" th:value="${page}">
                                     <button>-</button>
                                 </form>
                             </td>
