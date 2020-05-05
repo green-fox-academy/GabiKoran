@@ -1,4 +1,4 @@
-var names = [];
+let names = [];
 
 console.log(names.length);
 

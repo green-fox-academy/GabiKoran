@@ -11,16 +11,17 @@
 // * size should depend on a variable
 // ** Relax, a matrix is just like an array
 
-var size = 4;
+let size = 4;
 
-var matrixArray = new Array(size);
+let matrixArray = [];
 
-for (var i = 0; i < size; i++) {
-    if (!matrixArray[i]) {
+for (let i = 0; i < size; i++) {
+    // if (!matrixArray[i]) {
+    if (matrixArray[i] == null) {
         matrixArray[i] = [];
     }
-    for (var j = 0; j < size; j++) {
-        if (i === (3 -j)) {
+    for (let j = 0; j < size; j++) {
+        if (i === (size - 1 - j)) {
             matrixArray[i][j] = 1;
         } else {
             matrixArray[i][j] = 0;

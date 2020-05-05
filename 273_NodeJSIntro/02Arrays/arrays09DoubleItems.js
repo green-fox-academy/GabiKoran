@@ -4,7 +4,7 @@
 //   a loop
 // - It should print: ['GinGin', 'WhiskeyWhiskey', 'WineWine', 'BeerBeer']`
 
-var drinks = ['Gin', 'Whiskey', 'Wine', 'Beer'];
+let drinks = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 
 drinks.map(function(i){
     console.log(i + i);

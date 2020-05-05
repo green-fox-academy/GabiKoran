@@ -2,7 +2,7 @@
 //   with the following content: `[54, 23, 66, 12]`
 // - Print the sum of the elements
 
-var numbers = [54, 23, 66, 12];
+let numbers = [54, 23, 66, 12];
 
 function getSum(array){
     let sum = 0;    
@@ -13,16 +13,16 @@ function getSum(array){
 }
 
 function getSumWithForEach(array){
-    var sum = 0;
+    let sum = 0;
     array.forEach(function(i) {
         sum += i;
     })
     return sum;
 }
 
-var sumWithReduce = numbers.reduce(function(prev,next){
-    prev += next;
-    return prev;
+let sumWithReduce = numbers.reduce(function(sum,current){
+    sum += current;
+    return sum;
 },0);
 
 console.log(getSum(numbers));

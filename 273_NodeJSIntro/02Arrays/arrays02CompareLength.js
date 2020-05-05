@@ -5,8 +5,8 @@
 // - Log "p2 is longer" to the console if `secondList` has more elements than
 //   `firstList`
 
-var firstList = [1, 2, 3];
-var secondList = [4, 5];
+let firstList = [1, 2, 3];
+let secondList = [4, 5];
 
 if (firstList.length < secondList.length) {
     console.log("p2 is longer");

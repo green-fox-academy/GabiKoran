@@ -3,7 +3,7 @@
 // *hint: use a loop, console.log(numbers) won't cut it
 // -  bonus for using the correct built in array method
 
-var numbers = [4, 5, 6, 7];
+let numbers = [4, 5, 6, 7];
 
 numbers.forEach(function(item,index) {
     console.log(item);

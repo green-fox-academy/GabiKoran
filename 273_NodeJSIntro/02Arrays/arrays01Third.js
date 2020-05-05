@@ -3,6 +3,6 @@
 //    with the following content: `[1, 3, 5, 7]`
 // -  Print the third element of `numbers`
 
-var numbers = [1, 3, 5, 7];
+let numbers = [1, 3, 5, 7];
 
 console.log(numbers[2]);
