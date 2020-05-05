@@ -3,15 +3,15 @@ import React from 'react'
 const Hello = () => {
     //WITH JSX:
     // return (
-    //     <div>
+    //     <div className='dummyClass'>
     //         <h1>Hello Gabi</h1>
     //     </div>
     // )
-    
+
     //WITHOUT JSX:
     return React.createElement(
         'div', 
-        null, 
+        {id: 'hello', className: 'dummyClass'}, 
         React.createElement('h1', null, 'Hello Gabi'))
 }
 
