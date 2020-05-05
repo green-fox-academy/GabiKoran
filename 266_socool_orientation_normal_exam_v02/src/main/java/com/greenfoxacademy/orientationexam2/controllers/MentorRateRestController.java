@@ -46,6 +46,7 @@ public class MentorRateRestController {
 //        if (mentorFromUrl.isPresent()) {
 //            ClassName inputClassNameFromBody = classNameService.findClassByName(inputMentor.getClassName());
 //            if (inputClassNameFromBody != null) {
+//                System.out.println("van input ClassName");
 //                Mentor mentor = mentorFromUrl.get();
 //                mentor.setName(inputMentor.getName());
 //                mentor.setClassName(inputClassNameFromBody);
