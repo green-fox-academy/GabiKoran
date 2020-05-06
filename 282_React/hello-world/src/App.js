@@ -8,9 +8,13 @@ import Greet from './components/Greet'
 function App() {
   return (
     <div className="App">
-      <Greet name="Bruce" heroName="Batman"></Greet>
-      <Greet name="Clark" heroName="Superman"/>
-      <Greet name="Diana" heroName="Wonder Woman"/>
+      <Greet name="Bruce" heroName="Batman">
+        <p>inner HTML text as children</p>
+      </Greet>
+      <Greet name="Clark" heroName="Superman">
+        <button>Action</button>
+      </Greet>
+      <Greet name="Diana" heroName="Wonder Woman" />
       <Greet />
       {/* <Welcome /> */}
       {/* <Hello /> */}
