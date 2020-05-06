@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 // import logo from './logo.svg';
-import './App.css';
-import Counter from './components/Counter';
+import './App.css'
+import Counter from './components/Counter'
 // import Greet from './components/Greet'
 // import Welcome from './components/Welcome'
 // import Hello from './components/Hello'
@@ -25,7 +25,7 @@ function App() {
       <Welcome name="Diana" heroName="Wonder Woman"></Welcome> */}
       {/* <Hello /> */}
     </div>
-  );
+  )
 }
 
 export default App;
