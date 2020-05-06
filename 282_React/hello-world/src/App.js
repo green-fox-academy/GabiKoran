@@ -1,14 +1,16 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Greet from './components/Greet'
-import Welcome from './components/Welcome'
+// import Greet from './components/Greet'
+// import Welcome from './components/Welcome'
 // import Hello from './components/Hello'
+import Message from './components/Message'
 
 function App() {
   return (
     <div className="App">
-      <Greet name="Bruce" heroName="Batman">
+      <Message></Message>
+      {/* <Greet name="Bruce" heroName="Batman">
         <p>inner HTML text as children</p>
       </Greet>
       <Greet name="Clark" heroName="Superman">
@@ -18,7 +20,7 @@ function App() {
       <Greet />
       <Welcome name="Bruce" heroName="Batman"></Welcome>
       <Welcome name="Clark" heroName="Superman"></Welcome>
-      <Welcome name="Diana" heroName="Wonder Woman"></Welcome>
+      <Welcome name="Diana" heroName="Wonder Woman"></Welcome> */}
       {/* <Hello /> */}
     </div>
   );
