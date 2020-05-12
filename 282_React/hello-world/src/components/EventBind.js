@@ -11,8 +11,15 @@ class EventBind extends Component {
 
         // this.clickHandler = this.clickHandler.bind(this)
     }
+
+    // clickHandler(){ // verzió 1, 2, 3
+    //     this.setState({
+    //         message: 'Good buy!'
+    //     })
+    //     // console.log(this)
+    // }
     
-    clickHandler = () => {
+    clickHandler = () => { // verzió 4.
         this.setState({
             message: 'Good buy!'
         })
@@ -23,9 +30,9 @@ class EventBind extends Component {
         return (
             <div>
                 <div>{this.state.message}</div>
-               {/* <button onClick={() => this.clickHandler()}>Click</button> */}
-               {/* <button onClick={this.clickHandler.bind(this)}>Click</button>  */}
-               <button onClick={this.clickHandler}>Click</button> 
+               {/* <button onClick={() => this.clickHandler()}>Click</button> */} {/* verzió 2. */}
+               {/* <button onClick={this.clickHandler.bind(this)}>Click</button>  */} {/* verzió 1. */}
+               <button onClick={this.clickHandler}>Click</button>  {/* verzió 3. és 4. */}
             </div>
         )
     }
