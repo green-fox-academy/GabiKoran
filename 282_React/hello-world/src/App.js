@@ -2,7 +2,8 @@ import React from 'react'
 // import logo from './logo.svg';
 import './App.css'
 import HookCounter from './components/HookCounter'
-import HookCounterTwo from './components/HookCounterTwo'
+import HookCounter2 from './components/HookCounter2'
+import HookCounter3 from './components/HookCounter3'
 // import Counter from './components/Counter'
 // import FunctionClick from './components/FunctionClick'
 // import ClassClick from './components/ClassClick'
@@ -16,8 +17,9 @@ import HookCounterTwo from './components/HookCounterTwo'
 function App() {
   return (
     <div className="App">
-      <HookCounter></HookCounter>
-      <HookCounterTwo></HookCounterTwo>
+      <HookCounter3></HookCounter3>
+      {/* <HookCounter></HookCounter>
+      <HookCounter2></HookCounter2> */}
       {/* <Form /> */}
       {/* <EventBind /> */}
       {/* <FunctionClick />
