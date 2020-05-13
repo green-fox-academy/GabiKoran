@@ -9,12 +9,13 @@ import EventBind from './components/EventBind'
 // import Welcome from './components/Welcome'
 // import Hello from './components/Hello'
 // import Message from './components/Message'
-
+import Form from './components/Form'
 
 function App() {
   return (
     <div className="App">
-      <EventBind />
+      <Form />
+      {/* <EventBind /> */}
       {/* <FunctionClick />
       <ClassClick /> */}
       {/* <Counter /> */}
