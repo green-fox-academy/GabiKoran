@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 // import logo from './logo.svg';
-import './App.css'
-import HookCounter from './components/HookCounter'
-import HookCounter2 from './components/HookCounter2'
-import HookCounter3 from './components/HookCounter3'
+import "./App.css";
+import Parent from "./components/Parent";
+// import HookCounter from './components/HookCounter'
+// import HookCounter2 from './components/HookCounter2'
+// import HookCounter3 from './components/HookCounter3'
 // import Counter from './components/Counter'
 // import FunctionClick from './components/FunctionClick'
 // import ClassClick from './components/ClassClick'
@@ -17,7 +18,8 @@ import HookCounter3 from './components/HookCounter3'
 function App() {
   return (
     <div className="App">
-      <HookCounter3></HookCounter3>
+      <Parent />
+      {/* <HookCounter3></HookCounter3> */}
       {/* <HookCounter></HookCounter>
       <HookCounter2></HookCounter2> */}
       {/* <Form /> */}
@@ -39,7 +41,7 @@ function App() {
       <Welcome name="Diana" heroName="Wonder Woman"></Welcome> */}
       {/* <Hello /> */}
     </div>
-  )
+  );
 }
 
 export default App;
