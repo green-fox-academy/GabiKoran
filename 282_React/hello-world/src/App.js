@@ -1,7 +1,8 @@
 import React from "react";
 // import logo from './logo.svg';
 import "./App.css";
-import ConditionalRendering from "./components/ConditionalRendering";
+// import ConditionalRendering from "./components/ConditionalRendering";
+import NameList2 from "./components/NameList2";
 // import Parent from "./components/Parent";
 // import HookCounter from './components/HookCounter'
 // import HookCounter2 from './components/HookCounter2'
@@ -19,7 +20,8 @@ import ConditionalRendering from "./components/ConditionalRendering";
 function App() {
   return (
     <div className="App">
-      <ConditionalRendering />
+      <NameList2 />
+      {/* <ConditionalRendering /> */}
       {/* <Parent /> */}
       {/* <HookCounter3></HookCounter3> */}
       {/* <HookCounter></HookCounter>
