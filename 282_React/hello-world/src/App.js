@@ -1,8 +1,11 @@
 import React from "react";
 // import logo from './logo.svg';
 import "./App.css";
+import ClickCounter from "./components/ClickCounter";
+import HoverCounter from "./components/HoverCounter";
+
 // import ConditionalRendering from "./components/ConditionalRendering";
-import NameList2 from "./components/NameList2";
+// import NameList2 from "./components/NameList2";
 // import Parent from "./components/Parent";
 // import HookCounter from './components/HookCounter'
 // import HookCounter2 from './components/HookCounter2'
@@ -20,7 +23,9 @@ import NameList2 from "./components/NameList2";
 function App() {
   return (
     <div className="App">
-      <NameList2 />
+      <ClickCounter />
+      <HoverCounter />
+      {/* <NameList2 /> */}
       {/* <ConditionalRendering /> */}
       {/* <Parent /> */}
       {/* <HookCounter3></HookCounter3> */}
