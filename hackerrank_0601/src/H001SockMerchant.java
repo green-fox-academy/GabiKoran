@@ -49,5 +49,6 @@ public class H001SockMerchant {
         scanner.close();
 
         //CommitA
+        //CommitB
     }
 }
