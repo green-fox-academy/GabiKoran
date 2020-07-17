@@ -1,0 +1,1 @@
+function manipulateArrey(n, queries) {}
