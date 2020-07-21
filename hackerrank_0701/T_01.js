@@ -19,4 +19,4 @@ function correct(s) {
 
 // console.log(correct("itt nem volt- itt volt"));
 
-exports.data = correct();
+module.exports = correct;
