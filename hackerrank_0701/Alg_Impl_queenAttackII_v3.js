@@ -1,11 +1,4 @@
 function queensAttack(n, k, r_q, c_q, obstacles) {
-  let result = 0;
-
-  const endLeft = [r_q, 1];
-  const endRight = [r_q, n];
-  const endTop = [n, c_q];
-  const endBottom = [1, c_q];
-
   const diff = r_q - c_q;
   const sum = r_q + c_q;
 
@@ -13,7 +6,7 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
 
   const allAttackableCells = getAllAttackableCells(n, positionLevel);
 
-  console.log(allAttackableCells);
+  let obstructedAttacks = 0;
 
   if (k != 0) {
     const endLeftTopRow = getEndLeftTopRow(sum, n);
@@ -21,45 +14,101 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
     const endLeftBottomRow = getEndLeftBottomRow(diff);
     const endRightTopRow = getEndRightTopRow(diff, n);
 
-    //   // obstacles-n végigiterálni
-    //   for (let j = 0; j < k; j++) {
-    //     // ugyanabban a sorban van-e mint a királynő
-    //     if (obstacles[j][0] == r_q) {
-    //       if (obstacles[j][1] < c_q) {
-    //         result -= obstacles[j][1];
-    //       } else {
-    //         result -= n - obstacles[j][1] + 1;
-    //       }
-    //       console.log(
-    //         "ugyanabban a sorban: " + result + "\n" + j + ":" + obstacles[j]
-    //       );
-    //     }
-    //     // ugyanabban az oszlopban van-e mint a királynő
-    //     else if (obstacles[j][1] == c_q) {
-    //       if (obstacles[j][0] < r_q) {
-    //         result -= obstacles[j][0];
-    //       } else {
-    //         result -= n - obstacles[j][0] + 1;
-    //       }
-    //     }
-    //     // leftDiagonalban van-e obstacle
-    //     else if (obstacles[j][0] + obstacles[j][1] == sum) {
-    //       if (obstacles[j][0] > r_q) {
-    //         result -= leftDiagonalTopEndpointRow - obstacles[j][0] + 1;
-    //       } else {
-    //         result -= leftDiagonalBottomEndpointRow - obstacles[j][0] + 1;
-    //       }
-    //     }
-    //     // rightDiagonalban van-e obstacle
-    //     else if (obstacles[j][0] - obstacles[j][1] == diff) {
-    //       if (obstacles[j][0] < r_q) {
-    //         result -= obstacles[j][0] - rightDiagonalLeftEndpointRow + 1;
-    //       } else {
-    //         result -= rightDiagonalRightEndpointRow - obstacles[j][0] + 1;
-    //       }
-    //     }
-    //   }
+    let biggestObstLeftBottomRow = endLeftBottomRow - 1;
+    let biggestObstLeftColumn = 0;
+    let biggestObstLeftTopRow = endLeftTopRow + 1;
+    let biggestObstTopRow = n + 1;
+    let biggestObstRightTopRow = endRightTopRow + 1;
+    let biggestObstRightColumn = n + 1;
+    let biggestObstRightBottomRow = endRightBottomRow - 1;
+    let biggestObstBottomRow = 0;
+
+    // obstacles-n végigiterálni
+    for (let j = 0; j < k; j++) {
+      //ugyanabban a sorban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
+      if (obstacles[j][0] == r_q) {
+        if (obstacles[j][1] < c_q && obstacles[j][1] > biggestObstLeftColumn) {
+          biggestObstLeftColumn = obstacles[j][1];
+        } else if (
+          obstacles[j][1] > c_q &&
+          obstacles[j][1] < biggestObstRightColumn
+        ) {
+          biggestObstRightColumn = obstacles[j][1];
+        }
+      }
+
+      // ugyanabban az oszlopban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
+      else if (obstacles[j][1] == c_q) {
+        if (obstacles[j][0] < r_q && obstacles[j][0] > biggestObstBottomRow) {
+          biggestObstBottomRow = obstacles[j][0];
+        } else if (
+          obstacles[j][0] > r_q &&
+          obstacles[j][0] < biggestObstTopRow
+        ) {
+          biggestObstTopRow = obstacles[j][0];
+        }
+      }
+
+      // leftDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
+      else if (obstacles[j][0] + obstacles[j][1] == sum) {
+        if (obstacles[j][0] > r_q && obstacles[j][0] < biggestObstLeftTopRow) {
+          biggestObstLeftTopRow = obstacles[j][0];
+        } else if (
+          obstacles[j][0] < r_q &&
+          obstacles[j][0] > biggestObstRightBottomRow
+        ) {
+          biggestObstRightBottomRow = obstacles[j][0];
+        }
+      }
+      // rightDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
+      else if (obstacles[j][0] - obstacles[j][1] == diff) {
+        if (
+          obstacles[j][0] < r_q &&
+          obstacles[j][0] > biggestObstLeftBottomRow
+        ) {
+          biggestObstLeftBottomRow = obstacles[j][0];
+        } else if (
+          obstacles[j][0] > r_q &&
+          obstacles[j][0] < biggestObstRightTopRow
+        ) {
+          biggestObstRightTopRow = obstacles[j][0];
+        }
+      }
+    }
+    const obstV_LB = biggestObstLeftBottomRow - endLeftBottomRow + 1;
+    obstructedAttacks =
+      obstV_LB +
+      biggestObstLeftColumn +
+      (endLeftTopRow - biggestObstLeftTopRow + 1) +
+      (n - biggestObstTopRow + 1) +
+      (endRightTopRow - biggestObstRightTopRow + 1) +
+      (n - biggestObstRightColumn + 1) +
+      biggestObstRightBottomRow -
+      endRightBottomRow +
+      1 +
+      biggestObstBottomRow;
+    // console.log(
+    //   "LeftBottom: " +
+    //     biggestObstLeftBottomRow +
+    //     "\nLeft: " +
+    //     biggestObstLeftColumn +
+    //     "\nLeftTop: " +
+    //     biggestObstLeftTopRow +
+    //     "\nTop: " +
+    //     biggestObstTopRow +
+    //     "\nRightTop: " +
+    //     biggestObstRightTopRow +
+    //     "\nRight: " +
+    //     biggestObstRightColumn +
+    //     "\nRightBottom: " +
+    //     biggestObstRightBottomRow +
+    //     "\nBottom: " +
+    //     biggestObstBottomRow +
+    //     "\nösszes levonandó: " +
+    //     obstructedAttacks
+    // );
   }
+  let result = allAttackableCells - obstructedAttacks;
   return result;
 }
 
@@ -119,6 +168,13 @@ console.log(
     [2, 3],
     [5, 2],
     [5, 4],
+  ])
+);
+console.log(
+  queensAttack(5, 3, 4, 3, [
+    [5, 5],
+    [4, 2],
+    [2, 3],
   ])
 );
 console.log(
