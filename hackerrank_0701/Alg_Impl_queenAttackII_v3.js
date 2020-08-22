@@ -7,106 +7,16 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
   const allAttackableCells = getAllAttackableCells(n, positionLevel);
 
   let obstructedAttacks = 0;
-
   if (k != 0) {
-    const endLeftTopRow = getEndLeftTopRow(sum, n);
-    const endRightBottomRow = sum - endLeftTopRow;
-    const endLeftBottomRow = getEndLeftBottomRow(diff);
-    const endRightTopRow = getEndRightTopRow(diff, n);
-
-    let biggestObstLeftBottomRow = endLeftBottomRow - 1;
-    let biggestObstLeftColumn = 0;
-    let biggestObstLeftTopRow = endLeftTopRow + 1;
-    let biggestObstTopRow = n + 1;
-    let biggestObstRightTopRow = endRightTopRow + 1;
-    let biggestObstRightColumn = n + 1;
-    let biggestObstRightBottomRow = endRightBottomRow - 1;
-    let biggestObstBottomRow = 0;
-
-    // obstacles-n végigiterálni
-    for (let j = 0; j < k; j++) {
-      //ugyanabban a sorban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
-      if (obstacles[j][0] == r_q) {
-        if (obstacles[j][1] < c_q && obstacles[j][1] > biggestObstLeftColumn) {
-          biggestObstLeftColumn = obstacles[j][1];
-        } else if (
-          obstacles[j][1] > c_q &&
-          obstacles[j][1] < biggestObstRightColumn
-        ) {
-          biggestObstRightColumn = obstacles[j][1];
-        }
-      }
-
-      // ugyanabban az oszlopban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
-      else if (obstacles[j][1] == c_q) {
-        if (obstacles[j][0] < r_q && obstacles[j][0] > biggestObstBottomRow) {
-          biggestObstBottomRow = obstacles[j][0];
-        } else if (
-          obstacles[j][0] > r_q &&
-          obstacles[j][0] < biggestObstTopRow
-        ) {
-          biggestObstTopRow = obstacles[j][0];
-        }
-      }
-
-      // leftDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
-      else if (obstacles[j][0] + obstacles[j][1] == sum) {
-        if (obstacles[j][0] > r_q && obstacles[j][0] < biggestObstLeftTopRow) {
-          biggestObstLeftTopRow = obstacles[j][0];
-        } else if (
-          obstacles[j][0] < r_q &&
-          obstacles[j][0] > biggestObstRightBottomRow
-        ) {
-          biggestObstRightBottomRow = obstacles[j][0];
-        }
-      }
-      // rightDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
-      else if (obstacles[j][0] - obstacles[j][1] == diff) {
-        if (
-          obstacles[j][0] < r_q &&
-          obstacles[j][0] > biggestObstLeftBottomRow
-        ) {
-          biggestObstLeftBottomRow = obstacles[j][0];
-        } else if (
-          obstacles[j][0] > r_q &&
-          obstacles[j][0] < biggestObstRightTopRow
-        ) {
-          biggestObstRightTopRow = obstacles[j][0];
-        }
-      }
-    }
-    const obstV_LB = biggestObstLeftBottomRow - endLeftBottomRow + 1;
-    obstructedAttacks =
-      obstV_LB +
-      biggestObstLeftColumn +
-      (endLeftTopRow - biggestObstLeftTopRow + 1) +
-      (n - biggestObstTopRow + 1) +
-      (endRightTopRow - biggestObstRightTopRow + 1) +
-      (n - biggestObstRightColumn + 1) +
-      biggestObstRightBottomRow -
-      endRightBottomRow +
-      1 +
-      biggestObstBottomRow;
-    // console.log(
-    //   "LeftBottom: " +
-    //     biggestObstLeftBottomRow +
-    //     "\nLeft: " +
-    //     biggestObstLeftColumn +
-    //     "\nLeftTop: " +
-    //     biggestObstLeftTopRow +
-    //     "\nTop: " +
-    //     biggestObstTopRow +
-    //     "\nRightTop: " +
-    //     biggestObstRightTopRow +
-    //     "\nRight: " +
-    //     biggestObstRightColumn +
-    //     "\nRightBottom: " +
-    //     biggestObstRightBottomRow +
-    //     "\nBottom: " +
-    //     biggestObstBottomRow +
-    //     "\nösszes levonandó: " +
-    //     obstructedAttacks
-    // );
+    obstructedAttacks = getObstructedAttacks(
+      sum,
+      diff,
+      n,
+      k,
+      r_q,
+      c_q,
+      obstacles
+    );
   }
   let result = allAttackableCells - obstructedAttacks;
   return result;
@@ -121,7 +31,6 @@ function getPositionLevel(n, r_q, c_q) {
       posLevel = distances[i];
     }
   }
-
   return posLevel;
 }
 
@@ -157,6 +66,82 @@ function getEndRightTopRow(diff, n) {
     endRightTopRow = n + diff;
   }
   return endRightTopRow;
+}
+
+function getObstructedAttacks(sum, diff, n, k, r_q, c_q, obstacles) {
+  const endLeftTopRow = getEndLeftTopRow(sum, n);
+  const endRightBottomRow = sum - endLeftTopRow;
+  const endLeftBottomRow = getEndLeftBottomRow(diff);
+  const endRightTopRow = getEndRightTopRow(diff, n);
+
+  let biggestObstLeftBottomRow = endLeftBottomRow - 1;
+  let biggestObstLeftColumn = 0;
+  let biggestObstLeftTopRow = endLeftTopRow + 1;
+  let biggestObstTopRow = n + 1;
+  let biggestObstRightTopRow = endRightTopRow + 1;
+  let biggestObstRightColumn = n + 1;
+  let biggestObstRightBottomRow = endRightBottomRow - 1;
+  let biggestObstBottomRow = 0;
+
+  // obstacles-n végigiterálni
+  for (let j = 0; j < k; j++) {
+    //ugyanabban a sorban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
+    if (obstacles[j][0] == r_q) {
+      if (obstacles[j][1] < c_q && obstacles[j][1] > biggestObstLeftColumn) {
+        biggestObstLeftColumn = obstacles[j][1];
+      } else if (
+        obstacles[j][1] > c_q &&
+        obstacles[j][1] < biggestObstRightColumn
+      ) {
+        biggestObstRightColumn = obstacles[j][1];
+      }
+    }
+
+    // ugyanabban az oszlopban van-e mint a királynő és nagyobb akadály-e, mint a korábbi
+    else if (obstacles[j][1] == c_q) {
+      if (obstacles[j][0] < r_q && obstacles[j][0] > biggestObstBottomRow) {
+        biggestObstBottomRow = obstacles[j][0];
+      } else if (obstacles[j][0] > r_q && obstacles[j][0] < biggestObstTopRow) {
+        biggestObstTopRow = obstacles[j][0];
+      }
+    }
+
+    // leftDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
+    else if (obstacles[j][0] + obstacles[j][1] == sum) {
+      if (obstacles[j][0] > r_q && obstacles[j][0] < biggestObstLeftTopRow) {
+        biggestObstLeftTopRow = obstacles[j][0];
+      } else if (
+        obstacles[j][0] < r_q &&
+        obstacles[j][0] > biggestObstRightBottomRow
+      ) {
+        biggestObstRightBottomRow = obstacles[j][0];
+      }
+    }
+    // rightDiagonalban van-e obstacle és nagyobb akadály-e, mint a korábbi
+    else if (obstacles[j][0] - obstacles[j][1] == diff) {
+      if (obstacles[j][0] < r_q && obstacles[j][0] > biggestObstLeftBottomRow) {
+        biggestObstLeftBottomRow = obstacles[j][0];
+      } else if (
+        obstacles[j][0] > r_q &&
+        obstacles[j][0] < biggestObstRightTopRow
+      ) {
+        biggestObstRightTopRow = obstacles[j][0];
+      }
+    }
+  }
+  const obstV_LB = biggestObstLeftBottomRow - endLeftBottomRow + 1;
+  let obstructedAttacks =
+    obstV_LB +
+    biggestObstLeftColumn +
+    (endLeftTopRow - biggestObstLeftTopRow + 1) +
+    (n - biggestObstTopRow + 1) +
+    (endRightTopRow - biggestObstRightTopRow + 1) +
+    (n - biggestObstRightColumn + 1) +
+    biggestObstRightBottomRow -
+    endRightBottomRow +
+    1 +
+    biggestObstBottomRow;
+  return obstructedAttacks;
 }
 
 console.log(queensAttack(4, 0, 4, 4, []));
